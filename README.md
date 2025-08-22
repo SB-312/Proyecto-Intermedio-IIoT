@@ -219,7 +219,7 @@ Trabajo futuro:
 
 ## 8. Anexos
 
-* Esquemáticos eléctricos: `/docs/esquematico.pdf`
-* Protocolo de pruebas: `/tests/protocolo_pruebas.md`
-* Avances fotográficos: `/media/avance_YYYYMMDD.jpg`
-* Presentación de sustentación: `/media/presentacion.pdf`
+* Esquemáticos eléctricos: `/docs/`
+* Códigos utilizados: `/codes/`
+* Avances fotográficos: `/media/avances/`
+* Videos del funcionamiento: `/media/videos/`
