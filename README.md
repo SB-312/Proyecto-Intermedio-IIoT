@@ -249,7 +249,7 @@ Trabajo futuro:
 * Depurar y probar el código completo.
 * Migrar de baterías a fuente regulada de 9 V.
 * Implementar conectividad IIoT con **ESP32 (3.3 V)** → requiere etapa de **acoplamiento de potencia** a 9 V mediante Relays.
-* Integrar **dashboard en Node-RED** para monitoreo remoto.
+* Integrar **dashboard y otras herramientas IoT** para monitoreo remoto.
 * Migrar hacia un **soft-PLC educativo (OpenPLC)** configurado para entornos de bajo voltaje.
 
 ---
