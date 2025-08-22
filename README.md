@@ -225,7 +225,7 @@ flowchart TD
 | 2025-08-14 | ![Avance 14-08](media/avances/14_08_25.jpg)        | Montaje parcial con validación de ejes.  |
 | 2025-08-15 | ![Avance 15-08](media/avances/15_08_25_avance.jpg) | Sustitución del eje 260 mm por actuador. |
 | 2025-08-20 | ![Avance 20-08](media/avances/20_08_25_avance.jpg) | Prueba de movimiento de los tres ejes.   |
-| 2025-08-21 | ![Avance 21-08](https://github.com/user-attachments/assets/03e0e506-2949-4c3a-b297-43bea97aa4d5) | Prueba de movimiento de los tres ejes.   |
+| 2025-08-21 | ![Avance 21-08](https://github.com/user-attachments/assets/03e0e506-2949-4c3a-b297-43bea97aa4d5) | Estructura completa.   |
 
 ---
 
