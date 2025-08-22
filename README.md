@@ -138,9 +138,10 @@ graph TD
     A[Pieza faltante: eje metálico 260 mm] --> B[Solución: reemplazo del tornillo en eje Z por un actuador lineal motorreductor]
     A --> C[Consecuencia: eje X no cubre toda la longitud del estante]
     C --> D[Impacto: sólo una columna del shelf es funcional]
+    B --> E[Impacto: cambio de diseño original y posibles errores no previstos en su funcionamiento]
 
-    E[Falta de baterías 9 V] --> F[Solución: uso de fuente externa]
-    F --> G[Impacto: dependencia a la fuente]
+    F[Falta de baterías 9 V] --> G[Solución: uso de fuente externa]
+    G --> H[Impacto: dependencia a la fuente]
 ```
 
 ---
