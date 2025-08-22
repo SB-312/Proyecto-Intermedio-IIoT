@@ -63,11 +63,11 @@ flowchart TB
     FXmin["Final de carrera X-"]
     FXmax["Final de carrera X+"]
 
-    FYmin["Final de carrera Y-"]
-    FYmax["Final de carrera Y+"]
-
     FZmin["Final de carrera Z-"]
     FZmax["Final de carrera Z+"]
+
+    FYmin["Final de carrera Y-"]
+    FYmax["Final de carrera Y+"]
 
     FXmin --- X --- FXmax
     FZmin --- Z --- FZmax
