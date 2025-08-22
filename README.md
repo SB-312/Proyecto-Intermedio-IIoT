@@ -286,7 +286,7 @@ Trabajo futuro:
 * Completar estante 2×3.
 * Depurar y probar el código completo.
 * Migrar de baterías a fuente regulada.
-* Integrar conectividad IIoT (Modbus/MQTT + dashboard).
+* Integrar conectividad IIoT con nuestros propios smart PLC basados en ESP32.
 
 ---
 
