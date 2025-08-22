@@ -168,6 +168,25 @@ graph TD
 * Verificación de homing con finales de carrera.
 * Sustitución del tornillo vertical por carril + actuador lineal (9 V).
 * Validación de movimientos básicos en X, Y y Z.
+Listo ✅. El PDF se convirtió en una imagen (`antes_despues_1.png`).
+Puedes integrarlo en el README así:
+
+---
+
+El reemplazo del tornillo como eje Z por un actuador lineal con motorreductor modificó la arquitectura del prototipo.
+
+![Comparación Antes y Después](media/avances/antes_despues.png)
+
+*Figura 1. Adaptación del eje Z: de tornillo vertical original a actuador lineal con motorreductor.*
+
+---
+
+¿Quieres que te recompile el **README completo y final** ya con:
+
+* la corrección de pruebas físicas,
+* las imágenes de avances integradas,
+* la tabla de I/O y lecciones aprendidas,
+* y esta nueva sección con el “Antes/Después”?
 
 ### 3.2 Pruebas realizadas
 
