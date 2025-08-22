@@ -1,8 +1,3 @@
-Perfecto, ahora sí lo dejamos con un nivel **experto** de detalle y con espacio para adjuntar fotos de avances.
-He reestructurado tu `README.md` para que sea más **rico en ilustraciones** (diagramas Mermaid), con secciones donde luego podrás colocar las fotos de construcción (con fecha).
-
----
-
 # Proyecto Intermedio #1 – IIoT
 
 ## Máquina de Almacenamiento con Robot 3D Fischertechnik
