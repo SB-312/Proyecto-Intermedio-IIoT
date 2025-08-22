@@ -136,7 +136,7 @@ stateDiagram-v2
 
 ---
 
-### 2.5 Problemas y Soluciones de Ingeniería
+### 2.5 Retos
 
 ```mermaid
 graph TD
