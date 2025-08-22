@@ -181,10 +181,9 @@ El reemplazo del tornillo como eje Z por un actuador lineal con motorreductor mo
 
 ### 3.2 Pruebas realizadas
 
-1. **Prueba de homing** en X, Y, Z (éxito: 5/5 intentos).
-2. **Movimiento individual de ejes** (sin carga).
-3. **Ciclo de almacenamiento** en primera columna.
-4. **Prueba de estabilidad estructural** (observación de bloqueos y fricción).
+1. **Movimiento individual de ejes** (sin carga).
+2. **Ciclo de almacenamiento** en primera columna.
+3. **Prueba de estabilidad estructural** (observación de bloqueos y fricción).
 
 **Pruebas propuestas (futuro):**
 
@@ -194,9 +193,8 @@ El reemplazo del tornillo como eje Z por un actuador lineal con motorreductor mo
 
 ### 3.3 Resultados
 
-* Movimientos X, Y, Z estables con alimentación a 9 V.
+* Movimientos X, Y, Z funcioals, con alimentación a 9 V.
 * Carro deslizable funcional en operaciones de carga y descarga.
-* Se comprobó la capacidad mecánica de ejecutar los movimientos necesarios.
 * Aún no se validó el código completo → funcionamiento pendiente de depuración.
 
 ---
@@ -232,7 +230,7 @@ flowchart TD
 
 ## 6. Autoevaluación
 
-* **Fortalezas:** ensamble sólido, resolución de problemas prácticos, validación parcial de programación.
+* **Fortalezas:** ensamble funcional, resolución de problemas prácticos, validación parcial de programación.
 * **Debilidades:** operación limitada a 9 V, solo columna 1 activa, código pendiente de prueba.
 * **Mejoras:** fuente de alimentación regulada, adquisición de repuestos, depuración del software.
 
