@@ -179,13 +179,6 @@ El reemplazo del tornillo como eje Z por un actuador lineal con motorreductor mo
 
 ---
 
-¿Quieres que te recompile el **README completo y final** ya con:
-
-* la corrección de pruebas físicas,
-* las imágenes de avances integradas,
-* la tabla de I/O y lecciones aprendidas,
-* y esta nueva sección con el “Antes/Después”?
-
 ### 3.2 Pruebas realizadas
 
 1. **Prueba de homing** en X, Y, Z (éxito: 5/5 intentos).
@@ -255,7 +248,7 @@ Trabajo futuro:
 * Completar estante 2×3.
 * Depurar y probar el código completo.
 * Migrar de baterías a fuente regulada de 9 V.
-* Implementar conectividad IIoT con **ESP32 (3.3 V)** → requiere etapa de **acoplamiento de potencia** a 9 V mediante drivers/MOSFETs.
+* Implementar conectividad IIoT con **ESP32 (3.3 V)** → requiere etapa de **acoplamiento de potencia** a 9 V mediante Relays.
 * Integrar **dashboard en Node-RED** para monitoreo remoto.
 * Migrar hacia un **soft-PLC educativo (OpenPLC)** configurado para entornos de bajo voltaje.
 
@@ -282,7 +275,7 @@ Trabajo futuro:
 
 ## 10. Anexos
 
-* Esquemáticos eléctricos: `/docs/esquematico.pdf`
+* Esquemáticos: `/docs/`
 * Códigos ROBO Pro Coding: `/codes/`
 * Avances fotográficos: `/media/avances/`
 * Videos de funcionamiento: `/media/videos/`
