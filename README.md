@@ -1,7 +1,3 @@
-Aquí tienes el `README.md` completo, corregido y adaptado a tu máquina real (3 ejes, carro deslizable sin actuador de pinza), con **diagramas Mermaid físicos** que renderizan en GitHub y sin lógica de PLC. Todos los bloques de código están cerrados correctamente.
-
----
-
 # Proyecto Intermedio #1 – IIoT
 
 ## Máquina de Almacenamiento con Brazo 3D Fischertechnik
