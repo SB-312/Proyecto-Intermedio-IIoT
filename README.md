@@ -75,20 +75,10 @@ flowchart TB
   end
 
   subgraph Estante["Estante de almacenamiento 2×3"]
-    S11["Slot (1,1)"]
-    S21["Slot (2,1)"]
-    S31["Slot (3,1)"]
-    S12["Slot (1,2)"]
-    S22["Slot (2,2)"]
-    S32["Slot (3,2)"]
+    S11["Estante"]
   end
 
   Y --> S11
-  Y --> S21
-  Y --> S31
-  Y --> S12
-  Y --> S22
-  Y --> S32
 
 ```
 
