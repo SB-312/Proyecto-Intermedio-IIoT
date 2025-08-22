@@ -1,10 +1,3 @@
-Excelente. Lo que tienes ahora es una **versión centrada en la construcción y resolución de problemas**, mientras tu grupo ya redactó bastante de la **programación en ROBO Pro Coding y uso del controlador ROBO TX**.
-La mejor forma es **integrar ambos enfoques** en el README final: el tuyo aporta el ensamble físico y los problemas de hardware, y el de ellos aporta la lógica de control y la programación.
-
-Aquí te dejo el README unificado (ya con todo lo que enviaste, las secciones de tu grupo integradas, los diagramas Mermaid corregidos y un apartado para fragmentos de código):
-
----
-
 # Proyecto Intermedio #1 – IIoT
 
 ## Máquina de Almacenamiento con Robot 3D Fischertechnik
@@ -34,11 +27,12 @@ Los sistemas AS/RS son esenciales en la logística moderna e Industria 4.0. El p
 1. Introducción
 2. Solución propuesta
 3. Configuración experimental, resultados y análisis
-4. Avances constructivos documentados
-5. Autoevaluación
-6. Conclusiones y trabajo futuro
-7. Referencias
-8. Anexos
+4. Programación en ROBO Pro Coding
+5. Avances constructivos documentados
+6. Autoevaluación
+7. Conclusiones y trabajo futuro
+8. Referencias
+9. Anexos
 
 ---
 
@@ -167,35 +161,115 @@ graph TD
 * Sustitución del tornillo vertical por carril + actuador lineal.
 * Validación de movimientos básicos en X, Y y Z.
 
-### 3.2 Programación y pruebas de referencia
+### 3.2 Programación de rutinas
 
-El sistema fue programado en **ROBO Pro Coding** para realizar rutinas de homing y movimiento.
-Ejemplo de funciones implementadas:
+Se desarrollaron **funciones en ROBO Pro Coding** para inicializar el sistema y controlar los movimientos.
+
+#### Rutinas de referencia (homing)
 
 ```python
 def reference_m1():
+    # Referencia del eje X usando encoder
     TXT_M_M1_encodermotor.move_to(0, 200)
     TXT_M_M1_encodermotor.start_sync()
     TXT_M_M1_encodermotor.wait_for()
     print("Referencia M1 lista")
 
 def reference_m2():
+    # Referencia del eje Y hacia el switch I2
     TXT_M_M2_motor.set_speed(150, Motor.CCW)
     TXT_M_M2_motor.start_sync()
     while not TXT_I2_switch.state():
         sleep(0.01)
     TXT_M_M2_motor.stop()
     print("Referencia M2 lista")
+
+def reference_m3():
+    # Referencia del eje Z hacia el switch I3
+    TXT_M_M3_motor.set_speed(150, Motor.CCW)
+    TXT_M_M3_motor.start_sync()
+    while not TXT_I3_switch.state():
+        sleep(0.01)
+    TXT_M_M3_motor.stop()
+    print("Referencia M3 lista")
+
+def reference_all():
+    # Rutina de referencia global
+    display.clear()
+    display.draw_text(10, 10, "Haciendo referencia...")
+    reference_m1()
+    reference_m2()
+    reference_m3()
+    display.clear()
+    display.draw_text(10, 10, "Referencia completa")
+    sleep(1)
 ```
 
-(Se programaron funciones equivalentes para M3 y rutinas de movimiento en cada eje.)
+#### Funciones de movimiento
+
+```python
+def move_x_to(pos):
+    # Movimiento del eje X a posición dada
+    TXT_M_M1_encodermotor.move_to(pos, 200)
+    TXT_M_M1_encodermotor.start_sync()
+    TXT_M_M1_encodermotor.wait_for()
+
+def fork_forward():
+    # Avance del carro (eje Y)
+    TXT_M_M2_motor.set_speed(150, Motor.CW)
+    TXT_M_M2_motor.start_sync()
+    while not TXT_I4_switch.state():
+        sleep(0.01)
+    TXT_M_M2_motor.stop()
+
+def fork_backward():
+    # Retroceso del carro (eje Y)
+    TXT_M_M2_motor.set_speed(150, Motor.CCW)
+    TXT_M_M2_motor.start_sync()
+    while not TXT_I2_switch.state():
+        sleep(0.01)
+    TXT_M_M2_motor.stop()
+
+def fork_up():
+    # Elevación del eje Z
+    TXT_M_M3_motor.set_speed(150, Motor.CW)
+    TXT_M_M3_motor.start_sync()
+    t = 0
+    while t < 1.5:
+        sleep(0.1)
+        t += 0.1
+    TXT_M_M3_motor.stop()
+
+def fork_down():
+    # Descenso del eje Z
+    TXT_M_M3_motor.set_speed(150, Motor.CCW)
+    TXT_M_M3_motor.start_sync()
+    while not TXT_I3_switch.state():
+        sleep(0.01)
+    TXT_M_M3_motor.stop()
+```
+
+#### Diagrama de flujo de software
+
+```mermaid
+flowchart TD
+    A[Inicio] --> B[Referencia todos los ejes]
+    B --> C{Comando recibido}
+    C --> D[Almacenar pieza] --> E[Move X + Fork Y + Z up/down]
+    C --> F[Recuperar pieza] --> G[Move X + Fork Y + Z up/down]
+    E --> H[Retornar a origen]
+    G --> H[Retornar a origen]
+    H --> C
+```
+
+---
 
 ### 3.3 Resultados
 
 * Movimientos X, Y, Z estables con alimentación a 9 V.
 * Carro deslizable funcional en operaciones de carga y descarga.
 * Se comprobó la capacidad mecánica de ejecutar los movimientos necesarios.
-* Aún no se validó el código completo de referencia → funcionamiento pendiente de depuración.
+* Aún no se validó el código completo → funcionamiento pendiente de depuración.
 
 ---
 
@@ -244,7 +318,7 @@ Trabajo futuro:
 
 ## 8. Anexos
 
-* Esquemáticos eléctricos: `/docs/`
+* Esquemáticos eléctricos: `/docs/esquematico.pdf`
 * Códigos ROBO Pro Coding: `/codes/`
 * Avances fotográficos: `/media/avances/`
 * Videos de funcionamiento: `/media/videos/`
