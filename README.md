@@ -70,8 +70,8 @@ flowchart TB
     FZmax["Final de carrera Z+"]
 
     FXmin --- X --- FXmax
-    FYmin --- Y --- FYmax
     FZmin --- Z --- FZmax
+    FYmin --- Y --- FYmax
   end
 
   subgraph Estante["Estante de almacenamiento 2×3"]
