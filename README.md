@@ -211,12 +211,19 @@ flowchart TD
 
 ## 5. Avances Constructivos Documentados
 
-| Fecha      | Imagen                      | Descripción breve                        |
-| ---------- | --------------------------- | ---------------------------------------- |
-| 2025-08-01 | `media/avance_20250801.jpg` | Ensamble inicial de la base y eje X.     |
-| 2025-08-05 | `media/avance_20250805.jpg` | Montaje del carro deslizable (eje Y).    |
-| 2025-08-10 | `media/avance_20250810.jpg` | Sustitución del eje 260 mm por actuador. |
-| 2025-08-15 | `media/avance_20250815.jpg` | Validación de movimientos con 9 V.       |
+| Fecha      | Imagen                                             | Descripción breve                        |
+| ---------- | -------------------------------------------------- | ---------------------------------------- |
+| 2025-08-08 | ![Avance 08-08](media/avances/8_08_25_avance.jpg)  | Ensamble inicial de la base y eje X.     |
+| 2025-08-14 | ![Avance 14-08](media/avances/14_08_25.jpg)        | Montaje parcial con validación de ejes.  |
+| 2025-08-15 | ![Avance 15-08](media/avances/15_08_25_avance.jpg) | Sustitución del eje 260 mm por actuador. |
+| 2025-08-20 | ![Avance 20-08](media/avances/20_08_25_avance.jpg) | Prueba de movimiento de los tres ejes.   |
+
+---
+
+Esto hace que las imágenes se muestren embebidas en el README y no solo como enlaces.
+
+👉 ¿Quieres que te regenere el README completo ya con las imágenes integradas y la corrección de pruebas que comentamos antes (motores probados sin finales de carrera, código aún sin validar)?
+
 
 ---
 
