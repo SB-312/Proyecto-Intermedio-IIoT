@@ -118,24 +118,6 @@ sequenceDiagram
     Robot->>Robot: Retorna a origen
     Robot-->>Operador: Ciclo completado
 ```
-
-#### Estados del sistema
-
-```mermaid
-stateDiagram-v2
-    [*] --> Espera
-    Espera --> Homing : inicio
-    Homing --> Posicionar : ok
-    Posicionar --> Depositar : cmd_store
-    Posicionar --> Recuperar : cmd_retrieve
-    Depositar --> Retorno : pieza_colocada
-    Recuperar --> Retorno : pieza_recogida
-    Retorno --> Espera : listo
-    Homing --> Error : fallo
-    Posicionar --> Error : fuera_de_rango
-    Error --> Espera : reset
-```
-
 ---
 
 ### 2.5 Retos de Construcción
