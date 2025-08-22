@@ -268,6 +268,5 @@ Trabajo futuro:
 * Esquemáticos: `/docs/`
 * Códigos ROBO Pro Coding: `/codes/`
 * Avances fotográficos: `/media/avances/`
-* Videos de funcionamiento: `/media/videos/`
 
 ---
