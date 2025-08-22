@@ -77,8 +77,12 @@ flowchart TB
   subgraph Estante["Estante de almacenamiento 2×3"]
     S11["Estante"]
   end
+  subgraph PuntoExt["Punto de recolección o entrega"]
+    P11["Punto de recolección o entrega"]
+  end
 
   Y --> S11
+  Y --> P11
 
 ```
 
