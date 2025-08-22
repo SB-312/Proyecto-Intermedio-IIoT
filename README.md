@@ -59,7 +59,7 @@ flowchart TB
     X["Eje X - motor M1 (movimiento horizontal)"]
     Z["Eje Z - motor M3 / actuador lineal (movimiento vertical)"]
     Y["Eje Y - motor M2 (carro deslizable)"]
-    X --> Y --> Z
+    X --> Z --> Y
   end
 
   subgraph Estante["Estante de almacenamiento 2×3"]
