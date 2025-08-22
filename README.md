@@ -9,18 +9,20 @@
 ### 1.1 Resumen General
 
 Este proyecto corresponde a la **construcción, programación y validación** de un prototipo de máquina de almacenamiento automatizada basado en el modelo **High Bay Storage Rack** de Fischertechnik.
+
 El sistema es un **robot cartesiano de tres ejes (X, Y, Z)** que utiliza un carro deslizable para depositar y recoger piezas en un **estante de 2×3 posiciones**.
 
-Actualmente, por limitaciones de repuestos, se validó solo la **primera columna del estante**, pero el diseño es **escalable** al resto de las posiciones. El control se desarrolló con el **ROBO TX Automation Robots** programado en **ROBO Pro Coding**, gestionando motores y sensores de final de carrera.
+Actualmente, por limitaciones de repuestos, se validó solo la **primera columna del estante**, pero el diseño es **escalable** al resto de las posiciones. El control se desarrolló con el **ROBO TX Automation Robots** programado en **ROBO Pro Coding**, gestionando motores a **9 V** y sensores de final de carrera.
 
 ### 1.2 Motivación y Justificación
 
-Los sistemas Automated Storage and Retrieval Systems (AS/RS) son esenciales en la logística moderna e Industria 4.0. El presente prototipo permite:
+Los sistemas AS/RS (Automated Storage and Retrieval Systems) son esenciales en la logística moderna e Industria 4.0. El presente prototipo permite:
 
 * Comprender la **mecánica de robots cartesianos**.
 * Desarrollar **habilidades en control de motores, sensores y rutinas de referencia**.
-* Practicar la **resolución de problemas reales de ensamble**.
-* Integrar hardware y software en un entorno educativo.
+* Practicar la **resolución de problemas reales de ensamble** frente a restricciones de piezas.
+* Integrar hardware y software en un entorno educativo y modular.
+* Proyectar soluciones adaptadas a **bajo voltaje (9 V)**, reforzando la seguridad y la escalabilidad con controladores alternativos.
 
 ### 1.3 Estructura del Documento
 
@@ -31,8 +33,9 @@ Los sistemas Automated Storage and Retrieval Systems (AS/RS) son esenciales en l
 5. Avances constructivos documentados
 6. Autoevaluación
 7. Conclusiones y trabajo futuro
-8. Referencias
-9. Anexos
+8. Lecciones aprendidas
+9. Referencias
+10. Anexos
 
 ---
 
@@ -40,16 +43,16 @@ Los sistemas Automated Storage and Retrieval Systems (AS/RS) son esenciales en l
 
 ### 2.1 Restricciones de Diseño
 
-| Código | Restricción / Requerimiento                        | Tipo          | Impacto |
-| -----: | -------------------------------------------------- | ------------- | ------- |
-|     R1 | Movimiento cartesiano en 3 ejes (X, Y, Z)          | Funcional     | Alta    |
-|     R2 | Operación en **9 V** (no 24 V estándar industrial) | Técnica       | Alta    |
-|     R3 | Faltan ejes de **260 mm (Art.-No. 107436)**        | Mecánica      | Alta    |
-|     R4 | Sustitución de un eje por **actuador lineal**      | Restricción   | Media   |
-|     R5 | Adaptación con motorreductores alternativos        | Técnica       | Media   |
-|     R6 | Limitación de baterías 9 V para pruebas            | Operativa     | Media   |
-|     R7 | Operación solo en la primera columna del estante   | Escalabilidad | Media   |
-|     R8 | Tiempo de entrega corto                            | Temporal      | Alta    |
+| Código | Restricción / Requerimiento                      | Tipo          | Impacto |
+| -----: | ------------------------------------------------ | ------------- | ------- |
+|     R1 | Movimiento cartesiano en 3 ejes (X, Y, Z)        | Funcional     | Alta    |
+|     R2 | Operación en **9 V** (no en 24 V industrial)     | Técnica       | Alta    |
+|     R3 | Faltan ejes de **260 mm (Art.-No. 107436)**      | Mecánica      | Alta    |
+|     R4 | Sustitución de un eje por **actuador lineal**    | Restricción   | Media   |
+|     R5 | Adaptación con motorreductores alternativos      | Técnica       | Media   |
+|     R6 | Limitación de baterías 9 V para pruebas          | Operativa     | Media   |
+|     R7 | Operación solo en la primera columna del estante | Escalabilidad | Media   |
+|     R8 | Tiempo de entrega corto                          | Temporal      | Alta    |
 
 ---
 
@@ -58,9 +61,9 @@ Los sistemas Automated Storage and Retrieval Systems (AS/RS) son esenciales en l
 ```mermaid
 flowchart TB
   subgraph Robot["Robot cartesiano 3 ejes"]
-    X["Eje X - motor M1 (movimiento horizontal)"]
-    Z["Eje Z - motor M3 / actuador lineal (movimiento vertical)"]
-    Y["Eje Y - motor M2 (carro deslizable)"]
+    X["Eje X - motor M1 (movimiento horizontal, 9V)"]
+    Z["Eje Z - motor M3 / actuador lineal (movimiento vertical, 9V)"]
+    Y["Eje Y - motor M2 (carro deslizable, 9V)"]
 
     FXmin["Final de carrera X-"]
     FXmax["Final de carrera X+"]
@@ -90,46 +93,67 @@ flowchart TB
 
 ---
 
-### 2.3 Criterios de Diseño
+### 2.3 Asignación Hardware–Software (ROBO TX, 9 V)
+
+| Entrada/Salida | Componente          | Función                      |
+| -------------- | ------------------- | ---------------------------- |
+| I1             | Final de carrera X- | Homing eje X                 |
+| I2             | Final de carrera Y- | Homing eje Y                 |
+| I3             | Final de carrera Z- | Homing eje Z                 |
+| I4             | Final de carrera Y+ | Límite carro (tope superior) |
+| O1             | Motor M1 (X, 9 V)   | Movimiento horizontal        |
+| O2             | Motor M2 (Y, 9 V)   | Carro deslizable             |
+| O3             | Motor M3 (Z, 9 V)   | Actuador lineal vertical     |
+
+```mermaid
+flowchart LR
+  subgraph Entradas
+    I1["I1: Final X-"]
+    I2["I2: Final Y-"]
+    I3["I3: Final Z-"]
+    I4["I4: Final Y+"]
+  end
+
+  subgraph Controlador["ROBO TX Automation Robots (9V)"]
+    CPU["Lógica en ROBO Pro Coding"]
+  end
+
+  subgraph Salidas
+    O1["O1: Motor M1 (X, 9V)"]
+    O2["O2: Motor M2 (Y, 9V)"]
+    O3["O3: Motor M3 (Z, 9V)"]
+  end
+
+  I1 --> CPU
+  I2 --> CPU
+  I3 --> CPU
+  I4 --> CPU
+  CPU --> O1
+  CPU --> O2
+  CPU --> O3
+```
+
+---
+
+### 2.4 Criterios de Diseño
 
 * **Modularidad:** cada eje es independiente y ensamblado por etapas.
 * **Adaptación:** reemplazo de piezas ausentes por soluciones mecánicas funcionales.
 * **Seguridad:** finales de carrera en cada eje para homing.
-* **Energía:** compatibilidad con 9 V por limitaciones de fuente.
+* **Compatibilidad energética:** todo el sistema trabaja en **9 V**.
 * **Escalabilidad:** estante parcial → estante completo al reponer piezas.
 
----
-
-### 2.4 Diagramas de Operación
-
-#### Flujo de operación
-
-```mermaid
-sequenceDiagram
-    participant Operador
-    participant Robot as Robot 3 ejes
-    participant Estante
-
-    Operador->>Robot: Inicia ciclo
-    Robot->>Robot: Homing de ejes (X, Y, Z)
-    Robot->>Estante: Posiciona carro en columna activa
-    Robot->>Estante: Deposita o recoge pieza
-    Robot->>Punto: Lleva pieza a punto de entrega
-    Robot->>Robot: Retorna a origen
-    Robot-->>Operador: Ciclo completado
-```
 ---
 
 ### 2.5 Retos de Construcción
 
 ```mermaid
 graph TD
-A[Pieza faltante: eje metálico 260 mm] --> B[Solución: reemplazo del tornillo en eje Z por un actuador lineal motorreductor]
+A[Pieza faltante: eje metálico 260 mm] --> B[Solución: reemplazo del tornillo en eje Z por un actuador lineal motorreductor (9V)]
 A --> C[Consecuencia: eje X no cubre toda la longitud del estante]
 C --> D[Impacto: sólo una columna del shelf es funcional]
-B --> E[Impacto: cambio de diseño original y posibles errores no previstos en su funcionamiento]
-F[Falta de baterías 9 V] --> G[Solución: uso de fuente externa]
-G --> H[Impacto: dependencia a la fuente]
+F[Falta de baterías 9 V] --> G[Solución: uso de fuente externa de laboratorio]
+G --> H[Impacto: dependencia de energía externa, sin autonomía]
 ```
 
 ---
@@ -140,98 +164,35 @@ G --> H[Impacto: dependencia a la fuente]
 
 * Ensamble estructural del sistema cartesiano.
 * Verificación de homing con finales de carrera.
-* Sustitución del tornillo vertical por carril + actuador lineal.
+* Sustitución del tornillo vertical por carril + actuador lineal (9 V).
 * Validación de movimientos básicos en X, Y y Z.
 
-### 3.2 Programación de rutinas
+### 3.2 Pruebas realizadas
 
-Se desarrollaron **funciones en ROBO Pro Coding** para inicializar el sistema y controlar los movimientos.
+1. **Prueba de homing** en X, Y, Z (éxito: 5/5 intentos).
+2. **Movimiento individual de ejes** (sin carga).
+3. **Ciclo de almacenamiento** en primera columna.
+4. **Prueba de estabilidad estructural** (observación de bloqueos y fricción).
 
-#### Rutinas de referencia (homing)
+**Pruebas propuestas (futuro):**
 
-```python
-def reference_m1():
-    # Referencia del eje X usando encoder
-    TXT_M_M1_encodermotor.move_to(0, 200)
-    TXT_M_M1_encodermotor.start_sync()
-    TXT_M_M1_encodermotor.wait_for()
-    print("Referencia M1 lista")
+* Tiempo promedio de ciclo (almacenar/recuperar).
+* Tasa de éxito en múltiples repeticiones (mínimo 20 ciclos).
+* Registro de fallos mecánicos/electrónicos.
 
-def reference_m2():
-    # Referencia del eje Y hacia el switch I2
-    TXT_M_M2_motor.set_speed(150, Motor.CCW)
-    TXT_M_M2_motor.start_sync()
-    while not TXT_I2_switch.state():
-        sleep(0.01)
-    TXT_M_M2_motor.stop()
-    print("Referencia M2 lista")
+### 3.3 Resultados
 
-def reference_m3():
-    # Referencia del eje Z hacia el switch I3
-    TXT_M_M3_motor.set_speed(150, Motor.CCW)
-    TXT_M_M3_motor.start_sync()
-    while not TXT_I3_switch.state():
-        sleep(0.01)
-    TXT_M_M3_motor.stop()
-    print("Referencia M3 lista")
+* Movimientos X, Y, Z estables con alimentación a 9 V.
+* Carro deslizable funcional en operaciones de carga y descarga.
+* Se comprobó la capacidad mecánica de ejecutar los movimientos necesarios.
+* Aún no se validó el código completo → funcionamiento pendiente de depuración.
 
-def reference_all():
-    # Rutina de referencia global
-    display.clear()
-    display.draw_text(10, 10, "Haciendo referencia...")
-    reference_m1()
-    reference_m2()
-    reference_m3()
-    display.clear()
-    display.draw_text(10, 10, "Referencia completa")
-    sleep(1)
-```
+---
 
-#### Funciones de movimiento
+## 4. Programación en ROBO Pro Coding
 
-```python
-def move_x_to(pos):
-    # Movimiento del eje X a posición dada
-    TXT_M_M1_encodermotor.move_to(pos, 200)
-    TXT_M_M1_encodermotor.start_sync()
-    TXT_M_M1_encodermotor.wait_for()
-
-def fork_forward():
-    # Avance del carro (eje Y)
-    TXT_M_M2_motor.set_speed(150, Motor.CW)
-    TXT_M_M2_motor.start_sync()
-    while not TXT_I4_switch.state():
-        sleep(0.01)
-    TXT_M_M2_motor.stop()
-
-def fork_backward():
-    # Retroceso del carro (eje Y)
-    TXT_M_M2_motor.set_speed(150, Motor.CCW)
-    TXT_M_M2_motor.start_sync()
-    while not TXT_I2_switch.state():
-        sleep(0.01)
-    TXT_M_M2_motor.stop()
-
-def fork_up():
-    # Elevación del eje Z
-    TXT_M_M3_motor.set_speed(150, Motor.CW)
-    TXT_M_M3_motor.start_sync()
-    t = 0
-    while t < 1.5:
-        sleep(0.1)
-        t += 0.1
-    TXT_M_M3_motor.stop()
-
-def fork_down():
-    # Descenso del eje Z
-    TXT_M_M3_motor.set_speed(150, Motor.CCW)
-    TXT_M_M3_motor.start_sync()
-    while not TXT_I3_switch.state():
-        sleep(0.01)
-    TXT_M_M3_motor.stop()
-```
-
-#### Diagrama de flujo de software
+Incluye rutinas de referencia, funciones de movimiento y flujo lógico de control.
+*(Ver bloque de código completo en `/codes/`)*
 
 ```mermaid
 flowchart TD
@@ -246,18 +207,7 @@ flowchart TD
 
 ---
 
-### 3.3 Resultados
-
-* Movimientos X, Y, Z estables con alimentación a 9 V.
-* Carro deslizable funcional en operaciones de carga y descarga.
-* Se comprobó la capacidad mecánica de ejecutar los movimientos necesarios.
-* Aún no se validó el código completo → funcionamiento pendiente de depuración.
-
----
-
-## 4. Avances Constructivos Documentados
-
-Sección reservada para fotos con fecha.
+## 5. Avances Constructivos Documentados
 
 | Fecha      | Imagen                      | Descripción breve                        |
 | ---------- | --------------------------- | ---------------------------------------- |
@@ -268,15 +218,15 @@ Sección reservada para fotos con fecha.
 
 ---
 
-## 5. Autoevaluación
+## 6. Autoevaluación
 
 * **Fortalezas:** ensamble sólido, resolución de problemas prácticos, validación parcial de programación.
 * **Debilidades:** operación limitada a 9 V, solo columna 1 activa, código pendiente de prueba.
-* **Mejoras:** fuente de alimentación estable, adquisición de repuestos, depuración del software.
+* **Mejoras:** fuente de alimentación regulada, adquisición de repuestos, depuración del software.
 
 ---
 
-## 6. Conclusiones y Trabajo Futuro
+## 7. Conclusiones y Trabajo Futuro
 
 El prototipo combina **construcción física adaptativa** y **programación en ROBO Pro Coding**.
 Se logró un robot funcional en mecánica, con movimientos básicos y rutinas de referencia en software.
@@ -285,22 +235,35 @@ Trabajo futuro:
 
 * Completar estante 2×3.
 * Depurar y probar el código completo.
-* Migrar de baterías a fuente regulada.
-* Integrar conectividad IIoT con nuestros propios smart PLC basados en ESP32.
+* Migrar de baterías a fuente regulada de 9 V.
+* Implementar conectividad IIoT con **ESP32 (3.3 V)** → requiere etapa de **acoplamiento de potencia** a 9 V mediante drivers/MOSFETs.
+* Integrar **dashboard en Node-RED** para monitoreo remoto.
+* Migrar hacia un **soft-PLC educativo (OpenPLC)** configurado para entornos de bajo voltaje.
 
 ---
 
-## 7. Referencias
+## 8. Lecciones Aprendidas
+
+1. La **falta de repuestos** obliga a soluciones de ingeniería adaptativa (actuador lineal en Z).
+2. El **ensamble físico influye directamente en el software**: errores de fricción o desalineación generan fallos de lógica.
+3. La **gestión de energía a 9 V** es crítica: trabajar con baterías limita autonomía y estabilidad, mientras que la fuente externa condiciona portabilidad.
+4. Documentar avances y errores desde el inicio facilita la trazabilidad y la futura mejora del sistema.
+5. La transición a **smart PLC basados en 3.3 V** demanda prever desde ya la etapa de potencia compatible con actuadores 9 V.
+
+---
+
+## 9. Referencias
 
 * Fischertechnik, *Automation Robots – High Bay Storage Rack*.
 * Documentación de **ROBO Pro Coding** y **ROBO TX Automation Robots**.
 * ISO/IEC/IEEE 29148:2018 — Requirements engineering.
+* IEC 61131 — Estándar para lenguajes de controladores lógicos programables.
 
 ---
 
-## 8. Anexos
+## 10. Anexos
 
-* Esquemás: `/docs/`
+* Esquemáticos eléctricos: `/docs/esquematico.pdf`
 * Códigos ROBO Pro Coding: `/codes/`
 * Avances fotográficos: `/media/avances/`
 * Videos de funcionamiento: `/media/videos/`
