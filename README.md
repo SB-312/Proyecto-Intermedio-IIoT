@@ -149,11 +149,13 @@ flowchart LR
 
 ```mermaid
 graph TD
-A[Pieza faltante: eje metálico 260 mm] --> B[Solución: reemplazo del tornillo en eje Z por un actuador lineal motorreductor (9V)]
-A --> C[Consecuencia: eje X no cubre toda la longitud del estante]
-C --> D[Impacto: sólo una columna del shelf es funcional]
-F[Falta de baterías 9 V] --> G[Solución: uso de fuente externa de laboratorio]
-G --> H[Impacto: dependencia de energía externa, sin autonomía]
+    A[Pieza faltante: eje metálico 260 mm] --> B[Solución: reemplazo del tornillo en eje Z por un actuador lineal motorreductor 9V]
+    A --> C[Consecuencia: eje X no cubre toda la longitud del estante]
+    C --> D[Impacto: solo una columna del estante es funcional]
+    B --> E[Impacto: cambio de diseño original y posibles errores no previstos en su funcionamiento]
+
+    F[Falta de baterías 9V] --> G[Solución: uso de fuente externa de laboratorio]
+    G --> H[Impacto: dependencia de energía externa sin autonomía]
 ```
 
 ---
