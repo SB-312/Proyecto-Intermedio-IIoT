@@ -171,7 +171,7 @@ graph TD
 
 ---
 
-El reemplazo del tornillo como eje Z por un actuador lineal con motorreductor modificó la arquitectura del prototipo.
+Durante la construcción del prototipo del Almacén de Gran Altura utilizando fichas de Fischertechnik, el manual de construcción sugería piezas específicas, entre ellas un palo metálico de 260 mm, que no se encontraba disponible dentro del kit. Esta limitación obligó a replantear la continuidad del diseño a partir del paso 4 de las instrucciones. Posteriormente, en la fase del paso 8, esta ausencia se hizo más crítica, ya que el ensamblaje con otras piezas se veía afectado por las dimensiones no estándar de los sustitutos. Otro factor de restricción fue la estabilidad estructural: al implementar variaciones en los ejes, surgieron problemas de fricción y bloqueo en el motor, lo que obligó a modificar el tornillo vertical inicial por un sistema de carril como se evidencia en la Figura 1.
 
 ![Comparación Antes y Después](media/avances/antes_despues.png)
 
