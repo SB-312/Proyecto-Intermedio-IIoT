@@ -237,13 +237,6 @@ flowchart TD
 
 ---
 
-Esto hace que las imágenes se muestren embebidas en el README y no solo como enlaces.
-
-👉 ¿Quieres que te regenere el README completo ya con las imágenes integradas y la corrección de pruebas que comentamos antes (motores probados sin finales de carrera, código aún sin validar)?
-
-
----
-
 ## 6. Autoevaluación
 
 * **Fortalezas:** ensamble sólido, resolución de problemas prácticos, validación parcial de programación.
