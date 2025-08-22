@@ -53,19 +53,22 @@ Los sistemas AS/RS son esenciales en la logística moderna. El presente prototip
 ---
 
 ### 2.2 Arquitectura Física
-
 ```mermaid
 flowchart TB
   subgraph Robot["Robot cartesiano 3 ejes"]
-    X["Eje X - motor M1<br/>Movimiento horizontal"]
-    Y["Eje Y - motor M2<br/>Carro deslizable"]
-    Z["Eje Z - motor M3/actuador lineal<br/>Movimiento vertical"]
+    X["Eje X - motor M1 (movimiento horizontal)"]
+    Y["Eje Y - motor M2 (carro deslizable)"]
+    Z["Eje Z - motor M3 / actuador lineal (movimiento vertical)"]
     X --> Y --> Z
   end
 
   subgraph Estante["Estante de almacenamiento 2×3"]
-    S11["Slot (1,1)"] S21["Slot (2,1)"] S31["Slot (3,1)"]
-    S12["Slot (1,2)"] S22["Slot (2,2)"] S32["Slot (3,2)"]
+    S11["Slot (1,1)"]
+    S21["Slot (2,1)"]
+    S31["Slot (3,1)"]
+    S12["Slot (1,2)"]
+    S22["Slot (2,2)"]
+    S32["Slot (3,2)"]
   end
 
   Z --> S11
@@ -129,10 +132,11 @@ stateDiagram-v2
 
 ```mermaid
 graph TD
-    A[Pieza faltante: eje 260 mm] --> B[Solución: Actuador lineal + motorreductor adaptado]
-    C[Falta de baterías 9 V] --> D[Solución: Ciclos cortos de prueba y uso de fuentes externas]
-    E[Motores más cortos que los originales] --> F[Solución: Adaptación de transmisión por engranajes]
-    G[Limitación: solo 1 columna operativa] --> H[Escalabilidad futura con repuestos originales]
+    A[Pieza faltante: eje metálico 260 mm] --> B[Solución: reemplazo del tornillo en eje Z por un actuador lineal]
+    A --> C[Consecuencia: eje X no cubre toda la longitud del estante]
+    C --> D[Impacto: sólo una columna del shelf es funcional]
+
+    E[Falta de baterías 9 V] --> F[Solución: uso de fuente externa para pruebas]
 ```
 
 ---
