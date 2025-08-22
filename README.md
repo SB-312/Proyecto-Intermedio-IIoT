@@ -1,3 +1,10 @@
+Excelente. Lo que tienes ahora es una **versión centrada en la construcción y resolución de problemas**, mientras tu grupo ya redactó bastante de la **programación en ROBO Pro Coding y uso del controlador ROBO TX**.
+La mejor forma es **integrar ambos enfoques** en el README final: el tuyo aporta el ensamble físico y los problemas de hardware, y el de ellos aporta la lógica de control y la programación.
+
+Aquí te dejo el README unificado (ya con todo lo que enviaste, las secciones de tu grupo integradas, los diagramas Mermaid corregidos y un apartado para fragmentos de código):
+
+---
+
 # Proyecto Intermedio #1 – IIoT
 
 ## Máquina de Almacenamiento con Robot 3D Fischertechnik
@@ -8,19 +15,19 @@
 
 ### 1.1 Resumen General
 
-Este proyecto corresponde a la **construcción y validación** de un prototipo de máquina de almacenamiento automatizada basado en el modelo **High Bay Storage Rack** de Fischertechnik.
+Este proyecto corresponde a la **construcción, programación y validación** de un prototipo de máquina de almacenamiento automatizada basado en el modelo **High Bay Storage Rack** de Fischertechnik.
 El sistema es un **robot cartesiano de tres ejes (X, Y, Z)** que utiliza un carro deslizable para depositar y recoger piezas en un **estante de 2×3 posiciones**.
 
-Actualmente, por limitaciones de repuestos, se validó solo la **primera columna del estante**, pero el diseño es **escalable** al resto de las posiciones.
+Actualmente, por limitaciones de repuestos, se validó solo la **primera columna del estante**, pero el diseño es **escalable** al resto de las posiciones. El control se desarrolló con el **ROBO TX Automation Robots** programado en **ROBO Pro Coding**, gestionando motores y sensores de final de carrera.
 
 ### 1.2 Motivación y Justificación
 
-Los sistemas AS/RS son esenciales en la logística moderna. El presente prototipo permite:
+Los sistemas AS/RS son esenciales en la logística moderna e Industria 4.0. El presente prototipo permite:
 
-* Entender en detalle la **mecánica de robots cartesianos**.
+* Comprender la **mecánica de robots cartesianos**.
+* Desarrollar **habilidades en control de motores, sensores y rutinas de referencia**.
 * Practicar la **resolución de problemas reales de ensamble**.
-* Demostrar cómo las restricciones materiales y energéticas impactan el diseño.
-* Sentar bases para un **control lógico futuro con PLC**.
+* Integrar hardware y software en un entorno educativo.
 
 ### 1.3 Estructura del Documento
 
@@ -53,6 +60,7 @@ Los sistemas AS/RS son esenciales en la logística moderna. El presente prototip
 ---
 
 ### 2.2 Arquitectura Física
+
 ```mermaid
 flowchart TB
   subgraph Robot["Robot cartesiano 3 ejes"]
@@ -75,15 +83,15 @@ flowchart TB
   end
 
   subgraph Estante["Estante de almacenamiento 2×3"]
-    S11["Estante"]
+    S11["Slots de almacenamiento"]
   end
-  subgraph PuntoExt["Punto de recolección o entrega"]
-    P11["Punto de recolección o entrega"]
+
+  subgraph PuntoExt["Punto de recolección/entrega"]
+    P11["Estación de entrada/salida"]
   end
 
   Y --> S11
   Y --> P11
-
 ```
 
 ---
@@ -100,7 +108,7 @@ flowchart TB
 
 ### 2.4 Diagramas de Operación
 
-#### Flujo de operación básico
+#### Flujo de operación
 
 ```mermaid
 sequenceDiagram
@@ -112,7 +120,7 @@ sequenceDiagram
     Robot->>Robot: Homing de ejes (X, Y, Z)
     Robot->>Estante: Posiciona carro en columna activa
     Robot->>Estante: Deposita o recoge pieza
-    Robot->>Punto de Recol: Deposita o recoge pieza
+    Robot->>Punto: Lleva pieza a punto de entrega
     Robot->>Robot: Retorna a origen
     Robot-->>Operador: Ciclo completado
 ```
@@ -136,52 +144,64 @@ stateDiagram-v2
 
 ---
 
-### 2.5 Retos
+### 2.5 Retos de Construcción
 
 ```mermaid
 graph TD
-    A[Pieza faltante: eje metálico 260 mm] --> B[Solución: reemplazo del tornillo en eje Z por un actuador lineal motorreductor]
+    A[Pieza faltante: eje metálico 260 mm] --> B[Solución: actuador lineal motorreductor en Z]
     A --> C[Consecuencia: eje X no cubre toda la longitud del estante]
-    C --> D[Impacto: sólo una columna del shelf es funcional]
-    B --> E[Impacto: cambio de diseño original y posibles errores no previstos en su funcionamiento]
+    C --> D[Impacto: sólo una columna funcional]
 
     F[Falta de baterías 9 V] --> G[Solución: uso de fuente externa]
-    G --> H[Impacto: dependencia a la fuente]
+    G --> H[Impacto: dependencia de energía externa]
 ```
 
 ---
 
 ## 3. Configuración Experimental, Resultados y Análisis
 
-### 3.1 Protocolo de Pruebas
+### 3.1 Montaje físico
 
-1. Ensamble estructural del sistema cartesiano.
-2. Verificación de homing con finales de carrera.
-3. Movimiento individual en X, Y y Z.
-4. Prueba de ciclo de almacenamiento en primera columna.
-5. Observación de estabilidad y repetibilidad.
+* Ensamble estructural del sistema cartesiano.
+* Verificación de homing con finales de carrera.
+* Sustitución del tornillo vertical por carril + actuador lineal.
+* Validación de movimientos básicos en X, Y y Z.
 
-### 3.2 Resultados
+### 3.2 Programación y pruebas de referencia
+
+El sistema fue programado en **ROBO Pro Coding** para realizar rutinas de homing y movimiento.
+Ejemplo de funciones implementadas:
+
+```python
+def reference_m1():
+    TXT_M_M1_encodermotor.move_to(0, 200)
+    TXT_M_M1_encodermotor.start_sync()
+    TXT_M_M1_encodermotor.wait_for()
+    print("Referencia M1 lista")
+
+def reference_m2():
+    TXT_M_M2_motor.set_speed(150, Motor.CCW)
+    TXT_M_M2_motor.start_sync()
+    while not TXT_I2_switch.state():
+        sleep(0.01)
+    TXT_M_M2_motor.stop()
+    print("Referencia M2 lista")
+```
+
+(Se programaron funciones equivalentes para M3 y rutinas de movimiento en cada eje.)
+
+### 3.3 Resultados
 
 * Movimientos X, Y, Z estables con alimentación a 9 V.
 * Carro deslizable funcional en operaciones de carga y descarga.
-* Ciclos completos en primera columna.
-* Limitaciones en autonomía (baterías).
-
-### 3.3 Análisis
-
-El modelo es **funcional a escala** y cumple con la función principal de almacenamiento/recuperación. La falta de repuestos obligó a soluciones adaptativas, que demostraron ser viables. La ampliación dependerá de la reposición de piezas originales.
+* Se comprobó la capacidad mecánica de ejecutar los movimientos necesarios.
+* Aún no se validó el código completo de referencia → funcionamiento pendiente de depuración.
 
 ---
 
 ## 4. Avances Constructivos Documentados
 
-**Nota:** en esta sección se adjuntarán fotos con fecha de avance.
-Formato sugerido:
-
-* `media/avance_YYYYMMDD.jpg` → descripción breve.
-
-Ejemplo de tabla:
+Sección reservada para fotos con fecha.
 
 | Fecha      | Imagen                      | Descripción breve                        |
 | ---------- | --------------------------- | ---------------------------------------- |
@@ -194,37 +214,39 @@ Ejemplo de tabla:
 
 ## 5. Autoevaluación
 
-* **Fortalezas:** ensamble sólido, resolución de problemas prácticos, validación experimental parcial.
-* **Debilidades:** operación limitada a 9 V, solo columna 1 activa, autonomía baja.
-* **Mejoras:** fuente de alimentación estable, adquisición de repuestos, integración lógica.
+* **Fortalezas:** ensamble sólido, resolución de problemas prácticos, validación parcial de programación.
+* **Debilidades:** operación limitada a 9 V, solo columna 1 activa, código pendiente de prueba.
+* **Mejoras:** fuente de alimentación estable, adquisición de repuestos, depuración del software.
 
 ---
 
 ## 6. Conclusiones y Trabajo Futuro
 
-Se construyó un prototipo funcional del sistema AS/RS de tres ejes, operando a 9 V.
-El proyecto demostró la importancia de la **ingeniería adaptativa** frente a la falta de repuestos y energía.
+El prototipo combina **construcción física adaptativa** y **programación en ROBO Pro Coding**.
+Se logró un robot funcional en mecánica, con movimientos básicos y rutinas de referencia en software.
 
 Trabajo futuro:
 
 * Completar estante 2×3.
-* Migrar a fuente regulada en lugar de baterías.
-* Implementar lógica de control en PLC.
-* Medir métricas de desempeño.
+* Depurar y probar el código completo.
+* Migrar de baterías a fuente regulada.
+* Integrar conectividad IIoT (Modbus/MQTT + dashboard).
 
 ---
 
 ## 7. Referencias
 
-* Fischertechnik, *Automation Robots – High Bay Storage Rack* (manual técnico).
+* Fischertechnik, *Automation Robots – High Bay Storage Rack*.
+* Documentación de **ROBO Pro Coding** y **ROBO TX Automation Robots**.
 * ISO/IEC/IEEE 29148:2018 — Requirements engineering.
-* Bibliografía sobre AS/RS y automatización educativa.
 
 ---
 
 ## 8. Anexos
 
 * Esquemáticos eléctricos: `/docs/`
-* Códigos utilizados: `/codes/`
+* Códigos ROBO Pro Coding: `/codes/`
 * Avances fotográficos: `/media/avances/`
-* Videos del funcionamiento: `/media/videos/`
+* Videos de funcionamiento: `/media/videos/`
+
+---
