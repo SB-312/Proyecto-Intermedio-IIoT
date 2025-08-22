@@ -111,6 +111,7 @@ sequenceDiagram
     Operador->>Robot: Inicia ciclo
     Robot->>Robot: Homing de ejes (X, Y, Z)
     Robot->>Estante: Posiciona carro en columna activa
+    Robot->>Estante: Deposita o recoge pieza
     Robot->>Punto de Recol: Deposita o recoge pieza
     Robot->>Robot: Retorna a origen
     Robot-->>Operador: Ciclo completado
