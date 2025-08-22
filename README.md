@@ -15,7 +15,7 @@ Actualmente, por limitaciones de repuestos, se validó solo la **primera columna
 
 ### 1.2 Motivación y Justificación
 
-Los sistemas AS/RS son esenciales en la logística moderna e Industria 4.0. El presente prototipo permite:
+Los sistemas Automated Storage and Retrieval Systems (AS/RS) son esenciales en la logística moderna e Industria 4.0. El presente prototipo permite:
 
 * Comprender la **mecánica de robots cartesianos**.
 * Desarrollar **habilidades en control de motores, sensores y rutinas de referencia**.
