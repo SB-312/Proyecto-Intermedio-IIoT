@@ -254,17 +254,7 @@ Trabajo futuro:
 
 ---
 
-## 8. Lecciones Aprendidas
-
-1. La **falta de repuestos** obliga a soluciones de ingeniería adaptativa (actuador lineal en Z).
-2. El **ensamble físico influye directamente en el software**: errores de fricción o desalineación generan fallos de lógica.
-3. La **gestión de energía a 9 V** es crítica: trabajar con baterías limita autonomía y estabilidad, mientras que la fuente externa condiciona portabilidad.
-4. Documentar avances y errores desde el inicio facilita la trazabilidad y la futura mejora del sistema.
-5. La transición a **smart PLC basados en 3.3 V** demanda prever desde ya la etapa de potencia compatible con actuadores 9 V.
-
----
-
-## 9. Referencias
+## 8. Referencias
 
 * Fischertechnik, *Automation Robots – High Bay Storage Rack*.
 * Documentación de **ROBO Pro Coding** y **ROBO TX Automation Robots**.
@@ -273,7 +263,7 @@ Trabajo futuro:
 
 ---
 
-## 10. Anexos
+## 9. Anexos
 
 * Esquemáticos: `/docs/`
 * Códigos ROBO Pro Coding: `/codes/`
