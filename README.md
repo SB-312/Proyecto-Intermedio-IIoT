@@ -1,65 +1,76 @@
+Perfecto, ahora sí lo dejamos con un nivel **experto** de detalle y con espacio para adjuntar fotos de avances.
+He reestructurado tu `README.md` para que sea más **rico en ilustraciones** (diagramas Mermaid), con secciones donde luego podrás colocar las fotos de construcción (con fecha).
+
+---
+
 # Proyecto Intermedio #1 – IIoT
 
-## Máquina de Almacenamiento con Brazo 3D Fischertechnik
+## Máquina de Almacenamiento con Robot 3D Fischertechnik
+
+---
 
 ## 1. Introducción
 
 ### 1.1 Resumen General
 
-Este proyecto consiste en el diseño, construcción e implementación de un prototipo de **máquina de almacenamiento automatizada** utilizando el kit **Fischertechnik 3D Robot**. El sistema reproduce un proceso industrial simplificado de manipulación y almacenamiento sobre un estante de 2×3 posiciones, validado en su primera columna.
+Este proyecto corresponde a la **construcción y validación** de un prototipo de máquina de almacenamiento automatizada basado en el modelo **High Bay Storage Rack** de Fischertechnik.
+El sistema es un **robot cartesiano de tres ejes (X, Y, Z)** que utiliza un carro deslizable para depositar y recoger piezas en un **estante de 2×3 posiciones**.
 
-El prototipo integra **finales de carrera** como percepción básica, **motores DC con tornillo y motorreductores** en tres ejes (X, Y, Z) y **control mediante PLC 24 V**, en el marco del curso *Internet Industrial de las Cosas (IIoT) – Universidad de La Sabana, 2025-2*.
+Actualmente, por limitaciones de repuestos, se validó solo la **primera columna del estante**, pero el diseño es **escalable** al resto de las posiciones.
 
 ### 1.2 Motivación y Justificación
 
-Los sistemas AS/RS incrementan eficiencia, seguridad y trazabilidad. Este prototipo permite entrenar principios de automatización e IIoT en un entorno educativo con componentes industriales y restricciones reales de ingeniería.
+Los sistemas AS/RS son esenciales en la logística moderna. El presente prototipo permite:
 
-### 1.3 Estructura de la Documentación
+* Entender en detalle la **mecánica de robots cartesianos**.
+* Practicar la **resolución de problemas reales de ensamble**.
+* Demostrar cómo las restricciones materiales y energéticas impactan el diseño.
+* Sentar bases para un **control lógico futuro con PLC**.
+
+### 1.3 Estructura del Documento
 
 1. Introducción
 2. Solución propuesta
 3. Configuración experimental, resultados y análisis
-4. Autoevaluación
-5. Conclusiones y trabajo futuro
-6. Referencias
-7. Anexos
+4. Avances constructivos documentados
+5. Autoevaluación
+6. Conclusiones y trabajo futuro
+7. Referencias
+8. Anexos
 
 ---
 
 ## 2. Solución Propuesta
 
-### 2.1 Restricciones de Diseño (ISO/IEC/IEEE 29148:2018)
+### 2.1 Restricciones de Diseño
 
-| Código | Requerimiento                        | Tipo          | Prioridad | Descripción                                     | Justificación              |
-| -----: | ------------------------------------ | ------------- | --------- | ----------------------------------------------- | -------------------------- |
-|     R1 | Movimiento cartesiano en 3 ejes      | Funcional     | Alta      | Posicionamiento en X, Y, Z                      | Requisito del proceso      |
-|     R2 | Manipulación sin actuador de pinza   | Funcional     | Alta      | Depósito/recogida mediante **carro deslizable** | Simplicidad y robustez     |
-|     R3 | Control con PLC 24 V                 | Técnico       | Alta      | Estándar industrial                             | Alineado con formación     |
-|     R4 | Escalabilidad a estante 2×3 completo | Escalabilidad | Media     | Validación inicial en primera columna           | Extensible con repuestos   |
-|     R5 | Sustitución de un eje                | Restricción   | Media     | Uso de **actuador lineal** en un eje            | Viabilidad de construcción |
-|     R6 | Presupuesto limitado                 | Económica     | Media     | Uso de componentes disponibles                  | Restricción académica      |
-|     R7 | Volumen de trabajo                   | Espacio       | Media     | Montaje sobre base de madera                    | Condiciona carrera útil    |
-|     R8 | Plazo de entrega                     | Temporal      | Alta      | 22/08/2025                                      | Acota alcance              |
+| Código | Restricción / Requerimiento                        | Tipo          | Impacto |
+| -----: | -------------------------------------------------- | ------------- | ------- |
+|     R1 | Movimiento cartesiano en 3 ejes (X, Y, Z)          | Funcional     | Alta    |
+|     R2 | Operación en **9 V** (no 24 V estándar industrial) | Técnica       | Alta    |
+|     R3 | Faltan ejes de **260 mm (Art.-No. 107436)**        | Mecánica      | Alta    |
+|     R4 | Sustitución de un eje por **actuador lineal**      | Restricción   | Media   |
+|     R5 | Adaptación con motorreductores alternativos        | Técnica       | Media   |
+|     R6 | Limitación de baterías 9 V para pruebas            | Operativa     | Media   |
+|     R7 | Operación solo en la primera columna del estante   | Escalabilidad | Media   |
+|     R8 | Tiempo de entrega corto                            | Temporal      | Alta    |
 
-### 2.2 Arquitectura del Sistema (vista física)
+---
+
+### 2.2 Arquitectura Física
 
 ```mermaid
-flowchart LR
-  subgraph Sistema_cartesiano_3_ejes["Sistema cartesiano (3 ejes)"]
-    X["Eje X - M1"]
-    Y["Eje Y - M2 (carro)"]
-    Z["Eje Z - M3 (elevador)"]
-    X --> Y
-    Y --> Z
+flowchart TB
+  subgraph Robot["Robot cartesiano 3 ejes"]
+    X["Eje X - motor M1<br/>Movimiento horizontal"]
+    Y["Eje Y - motor M2<br/>Carro deslizable"]
+    Z["Eje Z - motor M3/actuador lineal<br/>Movimiento vertical"]
+    X --> Y --> Z
   end
 
-  subgraph Estante_2x3["Estante 2x3"]
-    S11["Slot (1,1)"]
-    S21["Slot (2,1)"]
-    S31["Slot (3,1)"]
-    S12["Slot (1,2)"]
-    S22["Slot (2,2)"]
-    S32["Slot (3,2)"]
+  subgraph Estante["Estante de almacenamiento 2×3"]
+    S11["Slot (1,1)"] S21["Slot (2,1)"] S31["Slot (3,1)"]
+    S12["Slot (1,2)"] S22["Slot (2,2)"] S32["Slot (3,2)"]
   end
 
   Z --> S11
@@ -70,61 +81,64 @@ flowchart LR
   Z --> S32
 ```
 
-Conectividad prevista (no incluida en el diagrama): integración futura Modbus/MQTT hacia un dashboard IIoT.
+---
 
 ### 2.3 Criterios de Diseño
 
-* **Modularidad:** ejes X, Y, Z y estante como subsistemas.
-* **Robustez:** homing y límites con finales de carrera.
-* **Escalabilidad:** ampliación a estante 2×3 completo al disponer de piezas.
-* **Mantenibilidad:** separación de cableado por ejes y rutas accesibles.
+* **Modularidad:** cada eje es independiente y ensamblado por etapas.
+* **Adaptación:** reemplazo de piezas ausentes por soluciones mecánicas funcionales.
+* **Seguridad:** finales de carrera en cada eje para homing.
+* **Energía:** compatibilidad con 9 V por limitaciones de fuente.
+* **Escalabilidad:** estante parcial → estante completo al reponer piezas.
 
-### 2.4 Diagramas de la Solución (Mermaid, vista física)
+---
 
-#### 2.4.1 Flujo de operación
+### 2.4 Diagramas de Operación
+
+#### Flujo de operación básico
 
 ```mermaid
 sequenceDiagram
     participant Operador
-    participant Robot as Robot_3_ejes
+    participant Robot as Robot 3 ejes
     participant Estante
 
-    Operador->>Robot: Iniciar ciclo
-    Robot->>Robot: Homing X/Y/Z (finales de carrera)
-    Robot->>Estante: Posicionar en columna objetivo
-    Robot->>Estante: Depositar o recoger con carro deslizable
-    Robot->>Robot: Retornar a posición segura
+    Operador->>Robot: Inicia ciclo
+    Robot->>Robot: Homing de ejes (X, Y, Z)
+    Robot->>Estante: Posiciona carro en columna activa
+    Robot->>Estante: Deposita o recoge pieza
+    Robot->>Robot: Retorna a origen
     Robot-->>Operador: Ciclo completado
 ```
 
-#### 2.4.2 Estados de operación
+#### Estados del sistema
 
 ```mermaid
 stateDiagram-v2
     [*] --> Espera
-    Espera --> Homing : start
-    Homing --> Posicionar : homing_ok
+    Espera --> Homing : inicio
+    Homing --> Posicionar : ok
     Posicionar --> Depositar : cmd_store
     Posicionar --> Recuperar : cmd_retrieve
     Depositar --> Retorno : pieza_colocada
-    Recuperar --> Retorno : pieza_tomada
+    Recuperar --> Retorno : pieza_recogida
     Retorno --> Espera : listo
     Homing --> Error : fallo
     Posicionar --> Error : fuera_de_rango
     Error --> Espera : reset
 ```
 
-### 2.5 Esquemáticos y Asignación de E/S
+---
 
-* **Entradas (I1–I6):** finales de carrera para X−/X+, Y−/Y+, Z−/Z+ (asignación sugerida).
-* **Salidas (M1–M3):** motores de los ejes X, Y y Z.
-* Esquemático eléctrico y rutas de cableado en `/docs/esquematico.pdf`.
+### 2.5 Problemas y Soluciones de Ingeniería
 
-### 2.6 Estándares de Ingeniería Aplicados
-
-* **ISO/IEC/IEEE 29148:2018** para especificación de requisitos.
-* Buenas prácticas de documentación técnica (estructura numerada, referencias).
-* Consideraciones de seguridad en **24 V DC** (protecciones, gestión de cableado y fijación).
+```mermaid
+graph TD
+    A[Pieza faltante: eje 260 mm] --> B[Solución: Actuador lineal + motorreductor adaptado]
+    C[Falta de baterías 9 V] --> D[Solución: Ciclos cortos de prueba y uso de fuentes externas]
+    E[Motores más cortos que los originales] --> F[Solución: Adaptación de transmisión por engranajes]
+    G[Limitación: solo 1 columna operativa] --> H[Escalabilidad futura con repuestos originales]
+```
 
 ---
 
@@ -132,54 +146,76 @@ stateDiagram-v2
 
 ### 3.1 Protocolo de Pruebas
 
-1. Homing con finales de carrera en X, Y, Z.
-2. Ciclo de depósito en primera columna del estante.
-3. Ciclo de recuperación desde posición asignada.
-4. Repetición de ciclos para evaluar estabilidad y repetibilidad.
+1. Ensamble estructural del sistema cartesiano.
+2. Verificación de homing con finales de carrera.
+3. Movimiento individual en X, Y y Z.
+4. Prueba de ciclo de almacenamiento en primera columna.
+5. Observación de estabilidad y repetibilidad.
 
 ### 3.2 Resultados
 
-* Posicionamiento estable en X, Y, Z.
-* Depósito/recogida mediante **carro deslizable** operativo y consistente.
-* Operación validada en la primera columna del estante (capacidad parcial).
+* Movimientos X, Y, Z estables con alimentación a 9 V.
+* Carro deslizable funcional en operaciones de carga y descarga.
+* Ciclos completos en primera columna.
+* Limitaciones en autonomía (baterías).
 
 ### 3.3 Análisis
 
-El prototipo cumple los objetivos de almacenamiento y recuperación con la arquitectura de 3 ejes y carro sin actuador de pinza. La sustitución por actuador lineal mantiene la viabilidad del diseño. La escalabilidad al 2×3 completo depende de la disponibilidad de repuestos mecánicos.
+El modelo es **funcional a escala** y cumple con la función principal de almacenamiento/recuperación. La falta de repuestos obligó a soluciones adaptativas, que demostraron ser viables. La ampliación dependerá de la reposición de piezas originales.
 
 ---
 
-## 4. Autoevaluación del Protocolo de Pruebas
+## 4. Avances Constructivos Documentados
 
-* **Fortalezas:** construcción robusta, seguridad por finales de carrera, diseño modular físico.
-* **Debilidades:** conectividad IIoT aún no desplegada; cobertura parcial del estante.
-* **Mejoras:** instrumentar métricas automáticas (tiempo de ciclo, tasa de éxito); definir tolerancias de posicionamiento; manejo de fallos más granular.
+**Nota:** en esta sección se adjuntarán fotos con fecha de avance.
+Formato sugerido:
+
+* `media/avance_YYYYMMDD.jpg` → descripción breve.
+
+Ejemplo de tabla:
+
+| Fecha      | Imagen                      | Descripción breve                        |
+| ---------- | --------------------------- | ---------------------------------------- |
+| 2025-08-01 | `media/avance_20250801.jpg` | Ensamble inicial de la base y eje X.     |
+| 2025-08-05 | `media/avance_20250805.jpg` | Montaje del carro deslizable (eje Y).    |
+| 2025-08-10 | `media/avance_20250810.jpg` | Sustitución del eje 260 mm por actuador. |
+| 2025-08-15 | `media/avance_20250815.jpg` | Validación de movimientos con 9 V.       |
 
 ---
 
-## 5. Conclusiones y Trabajo Futuro
+## 5. Autoevaluación
 
-Se construyó un prototipo funcional de máquina de almacenamiento de **tres ejes** con carro deslizable y control 24 V. El diseño es mantenible y escalable.
-Trabajo futuro: completar operación 2×3, carga/optimización del programa del PLC, integración Modbus/MQTT con dashboard (Node-RED) y registro de métricas de desempeño.
+* **Fortalezas:** ensamble sólido, resolución de problemas prácticos, validación experimental parcial.
+* **Debilidades:** operación limitada a 9 V, solo columna 1 activa, autonomía baja.
+* **Mejoras:** fuente de alimentación estable, adquisición de repuestos, integración lógica.
 
 ---
 
-## 6. Referencias
+## 6. Conclusiones y Trabajo Futuro
 
-* Fischertechnik, documentación de automatización y 3D Robot.
+Se construyó un prototipo funcional del sistema AS/RS de tres ejes, operando a 9 V.
+El proyecto demostró la importancia de la **ingeniería adaptativa** frente a la falta de repuestos y energía.
+
+Trabajo futuro:
+
+* Completar estante 2×3.
+* Migrar a fuente regulada en lugar de baterías.
+* Implementar lógica de control en PLC.
+* Medir métricas de desempeño.
+
+---
+
+## 7. Referencias
+
+* Fischertechnik, *Automation Robots – High Bay Storage Rack* (manual técnico).
 * ISO/IEC/IEEE 29148:2018 — Requirements engineering.
-* Literatura técnica sobre AS/RS e integración IIoT en logística.
+* Bibliografía sobre AS/RS y automatización educativa.
 
 ---
 
-## 7. Anexos
+## 8. Anexos
 
-* Código PLC: `/src/programa_plc.lad`
-* Diagramas Mermaid: en este `README.md`
-* Esquemáticos: `/docs/esquematico.pdf`
+* Esquemáticos eléctricos: `/docs/esquematico.pdf`
 * Protocolo de pruebas: `/tests/protocolo_pruebas.md`
+* Avances fotográficos: `/media/avance_YYYYMMDD.jpg`
 * Presentación de sustentación: `/media/presentacion.pdf`
-
-**Nota:** La validación se realizará en presentación presencial; no se incluye video.
-
----
