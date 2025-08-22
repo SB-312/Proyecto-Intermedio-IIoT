@@ -300,7 +300,7 @@ Trabajo futuro:
 
 ## 8. Anexos
 
-* Esquemáticos eléctricos: `/docs/esquematico.pdf`
+* Esquemás: `/docs/`
 * Códigos ROBO Pro Coding: `/codes/`
 * Avances fotográficos: `/media/avances/`
 * Videos de funcionamiento: `/media/videos/`
