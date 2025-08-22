@@ -57,9 +57,21 @@ Los sistemas AS/RS son esenciales en la logística moderna. El presente prototip
 flowchart TB
   subgraph Robot["Robot cartesiano 3 ejes"]
     X["Eje X - motor M1 (movimiento horizontal)"]
-    Z["Eje Z - motor M3 / actuador lineal (movimiento vertical)"]
     Y["Eje Y - motor M2 (carro deslizable)"]
-    X --> Z --> Y
+    Z["Eje Z - motor M3 / actuador lineal (movimiento vertical)"]
+
+    FXmin["Final de carrera X-"]
+    FXmax["Final de carrera X+"]
+
+    FYmin["Final de carrera Y-"]
+    FYmax["Final de carrera Y+"]
+
+    FZmin["Final de carrera Z-"]
+    FZmax["Final de carrera Z+"]
+
+    FXmin --- X --- FXmax
+    FYmin --- Y --- FYmax
+    FZmin --- Z --- FZmax
   end
 
   subgraph Estante["Estante de almacenamiento 2×3"]
@@ -77,6 +89,7 @@ flowchart TB
   Y --> S12
   Y --> S22
   Y --> S32
+
 ```
 
 ---
