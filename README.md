@@ -1,3 +1,4 @@
 # Proyecto Intermedio – IIoT
 ## PARTES:
-1. 
+1.
+2.
