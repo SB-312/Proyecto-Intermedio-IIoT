@@ -1,4 +1,4 @@
 # Proyecto Intermedio – IIoT
 ## PARTES:
-1.
+1. 'PRIMER CORTE'
 2.
