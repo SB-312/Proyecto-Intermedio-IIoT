@@ -265,8 +265,8 @@ Trabajo futuro:
 
 ## 9. Anexos
 
-* Esquemáticos: `/docs/`
-* Códigos ROBO Pro Coding: `/codes/`
-* Avances fotográficos: `/media/avances/`
+* Esquemáticos: `PRIMER CORTE/docs/`
+* Códigos ROBO Pro Coding: `PRIMER CORTE/codes/`
+* Avances fotográficos: `PRIMER CORTE/media/avances/`
 
 ---
