@@ -5,6 +5,30 @@ En este caso se debe utilizar un PLC simulado dentro de codesys que utilice una 
 
 ## 1) Roles y Contribuciones
 
+| Categoría             | Criterio                                                                 | Responsable |
+|-----------------------|---------------------------------------------------------------------------|-------------|
+| Gestión de proyecto   | Repositorio Git creado                                                    | Maria Alejandra Cabrera Arauz   |
+| Gestión de proyecto   | Estructura de carpetas estandarizada (src/ hmi/ docs/ proto/ video/)      | Maria Alejandra Cabrera Arauz   |
+| Gestión de proyecto   | Tablero con Roles y contribuciones por integrante                         | Juan Diego Lemus Rey       |
+| Gestión de proyecto   | Visualización del tablero, roles y contribuciones                        | Maria Alejandra Cabrera Arauz   |
+| Diseño ingenieril     | Diagrama eléctrico completo (sensores/actuadores ↔ PLC)                  | Juan Diego Lemus Rey       |
+| Diseño ingenieril     | Lista de variables (tag list) con atributo y tipo                        | Christian Daniel Morales Jimenez   |
+| Diseño ingenieril     | Diagrama de actividades/secuencial del proceso                           | Juan Diego Lemus Rey       |
+| Diseño ingenieril     | Ladder conforme IEC 61131-3 con comentarios por red                      | Christian Daniel Morales Jimenez   |
+| Diseño ingenieril     | Control por tiempo (temporizadores, estados, transiciones) implementado  | Christian Daniel Morales Jimenez   |
+| Validación prototipo  | Diseño de checklist 9V                                                   | Juan Diego Lemus Rey       |
+| Validación simulación | Demostración HMI en CODESYS (start/stop, E-Stop, pilotos, estados)       | Christian Daniel Morales Jimenez   |
+| HMI (ISA-101)         | Animación simulación 3D                                                  | Juan Diego Lemus Rey       |
+| HMI (ISA-101)         | Pantalla principal (estados)                                             | Christian Daniel Morales Jimenez   |
+| HMI (Comunic.)        | Guía de 1 página para el operador                                        | Maria Alejandra Cabrera Arauz   |
+| Wiki técnica          | Sección Contexto y requisitos (cita Enunciado)                           | Christian Daniel Morales Jimenez   |
+| Wiki técnica          | Diagrama(s), criterios, restricciones, estándares aplicados              | Juan Diego Lemus Rey       |
+| Wiki técnica          | Arquitectura CODESYS, mapeo de direcciones, Ladder comentado             | Christian Daniel Morales Jimenez   |
+| Wiki técnica          | Plan de pruebas, resultados, evidencias (sim y prototipo)                | Maria Alejandra Cabrera Arauz   |
+| Wiki técnica          | Declaración del uso de IA y fuentes bibliográficas                       | Maria Alejandra Cabrera Arauz   |
+| Video (≤10 min)       | Demostración y explicación clara (sim + prototipo + E-Stop + anomalía)   | Todos       |
+
+
 ## 2) Diagrama de actividades
 
 ```mermaid
