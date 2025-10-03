@@ -1,47 +1,4 @@
-## 1) Diagrama de actividades — Operación manual a 9 V (X, Y, Z)
-
-```mermaid
-flowchart TD
-  A[Power on 9V supply] --> B{Select level: X, Y or Z}
-  B -->|X| X0[Pushbuttons X]
-  B -->|Y| Y0[Pushbuttons Y]
-  B -->|Z| Z0[Pushbuttons Z]
-
-  %% ---- X ----
-  X0 --> X1{What do you press on X?}
-  X1 -->|FWD| X2[VCC to COM_FWD_X and GND to COM_REV_X]
-  X1 -->|REV| X3[GND to COM_FWD_X and VCC to COM_REV_X]
-  X1 -->|None| X4[GND and GND at motor X - idle]
-  X1 -->|Both| X5[VCC and VCC at motor X - warning]
-  X2 --> X6[Motor X spins direction 1]
-  X3 --> X7[Motor X spins direction 2]
-
-  %% ---- Y ----
-  Y0 --> Y1{What do you press on Y?}
-  Y1 -->|FWD| Y2[VCC to COM_FWD_Y and GND to COM_REV_Y]
-  Y1 -->|REV| Y3[GND to COM_FWD_Y and VCC to COM_REV_Y]
-  Y1 -->|None| Y4[GND and GND at motor Y - idle]
-  Y1 -->|Both| Y5[VCC and VCC at motor Y - warning]
-  Y2 --> Y6[Motor Y spins direction 1]
-  Y3 --> Y7[Motor Y spins direction 2]
-
-  %% ---- Z ----
-  Z0 --> Z1{What do you press on Z?}
-  Z1 -->|FWD| Z2[VCC to COM_FWD_Z and GND to COM_REV_Z]
-  Z1 -->|REV| Z3[GND to COM_FWD_Z and VCC to COM_REV_Z]
-  Z1 -->|None| Z4[GND and GND at motor Z - idle]
-  Z1 -->|Both| Z5[VCC and VCC at motor Z - warning]
-  Z2 --> Z6[Motor Z spins direction 1]
-  Z3 --> Z7[Motor Z spins direction 2]
-
-
-  %% ---- Styling for warnings ----
-  classDef warn fill:#fff3cd,stroke:#b68b00,color:#333;
-  class X5,Y5,Z5 warn;
-```
-
----
-## 2) Diagrama de actividades — Workflow del proyecto con responsables
+## 1) Diagrama de actividades
 
 ```mermaid
 flowchart LR
@@ -92,7 +49,49 @@ flowchart LR
   %% Mark critical path steps
   class VID,ENT Critico;
 ```
+---
+## 3) Diagrama de usabilidad
 
+```mermaid
+flowchart TD
+  A[Power on 9V supply] --> B{Select level: X, Y or Z}
+  B -->|X| X0[Pushbuttons X]
+  B -->|Y| Y0[Pushbuttons Y]
+  B -->|Z| Z0[Pushbuttons Z]
+
+  %% ---- X ----
+  X0 --> X1{What do you press on X?}
+  X1 -->|FWD| X2[VCC to COM_FWD_X and GND to COM_REV_X]
+  X1 -->|REV| X3[GND to COM_FWD_X and VCC to COM_REV_X]
+  X1 -->|None| X4[GND and GND at motor X - idle]
+  X1 -->|Both| X5[VCC and VCC at motor X - warning]
+  X2 --> X6[Motor X spins direction 1]
+  X3 --> X7[Motor X spins direction 2]
+
+  %% ---- Y ----
+  Y0 --> Y1{What do you press on Y?}
+  Y1 -->|FWD| Y2[VCC to COM_FWD_Y and GND to COM_REV_Y]
+  Y1 -->|REV| Y3[GND to COM_FWD_Y and VCC to COM_REV_Y]
+  Y1 -->|None| Y4[GND and GND at motor Y - idle]
+  Y1 -->|Both| Y5[VCC and VCC at motor Y - warning]
+  Y2 --> Y6[Motor Y spins direction 1]
+  Y3 --> Y7[Motor Y spins direction 2]
+
+  %% ---- Z ----
+  Z0 --> Z1{What do you press on Z?}
+  Z1 -->|FWD| Z2[VCC to COM_FWD_Z and GND to COM_REV_Z]
+  Z1 -->|REV| Z3[GND to COM_FWD_Z and VCC to COM_REV_Z]
+  Z1 -->|None| Z4[GND and GND at motor Z - idle]
+  Z1 -->|Both| Z5[VCC and VCC at motor Z - warning]
+  Z2 --> Z6[Motor Z spins direction 1]
+  Z3 --> Z7[Motor Z spins direction 2]
+
+
+  %% ---- Styling for warnings ----
+  classDef warn fill:#fff3cd,stroke:#b68b00,color:#333;
+  class X5,Y5,Z5 warn;
+```
+---
 ## 3) Diagrama Eléctrico
 ```mermaid
 
@@ -197,7 +196,7 @@ class X_REV_NO,Y_REV_NO,Z_REV_NO,X_FWD_NO,Y_FWD_NO,Z_FWD_NO vcc;
 class X_REV_NC,Y_REV_NC,Z_REV_NC,X_FWD_NC,Y_FWD_NC,Z_FWD_NC gnd;
 
 ```
-
+---
 
 # Documentación de variables en codesys
 
