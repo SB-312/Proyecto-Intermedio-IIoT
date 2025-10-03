@@ -2,52 +2,53 @@
 
 ```mermaid
 flowchart LR
-  %% Role styles
-  classDef Lemus fill:#e6f4ea,stroke:#1a7f37,color:#0b3d2e;
-  classDef Christian fill:#e7f0fa,stroke:#1b4b91,color:#0b2a66;
-  classDef Alejandra fill:#fff1f0,stroke:#b3261e,color:#5f1410;
-  classDef Todos fill:#f5f5f5,stroke:#6e7781,color:#24292f;
-  classDef Critico stroke:#b3261e,stroke-width:2px;
+  %% ========== Lanes (subgraphs) por responsable ==========
+  subgraph A["Alejandra"]
+    A1[Repo Git + Wiki habilitados]
+    A2[Estructura de carpetas estandar]
+    A4[Tablero visible con issues asignados]
+    A9[Consolidar resultados y capturas]
+    A11[Registrar incidencia Z en la Wiki + clip]
+    A12[Plan de pruebas con resultados y evidencias]
+    A13[Guia de usuario 1 pagina]
+    A14[Declaracion de uso de IA y fuentes]
+    A16[Entrega en Teams: links repo + video reproducible + zip]
+  end
 
-  %% Gestión
-  G1[Repo Git and Wiki enabled]:::Alejandra --> 
-  G2[Standard folders ready]:::Alejandra -->
-  G3[Kanban with roles and contributions]:::Lemus -->
-  G4[Board visible with issues assigned]:::Alejandra
+  subgraph L["Lemus"]
+    L1[Kanban con roles y contribuciones]
+    L2[HMI basico con animacion (sanity check)]
+    L3[Esquema fisico pushbuttons SPDT X Y Z]
+    L5[HMI demo en CODESYS: start stop pilotos estados]
+    L7[Checklist 9V (borrador con IA + revision)]
+    L11[Diseno en Wiki: diagrama electrico + estandares ISA-101 e IEC 61131-3]
+  end
 
-  %% Diseño y validación temprana
-  D1[HMI basic animation for sanity check]:::Lemus --> 
-  D2[Physical scheme of SPDT pushbuttons X Y Z]:::Lemus -->
-  D3[Tag list with attribute and type]:::Christian
+  subgraph C["Christian"]
+    C1[Lista de variables (tags) con atributo y tipo]
+    C2[Ladder IEC 61131-3 con comentarios por red]
+    C3[Control por tiempo y contadores]
+    C10[Implementacion en Wiki: arquitectura CODESYS + mapeo I/O]
+  end
 
-  %% Implementación PLC y demo HMI
-  P1[Ladder IEC 61131-3 with comments]:::Christian -->
-  P2[Time control and counters]:::Christian -->
-  P3[HMI demo in CODESYS start stop pilots states]:::Lemus
+  subgraph T["Todos"]
+    T1[Prueba 9V y registro de evidencia]
+    D1{Comportamiento esperado?}
+    F1[Diagnostico y correccion]
+    Z1[Incidencia: engranaje Z no engrana, motor activa]
+    Z2[Decision: operar Z con baja carga o documentar limitacion]
+    V1[Video <= 10 min: simulacion + prototipo + E-Stop + falla]
+  end
 
-  %% Cableado y prueba 9V
-  V1[Checklist 9V draft and review]:::Lemus -->
-  V2[Run 9V test and record evidence]:::Todos -->
-  V3{Expected behavior?}
-  V3 -->|Yes| V4[Consolidate results and screenshots]:::Alejandra
-  V3 -->|No| F1[Diagnose and correct]:::Todos
+  %% ========== Flujo principal ==========
+  A1 --> A2 --> L1 --> A4
+  A4 --> L2 --> L3 --> C1 --> C2 --> C3 --> L5
+  L5 --> L7 --> T1
+  T1 --> D1
+  D1 -- Si --> A9 --> A11 --> Z2
+  D1 -- No --> F1 --> T1
+  Z2 --> A12 --> A13 --> A14 --> C10 --> L11 --> V1 --> A16
 
-  %% Incidencia mecánica Z
-  F1 --> Z1[Issue: Z gear does not mesh but motor activates]:::Todos -->
-  Z2[Register issue in Wiki with short clip]:::Alejandra -->
-  Z3[Decision: operate Z with low load or document limitation]:::Todos
-
-  %% Documentación y video
-  W1[Implementation in Wiki: architecture and IO map]:::Christian -->
-  W2[Design in Wiki: electrical diagram and standards ISA-101 and IEC 61131-3]:::Lemus -->
-  W3[Test plan results and evidence]:::Alejandra -->
-  W4[One page operator guide]:::Alejandra -->
-  W5[Declaration of AI use and sources]:::Alejandra -->
-  VID[Video <= 10 min: sim plus prototype plus E-Stop plus fault]:::Todos -->
-  ENT[Submit links in Teams and zip package]:::Alejandra
-
-  %% Mark critical path steps
-  class VID,ENT Critico;
 ```
 ---
 
