@@ -102,8 +102,8 @@ X_REV_NC --> Y_REV_NC --> Z_REV_NC
 %% === Optional node styling for quick orientation ===
 classDef vcc fill:#1a7f37,stroke:#0e4429,color:#fff;
 classDef gnd fill:#6e7781,stroke:#24292f,color:#fff;
-class X_REV_NO,Y_REV_NO,Z_REV_NO vcc;
-class X_REV_NC,Y_REV_NC,Z_REV_NC gnd;
+class X_REV_NO,Y_REV_NO,Z_REV_NO,X_FWD_NO,Y_FWD_NO,Z_FWD_NO vcc;
+class X_REV_NC,Y_REV_NC,Z_REV_NC,X_FWD_NC,Y_FWD_NC,Z_FWD_NC gnd;
 
 
 
