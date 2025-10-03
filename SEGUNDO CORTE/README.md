@@ -3,7 +3,9 @@ Este trabajo tiene como objetivo el continuar con la implementacion del proceso 
 
 En este caso se debe utilizar un PLC simulado dentro de codesys que utilice una logica ladder la cual tiene que hacer uso de contadores y timers para lograr representar el funcionamiento del prototipo el proceso sera llevado a cabo por medio de interruptores que son accionadas por medio de la HMI, el proceso debe tener luces piloto que muestren al operador como van cambiando los estados del proceso y tambien si hay alguna anomalia durante el mismo. Este HMI debe mostrar animaciones de como se desarrollaria el proceso con el prototipo real mientras el operador manipula los interruptores para ponerlo en funcionamiento o detenerlo si asi lo desea.
 
-## 1) Diagrama de actividades
+## 1) Roles y Contribuciones
+
+## 2) Diagrama de actividades
 
 ```mermaid
 flowchart LR
@@ -58,7 +60,7 @@ flowchart LR
 ```
 ---
 
-## 2) Diagrama Eléctrico
+## 3) Diagrama Eléctrico
 ```mermaid
 
 flowchart BT
@@ -164,7 +166,7 @@ class X_REV_NC,Y_REV_NC,Z_REV_NC,X_FWD_NC,Y_FWD_NC,Z_FWD_NC gnd;
 ```
 
 ---
-## 3) Diagrama de usabilidad
+## 4) Diagrama de usabilidad
 
 ```mermaid
 flowchart TD
