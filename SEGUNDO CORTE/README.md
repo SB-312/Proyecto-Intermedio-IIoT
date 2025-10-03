@@ -440,7 +440,7 @@ En una segunda etapa se revisa el correcto funcionamiento de los indicadores lum
 
 La arquitectura actual reproduce en simulación el comportamiento mecánico del prototipo con control manual supervisado por HMI, integrando límites, paro y alarma por órdenes opuestas; además, deja trazado el mapa de I/O para migración a microcontrolador y la documentación base en Wiki. Estos elementos habilitan el siguiente salto: control automático por coordenadas y gemelo digital. 
 
-# Trabajo futuro (plan accionable)
+# Trabajo futuro
 
 **A. De control manual a control automático por coordenadas**
 
