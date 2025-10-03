@@ -43,14 +43,14 @@ subgraph L2["Shelf level 2 — Y (middle)"]
   direction LR
   subgraph YREV["REV rail (Y)"]
     direction TB
-    Y_REV_NO["Y_REV NO"]
     Y_REV_COM["Y_REV COM"]
+    Y_REV_NO["Y_REV NO"]
     Y_REV_NC["Y_REV NC"]
   end
   subgraph YFWD["FWD rail (Y)"]
     direction TB
-    Y_FWD_NO["Y_FWD NO"]
     Y_FWD_COM["Y_FWD COM"]
+    Y_FWD_NO["Y_FWD NO"]
     Y_FWD_NC["Y_FWD NC"]
   end
   subgraph YM["Motor Y (DC)"]
@@ -69,14 +69,14 @@ subgraph L1["Shelf level 1 — X (bottom)"]
   direction LR
   subgraph XREV["REV rail (X)"]
     direction TB
-    X_REV_NO["X_REV NO"]
     X_REV_COM["X_REV COM"]
+    X_REV_NO["X_REV NO"]
     X_REV_NC["X_REV NC"]
   end
   subgraph XFWD["FWD rail (X)"]
     direction TB
-    X_FWD_NO["X_FWD NO"]
     X_FWD_COM["X_FWD COM"]
+    X_FWD_NO["X_FWD NO"]
     X_FWD_NC["X_FWD NC"]
   end
   subgraph XM["Motor X (DC)"]
