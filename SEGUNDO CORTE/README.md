@@ -273,13 +273,28 @@ flowchart TD
 
 <img width="404" height="66" alt="image" src="https://github.com/user-attachments/assets/b8270efd-1ef2-42d8-b7b5-feadf3d7a07d" />
 
+Esta parte de la logica solo se necarga de controlar el estado de la variable "Power_on" y la luz de encendido que depende de esta variable.
+
 ## Funciones de avance
 
 <img width="614" height="109" alt="image" src="https://github.com/user-attachments/assets/b62f2316-fb8c-4e2d-bf00-5fbf40972659" />
 
+Esta función consta de un AND de 5 entradas, siendo estas "Power_on" (encendido), la variable de avance en este caso como en el ejemplo es el eje x "Advance_x", "Flanco_ax" la cual depende de la salida del timer esto se hizo con el proposito de que se de flanco a si mismo para crear una animacion fluida, "Error" la cual en caso de que haya una anomalia en el proceso detiene el movimiento y finalmente "Limit_ax" la cual es usada en este ejemplo para validar los limites del movimiento hacia adelante en eje x.
+
+Despues de que la salida del AND sea positva le da flanco al timer quien aparte de controlar la variable "Flanco_ax" en este caso tambien hace que el contador "Cont_ax" aumente y se registre su valor en la variable INT "CountUp_x" la cual se utilizara para determinar en que posicion deberia estar la animacion a lo largo del eje x.
+
 ## Funciones de retroceso
 
 <img width="606" height="111" alt="image" src="https://github.com/user-attachments/assets/4b5cf187-d86f-4fab-800c-d67594f1925f" />
+
+Esta funcion consta de un AND de 5 entradas, siendo estas "Power_on" (encendido), la variable de avance en este caso como en el ejemplo es el eje y "Back_y", "Flanco_by" la cual depende de la salida del timer esto se hizo con el proposito de que se de flanco a si mismo para crear una animacion fluida, "Error" la cual en caso de que haya una anomalia en el proceso detiene el movimiento y finalmente "Limit_bx" la cual es usada en este ejemplo para validar los limites del movimiento hacia atras en eje y.
+
+Despues de que la salida del AND sea positva le da flanco al timer quien aparte de controlar la variable "Flanco_by" en este caso tambien hace que el contador "Cont_by" aumente y se registre su valor en la variable INT "CountD_y" la cual se utilizara para determinar en que posicion deberia estar la animacion a lo largo del eje y.
+
+## Calculo de posición
+
+<img width="265" height="110" alt="image" src="https://github.com/user-attachments/assets/9cf8ec72-557a-4941-bd3e-f2aba76381d2" />
+
 
 ##  Limites
 ### Limites inferiores
@@ -287,10 +302,6 @@ flowchart TD
 
 ### Limites superiores
 <img width="464" height="114" alt="image" src="https://github.com/user-attachments/assets/fbff50f4-9970-41b3-b24b-5f0291179889" />
-
-## Calculo de posición
-
-<img width="265" height="110" alt="image" src="https://github.com/user-attachments/assets/9cf8ec72-557a-4941-bd3e-f2aba76381d2" />
 
 ## Funcion de error
 
