@@ -352,7 +352,7 @@ flowchart TD
 Esta parte de la logica solo se necarga de controlar el estado de la variable "Power_on" y la luz de encendido que depende de esta variable.
 
 ## Funciones de movimiento
-## Funciones de avance
+### Funciones de avance
 
 <img width="614" height="109" alt="image" src="https://github.com/user-attachments/assets/b62f2316-fb8c-4e2d-bf00-5fbf40972659" />
 
@@ -360,7 +360,7 @@ Esta función consta de un AND de 5 entradas, siendo estas "Power_on" (encendido
 
 Despues de que la salida del AND sea positva le da flanco al timer quien aparte de controlar la variable "Flanco_ax" en este caso tambien hace que el contador "Cont_ax" aumente y se registre su valor en la variable INT "CountUp_x" la cual se utilizara para determinar en que posicion deberia estar la animacion a lo largo del eje x. Esto funciona de manera identica para el resto de ejes pero con sus respectivas variables.
 
-## Funciones de retroceso
+### Funciones de retroceso
 
 <img width="606" height="111" alt="image" src="https://github.com/user-attachments/assets/4b5cf187-d86f-4fab-800c-d67594f1925f" />
 
