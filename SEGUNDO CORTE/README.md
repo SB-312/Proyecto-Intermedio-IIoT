@@ -389,27 +389,10 @@ En una segunda etapa se revisa el correcto funcionamiento de los indicadores lum
 
 ## Promts de IA
 ### 1) Uso para realizar Manual de Usuario
-"Necesito que me ayudes a redactar un manual de usuario de máximo una página en Word para el dispositivo HMI High Bay Storage Rack de Fischertechnik, el manual debe estar orientado a un equipo electrónico de manejo poco riesgoso, pero que no puede considerarse elemental. Con la información que te voy a compartir a continuación quiero que me ayudes únicamente a darle forma estructurada al manual:
-
-- Alimentación eléctrica de 9V.
-- Instrucción de seguridad: NO oprimir adelante y reversa de un mismo eje a la vez.
-- Precaución: mantener fuera del alcance de los niños y lejos del agua o ambientes húmedos.
-- Error: Indicador Luminoso rojo 
-- Botón 1: Avanzar en X.
-- Botón 2: Retroceder en X.
-- Botón 3: Avanzar en Y.
-- Botón 4: Retroceder en Y.
-- Botón 5: Avanzar en Z.
-- Botón 6: Retroceder en Z."
+<img width="682" height="670" alt="image" src="https://github.com/user-attachments/assets/64ca7c31-7210-4244-9844-a05887a29f59" />
 
 ### 2) Uso para realizar Plan de Pruebas
-"Continuando con los datos dados previamente, redactar un texto técnico que describa el plan de pruebas, resultados y evidencias de mi proyecto, necesito que me ayudes únicamente a estructurar el texto en máximo 3 párrafos claros y ordenados, además, ten en cuenta lo siguiente:
-
-- Verificar el funcionamiento de todos los botones de avance y retroceso en los ejes X, Y y Z, comprobando que respondan de inmediato y sin bloqueos.
-- Asegurar que no se activen de forma simultánea los botones opuestos de un mismo eje (por ejemplo, Avanzar X y Retroceder X a la vez).
-- Revisar que la alimentación se mantenga en 9V constantes y que no se generen sobrecargas, recalentamientos o cortocircuitos.
-- Validar los indicadores luminosos: Verde, Naranja, Rojo.
-- En simulación (HMI/CODESYS), comprobar que los movimientos se mantengan dentro de los límites configurados y que la animación refleje correctamente la lógica del sistema."
+<img width="680" height="577" alt="image" src="https://github.com/user-attachments/assets/43abaef1-0dc2-4172-b78c-b284500408d6" />
 
 ## Referencias
 
