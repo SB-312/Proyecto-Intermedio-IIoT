@@ -1,0 +1,847 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<Single xml:space="preserve" Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+  <Single Name="Name" Type="string">&lt;UserProjectRoot&gt;</Single>
+  <Dictionary Type="System.Collections.Hashtable" Name="SubKeys">
+    <Entry>
+      <Key>
+        <Single Type="string">{246001F4-279D-43AC-B241-948EB31120E1}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{246001F4-279D-43AC-B241-948EB31120E1}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys">
+            <Entry>
+              <Key>
+                <Single Type="string">61402f53-0b58-4589-8e39-a14110a38e81</Single>
+              </Key>
+              <Value>
+                <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                  <Single Name="Name" Type="string">61402f53-0b58-4589-8e39-a14110a38e81</Single>
+                  <Dictionary Type="System.Collections.Hashtable" Name="SubKeys">
+                    <Entry>
+                      <Key>
+                        <Single Type="string">HierarchicalPropertiesNodeStates</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">HierarchicalPropertiesNodeStates</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                  </Dictionary>
+                  <Dictionary Type="System.Collections.Hashtable" Name="Values">
+                    <Entry>
+                      <Key>
+                        <Single Type="string">HierarchicalPropertiesNodeStates</Single>
+                      </Key>
+                      <Value>
+                        <List Type="System.Collections.Generic.List`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">ZoomFactor</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="float">0.5999999</Single>
+                      </Value>
+                    </Entry>
+                  </Dictionary>
+                </Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+          <Dictionary Type="System.Collections.Hashtable" Name="Values">
+            <Entry>
+              <Key>
+                <Single Type="string">TagToolBoxTagConfiguration</Single>
+              </Key>
+              <Value>
+                <Single Type="string">V1.1
+Base
+Flags:2
+Item:Rectángulo
+Item:Rectángulo redondeado
+Item:Elipse
+Item:Línea
+Item:Polígono
+Item:Trazo
+Item:Curva de Bézier
+Item:Sector de círculo
+Item:Imagen
+Item:Marco
+Elementos de control generales
+Flags:6
+Item:Rotulación
+Item:Cuadro combinado Entero
+Item:Cuadro combinado, Matriz
+Item:Registro
+Item:Botón
+Item:Groupbox
+Item:Tabla
+Item:Campo de texto
+Item:Barra de desplazamiento
+Item:Control deslizante
+Item:Spin Box
+Item:Entrada no visible
+Item:Barra de carga
+Item:Casilla de verificación
+Item:Botónes de opción
+Gestor de alarmas
+Flags:2
+Item:Tabla de alarmas
+Item:Banner de alarma
+Instrumentos de medición
+Flags:6
+Item:Indicación por barra
+Item:Instrumento indicador 90º
+Item:Instrumento indicador 180º
+Item:Instrumento indicador
+Item:Potenciómetro
+Item:Histograma
+Lámparas/ interruptores/ imágenes
+Flags:2
+Item:Intercambiador de imágenes
+Item:Lámpara
+Item:Interruptor de palanca
+Item:Interruptor de energía
+Item:Interruptor de presión
+Item:Interruptor de presión LED
+Item:Interruptor basculante
+Item:Interruptor rotativo
+Elementos especiales de control
+Flags:2
+Item:Traza
+Item:Tendencia
+Item:Leyenda
+Item:ActiveX
+Item:Explorador Web
+Item:Símbolo de espera, cubo
+Item:Símbolo de espera, flor
+Item:Editor de texto
+Item:Gráfico XY cartesiano
+Item:Path3D
+Item:ControlPanel
+Controles de fecha/hora
+Flags:2
+Item:Selección del rango de fechas
+Item:Selección del rango de tiempo
+Item:Selector de fecha
+Item:Reloj analógico
+Item:Selección de fecha/hora
+Symbols
+Flags:2
+Item:4 flechas hacia el interior
+Item:4 flechas hacia el exterior
+Item:4 flechas hacia el exterior 2
+Item:Agregar usuario
+Item:Reloj despertador
+Item:Apéndice
+Item:Flecha atrás
+Item:Flecha negrita hacia atrás
+Item:Flecha negrita izquierda
+Item:Flecha negrita hacia abajo
+Item:Flecha negrita hacia arriba
+Item:Flecha negrita derecha
+Item:Flecha negrita derecha hacia abajo
+Item:Flecha negrita derecha hacia arriba
+Item:Flecha negrita hacia arriba
+Item:2 flechas giro a izquierdas derecha izquierda
+Item:2 flechas giro a izquierdas arriba abajo
+Item:2 flechas giro a derechas derecha izquierda
+Item:2 flechas giro a derechas arriba abajo
+Item:Flecha Abajo
+Item:Flecha izquierda hacia abajo
+Item:Flecha derecha hacia abajo
+Item:Flecha adelante
+Item:Flecha semicírculo izquierda abajo
+Item:Flecha semicírculo izquierda izquierda
+Item:Flecha semicírculo izquierda derecha
+Item:Flecha semicírculo izquierda arriba
+Item:Flecha semicírculo derecha abajo
+Item:Flecha semicírculo derecha izquierda
+Item:Flecha semicírculo derecha derecha
+Item:Flecha semicírculo derecha arriba
+Item:Flecha cuadrante izquierda abajo
+Item:Flecha cuadrante izquierda izquierda
+Item:Flecha cuadrante izquierda derecha
+Item:Flecha cuadrante izquierda arriba
+Item:Flecha cuadrante derecha abajo
+Item:Flecha cuadrante derecha izquierda
+Item:Flecha cuadrante derecha derecha
+Item:Flecha cuadrante derecha arriba
+Item:Flecha círculo giro a izquierdas abajo
+Item:Flecha círculo giro a izquierdas izquierda
+Item:Flecha círculo giro a izquierdas derecha
+Item:Flecha círculo giro a izquierdas arriba
+Item:Flecha círculo giro a derechas abajo
+Item:Flecha círculo giro a derechas izquierda
+Item:Flecha círculo giro a derechas derecha
+Item:Flecha círculo giro a derechas arriba
+Item:Flecha izquierda hacia arriba
+Item:Flecha derecha hacia arriba
+Item:Atrás deprisa
+Item:Atrás lento
+Item:Atrás
+Item:Batería crítica
+Item:Batería llena
+Item:Batería baja
+Item:Batería media
+Item:Campana
+Item:Negrita
+Item:Caja
+Item:Paréntesis
+Item:Paréntesis2
+Item:Calculadora
+Item:Calendario
+Item:Fecha calendario
+Item:Día calendario
+Item:Atención
+Item:Atención2
+Item:Centrado
+Item:Gráfico
+Item:Gráfico2
+Item:Lista comprobación
+Item:Portapapeles
+Item:Reloj
+Item:Color
+Item:Panel de control
+Item:Base de datos
+Item:Base de datos2
+Item:Borrar
+Item:Borrar usuario
+Item:Diagrama
+Item:Doc
+Item:Doc -
+Item:Doc +
+Item:Doc 2-
+Item:Doc 2+
+Item:Doc código
+Item:Doc borrar
+Item:Doc descarga
+Item:Doc modificar
+Item:Doc vacío
+Item:Doc favorito
+Item:Doc PDF
+Item:Doc cargar
+Item:Doc Excel
+Item:Doc Excel2
+Item:Doc Excel3
+Item:Doc Word
+Item:Flecha doble1
+Item:Flecha doble2
+Item:Flecha doble3
+Item:Flecha doble4
+Item:Flecha doble5
+Item:Flecha doble6
+Item:Descarga
+Item:Modificar
+Item:Editor
+Item:Editor vacío
+Item:Modificar usuario
+Item:Expulsar
+Item:Borrador
+Item:Favorito
+Item:Carpeta
+Item:Agregar carpeta
+Item:Carpeta comprobada
+Item:Carpeta cerrada
+Item:Carpeta conectada
+Item:Carpeta favorita
+Item:Carpeta sin acceso
+Item:?
+Item:Fuente
+Item:Adelante rápido
+Item:Adelante lento
+Item:Adelante
+Item:Globo
+Item:Inicio
+Item:Reloj de arena
+Item:Reloj de arena abajo
+Item:Reloj de arena arriba
+Item:Lluvia
+Item:Información
+Item:IPod
+Item:Cursiva
+Item:Alineación
+Item:Anclaje
+Item:Clave
+Item:Alinear a la izquierda
+Item:Luz
+Item:Enlace
+Item:Lista numerada
+Item:Lista puntos
+Item:Bloqueo
+Item:Bloqueo abierto
+Item:Altavoz
+Item:Altavoz alto
+Item:Altavoz medio
+Item:Altavoz desconectado
+Item:Lupa
+Item:Lupa zoom-
+Item:Lupa zoom+
+Item:Indicador
+Item:Indicador-
+Item:Indicador+
+Item:Indicador
+Item:Micrófono
+Item:Curva
+Item:Diagrama
+Item:Ratón
+Item:Red
+Item:No
+Item:Nota
+Item:Nota doble
+Item:Aceptar
+Item:Pausa
+Item:Teléfono
+Item:Reproducir
+Item:Imprimir
+Item:Pregunta
+Item:Registro
+Item:Alinear a la derecha
+Item:RSS1
+Item:RSS2
+Item:Guardar
+Item:Pantalla
+Item:Seguridad
+Item:Carácter
+Item:Zeichen2
+Item:Señal
+Item:Discurso
+Item:Parada
+Item:Cronómetro
+Item:Herramienta
+Item:Text
+Item:Temporizador
+Item:Árbol hacia abajo
+Item:Árbol hacia derecha
+Item:Árbol hacia arriba
+Item:Triángulo hacia abajo
+Item:Triángulo hacia izquierda
+Item:Triángulo hacia derecha
+Item:Triángulo hacia arriba
+Item:Dos ruedas
+Item:Subrayado
+Item:USB
+Item:Usuarios
+Item:Ventilador
+Item:Vista
+Item:Tensión
+Item:Rueda
+Item:ERRÓNEO
+Item:Sí
+Item:Reloj azul cromo
+Item:Reloj gris cromo
+Item:Reloj verde cromo
+Item:Reloj rojo cromo
+Item:Reloj amarillo cromo
+Item:Reloj azul plano
+Item:Reloj gris plano
+Item:Reloj verde plano
+Item:Reloj rojo plano
+Item:Reloj amarillo plano
+Item:Reloj azul
+Item:Reloj gris
+Item:Reloj verde
+Item:Reloj rojo
+Item:Reloj amarillo
+Preferido
+Flags:11
+</Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{32E22E36-9884-4C79-B335-EF295608EBBA}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{32E22E36-9884-4C79-B335-EF295608EBBA}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys">
+            <Entry>
+              <Key>
+                <Single Type="string">00000000-0000-0000-0000-000000000000</Single>
+              </Key>
+              <Value>
+                <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                  <Single Name="Name" Type="string">00000000-0000-0000-0000-000000000000</Single>
+                  <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                  <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                </Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{43AE06BC-C226-4d9e-B428-430794D7E20E}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{43AE06BC-C226-4d9e-B428-430794D7E20E}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{4F76D0CF-5F2B-4f90-B443-B3FED105365A}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{4F76D0CF-5F2B-4f90-B443-B3FED105365A}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{6449F234-DF9F-4DA5-90AD-5994A6029F73}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{6449F234-DF9F-4DA5-90AD-5994A6029F73}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys">
+            <Entry>
+              <Key>
+                <Single Type="string">a1047687-b05b-4155-9632-ef0524de2eb2</Single>
+              </Key>
+              <Value>
+                <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                  <Single Name="Name" Type="string">a1047687-b05b-4155-9632-ef0524de2eb2</Single>
+                  <Dictionary Type="System.Collections.Hashtable" Name="SubKeys">
+                    <Entry>
+                      <Key>
+                        <Single Type="string">398</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">398</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">448</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">448</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">484</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">484</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">489</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">489</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">547</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">547</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">552</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">552</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">557</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">557</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">562</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">562</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">567</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">567</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">574</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">574</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">581</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">581</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">588</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                          <Single Name="Name" Type="string">588</Single>
+                          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                        </Single>
+                      </Value>
+                    </Entry>
+                  </Dictionary>
+                  <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                </Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{6C1303D4-057D-44B9-A260-B46562675D4E}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{6C1303D4-057D-44B9-A260-B46562675D4E}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys">
+            <Entry>
+              <Key>
+                <Single Type="string">a1047687-b05b-4155-9632-ef0524de2eb2</Single>
+              </Key>
+              <Value>
+                <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                  <Single Name="Name" Type="string">a1047687-b05b-4155-9632-ef0524de2eb2</Single>
+                  <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                  <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+                </Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{79968A73-AAAA-46E3-B71D-DD238D1A198A}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{79968A73-AAAA-46E3-B71D-DD238D1A198A}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+          <Dictionary Type="System.Collections.Hashtable" Name="Values">
+            <Entry>
+              <Key>
+                <Single Type="string">DefaultLocalizationCulture</Single>
+              </Key>
+              <Value>
+                <Single Type="string"></Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{864D7BD5-3CC8-48bf-A6D9-1EFB4BA200A4}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{864D7BD5-3CC8-48bf-A6D9-1EFB4BA200A4}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+          <Dictionary Type="System.Collections.Hashtable" Name="Values">
+            <Entry>
+              <Key>
+                <Single Type="string">PersistentSelectionInfo</Single>
+              </Key>
+              <Value>
+                <Single Type="string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;PersistentSelectionInfo&gt;
+  &lt;Editors /&gt;
+&lt;/PersistentSelectionInfo&gt;</Single>
+              </Value>
+            </Entry>
+            <Entry>
+              <Key>
+                <Single Type="string">TabbedEditorViewConfiguration</Single>
+              </Key>
+              <Value>
+                <Single Type="{cfb70fdc-802b-4ee6-b0f7-35f7e87c6555}" Method="IArchivable">
+                  <List Name="PersistentEditorViews" Type="System.Collections.ArrayList" />
+                </Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{95105156-E05D-46a3-B18F-ADEA2D442C33}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{95105156-E05D-46a3-B18F-ADEA2D442C33}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys">
+            <Entry>
+              <Key>
+                <Single Type="string">{21af5390-2942-461a-bf89-951aaf6999f1}</Single>
+              </Key>
+              <Value>
+                <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                  <Single Name="Name" Type="string">{21af5390-2942-461a-bf89-951aaf6999f1}</Single>
+                  <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                  <Dictionary Type="System.Collections.Hashtable" Name="Values">
+                    <Entry>
+                      <Key>
+                        <Single Type="string">ExpandedObjects</Single>
+                      </Key>
+                      <Value>
+                        <List Type="System.Collections.ArrayList" />
+                      </Value>
+                    </Entry>
+                  </Dictionary>
+                </Single>
+              </Value>
+            </Entry>
+            <Entry>
+              <Key>
+                <Single Type="string">{d9b2b2cc-ea99-4c3b-aa42-1e5c49e65b84}</Single>
+              </Key>
+              <Value>
+                <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                  <Single Name="Name" Type="string">{d9b2b2cc-ea99-4c3b-aa42-1e5c49e65b84}</Single>
+                  <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                  <Dictionary Type="System.Collections.Hashtable" Name="Values">
+                    <Entry>
+                      <Key>
+                        <Single Type="string">ExpandedObjects</Single>
+                      </Key>
+                      <Value>
+                        <List Type="System.Collections.ArrayList">
+                          <Single Type="System.Guid">589f535f-56ed-4735-8ff2-75b0a6c941b1</Single>
+                          <Single Type="System.Guid">621963b7-e666-44c3-ad5d-1c54a71ceb7c</Single>
+                          <Single Type="System.Guid">293f2239-a98f-41f9-ae78-026805b4afb3</Single>
+                          <Single Type="System.Guid">bf055227-01fb-499c-9646-a7c7fdbb0bd4</Single>
+                          <Single Type="System.Guid">70e9e6ee-e784-4bad-838d-21d0f0cca6cf</Single>
+                          <Single Type="System.Guid">9d2a9bd1-9290-4272-96a2-533a71d153c2</Single>
+                        </List>
+                      </Value>
+                    </Entry>
+                  </Dictionary>
+                </Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{9EC2F79B-CAC6-4173-ABE3-6837F53B54DD}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{9EC2F79B-CAC6-4173-ABE3-6837F53B54DD}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{B431F4F6-68E9-4767-9143-6471A69719A9}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{B431F4F6-68E9-4767-9143-6471A69719A9}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+          <Dictionary Type="System.Collections.Hashtable" Name="Values">
+            <Entry>
+              <Key>
+                <Single Type="string">ActiveApplicationGuid</Single>
+              </Key>
+              <Value>
+                <Single Type="string">{bf055227-01fb-499c-9646-a7c7fdbb0bd4}</Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{E958CDB5-7DE4-41af-8650-09D402301787}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{E958CDB5-7DE4-41af-8650-09D402301787}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+          <Dictionary Type="System.Collections.Hashtable" Name="Values">
+            <Entry>
+              <Key>
+                <Single Type="string">Active</Single>
+              </Key>
+              <Value>
+                <Single Type="int">0</Single>
+              </Value>
+            </Entry>
+            <Entry>
+              <Key>
+                <Single Type="string">Bookmarks</Single>
+              </Key>
+              <Value>
+                <Array Type="{33cb25fb-56b4-47e7-ab3a-d5bea6ac30bb}" />
+              </Value>
+            </Entry>
+          </Dictionary>
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{EFD5A0D8-B437-41b2-87B6-1D745A74AD55}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{EFD5A0D8-B437-41b2-87B6-1D745A74AD55}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+        </Single>
+      </Value>
+    </Entry>
+    <Entry>
+      <Key>
+        <Single Type="string">{FF8AB4CF-E581-4b58-B2C4-828B6EF5AC8C}</Single>
+      </Key>
+      <Value>
+        <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+          <Single Name="Name" Type="string">{FF8AB4CF-E581-4b58-B2C4-828B6EF5AC8C}</Single>
+          <Dictionary Type="System.Collections.Hashtable" Name="SubKeys">
+            <Entry>
+              <Key>
+                <Single Type="string">a1047687-b05b-4155-9632-ef0524de2eb2</Single>
+              </Key>
+              <Value>
+                <Single Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+                  <Single Name="Name" Type="string">a1047687-b05b-4155-9632-ef0524de2eb2</Single>
+                  <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+                  <Dictionary Type="System.Collections.Hashtable" Name="Values">
+                    <Entry>
+                      <Key>
+                        <Single Type="string">Panel1Minimized</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="bool">False</Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">Panel2Minimized</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="bool">False</Single>
+                      </Value>
+                    </Entry>
+                    <Entry>
+                      <Key>
+                        <Single Type="string">RestoredSplitterRatio</Single>
+                      </Key>
+                      <Value>
+                        <Single Type="double">0.29923664122137406</Single>
+                      </Value>
+                    </Entry>
+                  </Dictionary>
+                </Single>
+              </Value>
+            </Entry>
+          </Dictionary>
+          <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+        </Single>
+      </Value>
+    </Entry>
+  </Dictionary>
+  <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+</Single>
