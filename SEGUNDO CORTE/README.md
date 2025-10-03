@@ -57,3 +57,29 @@
 | Time_az         | TIME     | Tiempo configurado para avance eje Z. |
 | Time_bz         | TIME     | Tiempo configurado para retroceso eje Z. |
 
+# Mapeo de salidas y entradas
+
+## Entradas digitales
+
+| **Variable**  | **Dirección** | **Pin ESP32** | **Descripción** |
+|---------------|---------------|----------------|-----------------|
+| Power_on      | %IX0.0        | GPIO 13       | Botón de encendido general |
+| Advance_x     | %IX0.1        | GPIO 14       | Botón avance eje X |
+| Back_x        | %IX0.2        | GPIO 27       | Botón retroceso eje X |
+| Advance_y     | %IX0.3        | GPIO 26       | Botón avance eje Y |
+| Back_y        | %IX0.4        | GPIO 25       | Botón retroceso eje Y |
+| Advance_z     | %IX0.5        | GPIO 33       | Botón avance eje Z |
+| Back_z        | %IX0.6        | GPIO 32       | Botón retroceso eje Z |
+
+## Salidas digitales (ESP32 → OpenPLC)
+
+| **Variable**  | **Dirección** | **Pin ESP32** | **Descripción** |
+|---------------|---------------|----------------|-----------------|
+| Power_light   | %QX0.0        | GPIO 2        | Luz de encendido general |
+| Lamp_ax       | %QX0.1        | GPIO 4        | Luz avance eje X |
+| Lamp_bx       | %QX0.2        | GPIO 5        | Luz retroceso eje X |
+| Lamp_ay       | %QX0.3        | GPIO 18       | Luz avance eje Y |
+| Lamp_by       | %QX0.4        | GPIO 19       | Luz retroceso eje Y |
+| Lamp_az       | %QX0.5        | GPIO 21       | Luz avance eje Z |
+| Lamp_bz       | %QX0.6        | GPIO 22       | Luz retroceso eje Z |
+| Error         | %QX0.7        | GPIO 23       | Luz/alarm indicador de error |
