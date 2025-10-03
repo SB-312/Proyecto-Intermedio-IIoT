@@ -91,10 +91,10 @@ subgraph L1["Shelf level 1 — X (bottom)"]
 end
 
 %% === PSU → Level X only; then VCC/GND climb on the REV side ===
-VCC0 --> X_REV_NO
-GND0 --> X_REV_NC
-X_REV_NO --> Y_REV_NO --> Z_REV_NO
-X_REV_NC --> Y_REV_NC --> Z_REV_NC
+VCC0 --> X_FWD_NO
+GND0 --> X_FWD_NC
+X_FWD_NO --> Y_FWD_NO --> Z_FWD_NO
+X_FWD_NC --> Y_FWD_NC --> Z_FWD_NC
 
 %% === Optional node styling for quick orientation ===
 classDef vcc fill:#1a7f37,stroke:#0e4429,color:#fff;
