@@ -1,57 +1,109 @@
-# Diagrama Actividades
+## 1) Diagrama de actividades — Operación manual a 9 V (X, Y, Z)
 
 ```mermaid
 flowchart TD
-  %% Inicio y precondiciones
-  A[Encender fuente 9V] --> B{Seleccionar nivel<br/>(X abajo • Y medio • Z arriba)}
-  B -->|X| X0[Conjunto de pulsadores X<br/>FWD/REV SPDT]
-  B -->|Y| Y0[Conjunto de pulsadores Y<br/>FWD/REV SPDT]
-  B -->|Z| Z0[Conjunto de pulsadores Z<br/>FWD/REV SPDT]
+  A[Power on 9V supply] --> B{Select level: X, Y or Z}
+  B -->|X| X0[Pushbuttons X]
+  B -->|Y| Y0[Pushbuttons Y]
+  B -->|Z| Z0[Pushbuttons Z]
 
-  %% X
-  X0 --> X1{¿Qué pulsas en X?}
-  X1 -->|FWD| X2[VCC → COM_FWD_X<br/>GND → COM_REV_X]
-  X1 -->|REV| X3[GND → COM_FWD_X<br/>VCC → COM_REV_X]
-  X1 -->|Ninguno| X4[GND/GND en motor X<br/>(Quieto)]
-  X1 -->|Ambos| X5[VCC/VCC en motor X<br/>(Advertencia)]
-  X2 --> X6[Motor X gira sentido 1]
-  X3 --> X7[Motor X gira sentido 2]
+  %% ---- X ----
+  X0 --> X1{What do you press on X?}
+  X1 -->|FWD| X2[VCC to COM_FWD_X and GND to COM_REV_X]
+  X1 -->|REV| X3[GND to COM_FWD_X and VCC to COM_REV_X]
+  X1 -->|None| X4[GND and GND at motor X - idle]
+  X1 -->|Both| X5[VCC and VCC at motor X - warning]
+  X2 --> X6[Motor X spins direction 1]
+  X3 --> X7[Motor X spins direction 2]
   X4 --> C
   X5 --> C
 
-  %% Y
-  Y0 --> Y1{¿Qué pulsas en Y?}
-  Y1 -->|FWD| Y2[VCC → COM_FWD_Y; GND → COM_REV_Y]
-  Y1 -->|REV| Y3[GND → COM_FWD_Y; VCC → COM_REV_Y]
-  Y1 -->|Ninguno| Y4[GND/GND en motor Y]
-  Y1 -->|Ambos| Y5[VCC/VCC (Advertencia)]
-  Y2 --> Y6[Motor Y gira sentido 1]
-  Y3 --> Y7[Motor Y gira sentido 2]
+  %% ---- Y ----
+  Y0 --> Y1{What do you press on Y?}
+  Y1 -->|FWD| Y2[VCC to COM_FWD_Y and GND to COM_REV_Y]
+  Y1 -->|REV| Y3[GND to COM_FWD_Y and VCC to COM_REV_Y]
+  Y1 -->|None| Y4[GND and GND at motor Y - idle]
+  Y1 -->|Both| Y5[VCC and VCC at motor Y - warning]
+  Y2 --> Y6[Motor Y spins direction 1]
+  Y3 --> Y7[Motor Y spins direction 2]
   Y4 --> C
   Y5 --> C
 
-  %% Z
-  Z0 --> Z1{¿Qué pulsas en Z?}
-  Z1 -->|FWD| Z2[VCC → COM_FWD_Z; GND → COM_REV_Z]
-  Z1 -->|REV| Z3[GND → COM_FWD_Z; VCC → COM_REV_Z]
-  Z1 -->|Ninguno| Z4[GND/GND en motor Z]
-  Z1 -->|Ambos| Z5[VCC/VCC (Advertencia)]
-  Z2 --> Z6[Motor Z gira sentido 1]
-  Z3 --> Z7[Motor Z gira sentido 2]
+  %% ---- Z ----
+  Z0 --> Z1{What do you press on Z?}
+  Z1 -->|FWD| Z2[VCC to COM_FWD_Z and GND to COM_REV_Z]
+  Z1 -->|REV| Z3[GND to COM_FWD_Z and VCC to COM_REV_Z]
+  Z1 -->|None| Z4[GND and GND at motor Z - idle]
+  Z1 -->|Both| Z5[VCC and VCC at motor Z - warning]
+  Z2 --> Z6[Motor Z spins direction 1]
+  Z3 --> Z7[Motor Z spins direction 2]
   Z4 --> C
   Z5 --> C
 
-  %% Cierre / seguridad
-  C{¿Seguir moviendo otro nivel?}
-  C -->|Sí| B
-  C -->|No| D[Apagar fuente 9V y asegurar conexiones]
+  %% ---- Loop or end ----
+  C{Move another level?}
+  C -->|Yes| B
+  C -->|No| D[Power off 9V and secure wiring]
 
-  %% Nota de seguridad
+  %% ---- Styling for warnings ----
   classDef warn fill:#fff3cd,stroke:#b68b00,color:#333;
   class X5,Y5,Z5 warn;
 ```
 
-# Diagrama Eléctrico
+---
+## 2) Diagrama de actividades — Workflow del proyecto con responsables
+
+```mermaid
+flowchart LR
+  %% Role styles
+  classDef Lemus fill:#e6f4ea,stroke:#1a7f37,color:#0b3d2e;
+  classDef Christian fill:#e7f0fa,stroke:#1b4b91,color:#0b2a66;
+  classDef Alejandra fill:#fff1f0,stroke:#b3261e,color:#5f1410;
+  classDef Todos fill:#f5f5f5,stroke:#6e7781,color:#24292f;
+  classDef Critico stroke:#b3261e,stroke-width:2px;
+
+  %% Gestión
+  G1[Repo Git and Wiki enabled]:::Alejandra --> 
+  G2[Standard folders ready]:::Alejandra -->
+  G3[Kanban with roles and contributions]:::Lemus -->
+  G4[Board visible with issues assigned]:::Alejandra
+
+  %% Diseño y validación temprana
+  D1[HMI basic animation for sanity check]:::Lemus --> 
+  D2[Physical scheme of SPDT pushbuttons X Y Z]:::Lemus -->
+  D3[Tag list with attribute and type]:::Christian
+
+  %% Implementación PLC y demo HMI
+  P1[Ladder IEC 61131-3 with comments]:::Christian -->
+  P2[Time control and counters]:::Christian -->
+  P3[HMI demo in CODESYS start stop pilots states]:::Lemus
+
+  %% Cableado y prueba 9V
+  V1[Checklist 9V draft and review]:::Lemus -->
+  V2[Run 9V test and record evidence]:::Todos -->
+  V3{Expected behavior?}
+  V3 -->|Yes| V4[Consolidate results and screenshots]:::Alejandra
+  V3 -->|No| F1[Diagnose and correct]:::Todos
+
+  %% Incidencia mecánica Z
+  F1 --> Z1[Issue: Z gear does not mesh but motor activates]:::Todos -->
+  Z2[Register issue in Wiki with short clip]:::Alejandra -->
+  Z3[Decision: operate Z with low load or document limitation]:::Todos
+
+  %% Documentación y video
+  W1[Implementation in Wiki: architecture and IO map]:::Christian -->
+  W2[Design in Wiki: electrical diagram and standards ISA-101 and IEC 61131-3]:::Lemus -->
+  W3[Test plan results and evidence]:::Alejandra -->
+  W4[One page operator guide]:::Alejandra -->
+  W5[Declaration of AI use and sources]:::Alejandra -->
+  VID[Video <= 10 min: sim plus prototype plus E-Stop plus fault]:::Todos -->
+  ENT[Submit links in Teams and zip package]:::Alejandra
+
+  %% Mark critical path steps
+  class VID,ENT Critico;
+```
+
+## 3) Diagrama Eléctrico
 ```mermaid
 
 flowchart BT
