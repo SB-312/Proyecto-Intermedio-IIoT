@@ -1,3 +1,6 @@
+# PROYECTO INTERMEDIO IIOT #2
+Christian Daniel Morales Jimenez, Maria Alejandra Cabrera Arauz, Juan Diego Lemus Rey
+
 # Resumen
 
 Este proyecto implementa un manipulador cartesiano X-Y-Z con control por HMI y lógica Ladder (IEC 61131-3) para trasladar cargas entre una bahía y un almacén. La versión actual integra simulación en CODESYS, control manual por pulsadores virtuales, temporizadores y contadores para animación del HMI, lógica de límites, paro y gestión de errores; además, mapea las señales de I/O pensando en un futuro despliegue sobre microcontroladores tipo ESP32. 
