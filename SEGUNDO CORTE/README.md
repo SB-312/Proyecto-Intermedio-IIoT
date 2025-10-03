@@ -281,7 +281,7 @@ Esta parte de la logica solo se necarga de controlar el estado de la variable "P
 
 Esta función consta de un AND de 5 entradas, siendo estas "Power_on" (encendido), la variable de avance en este caso como en el ejemplo es el eje x "Advance_x", "Flanco_ax" la cual depende de la salida del timer esto se hizo con el proposito de que se de flanco a si mismo para crear una animacion fluida, "Error" la cual en caso de que haya una anomalia en el proceso detiene el movimiento y finalmente "Limit_ax" la cual es usada en este ejemplo para validar los limites del movimiento hacia adelante en eje x.
 
-Despues de que la salida del AND sea positva le da flanco al timer quien aparte de controlar la variable "Flanco_ax" en este caso tambien hace que el contador "Cont_ax" aumente y se registre su valor en la variable INT "CountUp_x" la cual se utilizara para determinar en que posicion deberia estar la animacion a lo largo del eje x.
+Despues de que la salida del AND sea positva le da flanco al timer quien aparte de controlar la variable "Flanco_ax" en este caso tambien hace que el contador "Cont_ax" aumente y se registre su valor en la variable INT "CountUp_x" la cual se utilizara para determinar en que posicion deberia estar la animacion a lo largo del eje x. Esto funciona de manera identica para el resto de ejes pero con sus respectivas variables.
 
 ## Funciones de retroceso
 
@@ -289,32 +289,40 @@ Despues de que la salida del AND sea positva le da flanco al timer quien aparte 
 
 Esta funcion consta de un AND de 5 entradas, siendo estas "Power_on" (encendido), la variable de avance en este caso como en el ejemplo es el eje y "Back_y", "Flanco_by" la cual depende de la salida del timer esto se hizo con el proposito de que se de flanco a si mismo para crear una animacion fluida, "Error" la cual en caso de que haya una anomalia en el proceso detiene el movimiento y finalmente "Limit_bx" la cual es usada en este ejemplo para validar los limites del movimiento hacia atras en eje y.
 
-Despues de que la salida del AND sea positva le da flanco al timer quien aparte de controlar la variable "Flanco_by" en este caso tambien hace que el contador "Cont_by" aumente y se registre su valor en la variable INT "CountD_y" la cual se utilizara para determinar en que posicion deberia estar la animacion a lo largo del eje y.
+Despues de que la salida del AND sea positva le da flanco al timer quien aparte de controlar la variable "Flanco_by" en este caso tambien hace que el contador "Cont_by" aumente y se registre su valor en la variable INT "CountD_y" la cual se utilizara para determinar en que posicion deberia estar la animacion a lo largo del eje y. Esto funciona de manera identica para el resto de ejes pero con sus respectivas variables.
 
 ## Calculo de posición
 
 <img width="265" height="110" alt="image" src="https://github.com/user-attachments/assets/9cf8ec72-557a-4941-bd3e-f2aba76381d2" />
 
-En el ejmplo se esta claculando la posicion a lo largo del eje z de la animacion con el modulo resta, en este caso siempre calcula valores entre -1 y 177 ya que el eje mide 176, pra eso utiliza las variables "CountUp_z" y "CountD_z" y las resta en ese orden para darle valor a la variable de control "Movement_Z" la cual controla el movimiento de la animacion en el eje z.
+En el ejmplo se esta claculando la posicion a lo largo del eje z de la animacion con el modulo resta, en este caso siempre calcula valores entre -1 y 177 ya que el eje mide 176, pra eso utiliza las variables "CountUp_z" y "CountD_z" y las resta en ese orden para darle valor a la variable de control "Movement_Z" la cual controla el movimiento de la animacion en el eje z. Esto funciona de manera identica para el resto de ejes pero con sus respectivas variables.
 
 ##  Limites
 ### Limites inferiores
 <img width="466" height="114" alt="image" src="https://github.com/user-attachments/assets/2c8d084a-c69f-4129-86bc-1df3718d201d" />
 
+Se compra la variable "Movement_X" para que no se menor a 0, si esta adquiere un valor inferior automaticamente detendra el movimiento hacia atras del eje x. Esto funciona de manera identica para el resto de ejes pero con sus respectivas variables.
 ### Limites superiores
 <img width="464" height="114" alt="image" src="https://github.com/user-attachments/assets/fbff50f4-9970-41b3-b24b-5f0291179889" />
 
+Se compra la variable "Movement_X" para que no se mayor a 176, si esta adquiere un valor superior automaticamente detendra el movimiento hacia adelante del eje x. Esto funciona de manera identica para el resto de ejes pero con sus respectivas variables.
 ## Funcion de error
 
 <img width="461" height="155" alt="image" src="https://github.com/user-attachments/assets/f7ab2f34-a4b9-4834-8535-025420beb0ae" />
+
+Esta funcion se encarga de disparar la alarma de error la cual detendra todos los movimientos que se esten ejcutando en el momento y ademas encendera la luz correspondiente en el HMI. La manera de activar es hacer ambos movimientos (avanzar y retroceder) de manera simultanea en el mismo eje, para lograrlo se pusieron ambas variables de cada eje en un AND de dos entradas y cada uno de eso AND a un OR de tres entradas ya que son tres ejes para que detenga el proceso sin importar en que eje se de el error.
 
 ## Funcion de parada
 
 <img width="399" height="69" alt="image" src="https://github.com/user-attachments/assets/68635033-1bc2-4e4c-bcea-7755cac9523e" />
 
+Esta funcion depende de un boton en el HMI y lo que hace es apagar el proceso para detener todos los movimientos en cualquier momento.
+
 ## Funciones de indicadores visuales
 
 <img width="485" height="231" alt="image" src="https://github.com/user-attachments/assets/ff8d78d9-9dd9-4bd5-b1ee-7fbfacb8a0da" />
+
+Cada una de estas funciones es un AND de 4 entradas las cuales serian las mismas que las funciones de movimiento a excepcion del flanco de su timer correspondiente, esto con el proposito de encender la luz que indica su movimiento correspondiente de manera continua (cosa que con el flanco no sucede) y poder dar una mejor retroalimentacion del proceso al operador por medio del HMI.
 
 # Mapeo de salidas y entradas
 
