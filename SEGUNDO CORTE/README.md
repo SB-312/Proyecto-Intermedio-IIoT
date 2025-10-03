@@ -378,3 +378,11 @@ Cada una de estas funciones es un AND de 4 entradas las cuales serian las mismas
 | Lamp_az       | %QX0.5        | GPIO 21       | Luz avance eje Z |
 | Lamp_bz       | %QX0.6        | GPIO 22       | Luz retroceso eje Z |
 | Error         | %QX0.7        | GPIO 23       | Luz/alarm indicador de error |
+
+# Plan de Pruebas
+
+El plan de pruebas contempla en primer lugar la verificación del funcionamiento de los botones en los ejes X, Y y Z, asegurando que los comandos de avance y retroceso respondan de forma inmediata, sin bloqueos y dentro de los límites establecidos. En esta fase también se valida que no se activen de manera simultánea las dos direcciones opuestas de un mismo eje, lo cual podría generar errores lógicos o fallas eléctricas. Paralelamente, se supervisa la alimentación eléctrica para confirmar que se mantenga en 9V constantes y que no se produzcan sobrecargas ni riesgos de cortocircuito durante el uso.
+
+En una segunda etapa se revisa el correcto funcionamiento de los indicadores luminosos, confirmando que cada color corresponda al estado real del sistema: verde para avanzar, naranja para retroceder, y rojo para errores. De manera complementaria, en el entorno de simulación (HMI/CODESYS) se verifica que los movimientos se mantengan dentro de los límites configurados y que la representación gráfica sea coherente con la lógica implementada, permitiendo detectar anomalías antes de llevar las pruebas al prototipo físico.
+
+# Uso de IA y referencias
