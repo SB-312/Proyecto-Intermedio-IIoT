@@ -471,3 +471,4 @@ La arquitectura actual reproduce en simulación el comportamiento mecánico del 
 
 ## Referencias
 
+[1] Valentin Ciupe, “PLC program and 3D simulation with CoDeSys - CoppeliaSim Linker tool,” YouTube. Dec. 21, 2020. [Online]. Available: https://www.youtube.com/watch?v=ykKz7Dle7-4
