@@ -21,8 +21,8 @@ subgraph L3["Shelf level 3 — Z (top)"]
   end
   subgraph ZFWD["FWD rail (Z)"]
     direction TB
-    Z_FWD_NO["Z_FWD NO"]
     Z_FWD_COM["Z_FWD COM"]
+    Z_FWD_NO["Z_FWD NO"]
     Z_FWD_NC["Z_FWD NC"]
   end
   subgraph ZM["Motor Z (DC)"]
@@ -31,8 +31,8 @@ subgraph L3["Shelf level 3 — Z (top)"]
     Z_B["Terminal B (Z)"]
   end
   %% FWD takes from REV at same level
-  Z_FWD_NO --- Z_FWD_NO
-  Z_FWD_NC --- Z_FWD_NC
+  Z_FWD_NO --- Z_REV_NO
+  Z_FWD_NC --- Z_REV_NC
   %% COMs to motor
   Z_FWD_COM --> Z_A
   Z_REV_COM --> Z_B
@@ -101,8 +101,6 @@ classDef vcc fill:#1a7f37,stroke:#0e4429,color:#fff;
 classDef gnd fill:#6e7781,stroke:#24292f,color:#fff;
 class X_REV_NO,Y_REV_NO,Z_REV_NO,X_FWD_NO,Y_FWD_NO,Z_FWD_NO vcc;
 class X_REV_NC,Y_REV_NC,Z_REV_NC,X_FWD_NC,Y_FWD_NC,Z_FWD_NC gnd;
-
-
 
 ```
 
