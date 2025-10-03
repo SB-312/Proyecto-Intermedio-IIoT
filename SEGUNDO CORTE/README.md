@@ -1,3 +1,53 @@
+# Resumen
+
+Este proyecto implementa un manipulador cartesiano X-Y-Z con control por HMI y lógica Ladder (IEC 61131-3) para trasladar cargas entre una bahía y un almacén. La versión actual integra simulación en CODESYS, control manual por pulsadores virtuales, temporizadores y contadores para animación del HMI, lógica de límites, paro y gestión de errores; además, mapea las señales de I/O pensando en un futuro despliegue sobre microcontroladores tipo ESP32. 
+
+# Objetivos
+
+**General:** Implementar y documentar un flujo de control robusto para el manipulador X-Y-Z desde simulación hasta prototipo físico, con base en estándares de HMI y PLC. 
+**Específicos (etapa actual):**
+
+1. Ladder con temporizadores (TON) y contadores (CTU) por eje; 2) HMI con pilotos de estado, paro y alarma; 3) Cálculo de posición mediante diferencias de conteo; 4) Lógica de límites, error por órdenes opuestas y paro; 5) Evidencias y documentación (arquitectura, mapa de I/O, planos/diagramas). 
+   **Específicos (siguiente etapa):**
+2. Secuenciador automático por coordenadas; 7) Portabilidad a OpenPLC y despliegue en microcontrolador compatible (p. ej., ESP32); 8) Sincronización tiempo-real entre animación y prototipo (gemelo digital).
+
+# Alcance de esta entrega
+
+* **Control manual con HMI**: avance/retroceso por eje, pilotos, paro y alarma.
+* **Simulación en CODESYS** con Ladder comentado y animación basada en flancos.
+* **Validación con fuente de 9 V y esquema eléctrico**; evidencia y plan de pruebas.
+
+# Arquitectura general del sistema
+
+* **PLC simulado + HMI (CODESYS)**: lógica Ladder con TON/CTU por eje; cálculo de posición como `Movement_axis = CountUp - CountD`; límites inferior/superior y paro/alarma. 
+* **Interfaz operario** conforme a **ISA-101**: pilotos de estado, animación de movimiento y botones de mando. 
+* **Hardware educativo**: fuente 9 V, pulsadores SPDT por eje y tres motores DC (X, Y, Z). Incidencias mecánicas documentadas (eje Z). 
+* **Mapa de I/O** pensando en **ESP32** (GPIO para entradas/salidas digitales). 
+
+# Estándares y buenas prácticas
+
+* **IEC 61131-3** (Ladder) para portabilidad futura a OpenPLC.
+* **ISA-101** para HMI: estados claros, pilotos, alarmas visibles. 
+* **Nomenclatura y documentación de tags**
+
+# Gestión de riesgos
+
+* **Mecánico**: juego/atoro en transmisión (incidencia eje Z) → desclasado de carga o mantenimiento preventivo. 
+* **Eléctrico**: inversión de polaridad/pulsadores simultáneos → lógica de bloqueo + alarma. 
+* **Software**: desincronía TON/animación → desacople por secuenciador y marcas de estado.
+
+# Supuestos y dependencias
+
+* Sensores de límite operativos por eje; alimentación 9 V estable; disponibilidad de CODESYS y, para la siguiente fase, entorno OpenPLC y microcontrolador compatible (ESP32 u otro). 
+
+# Requisitos no funcionales
+
+* **Mantenibilidad**: rungs comentados y agrupados por eje/función.
+* **Observabilidad**: tags de diagnóstico y bitácora mínima de eventos de error.
+* **Portabilidad**: evitar bloques propietarios; nomenclatura IEC consistente. 
+
+---
+
 # Contexto y Requisitos
 Este trabajo tiene como objetivo el continuar con la implementacion del proceso descrito en la primera parte de este proyecto, en este caso seria un brazo robot que transportaria cargas desde la bahia al almacen y viceversa. Para ello en este trabajo se hablara de como se conecto el prototipo de manera que es manejable por medio de botones si esta siendo alimentado por nueve voltios y ademas de una simulacion hecha en codesys con el uso de logica ladder la cual representa de manera fiel el funcionamiento mecanico del prototipo en la vida real.
 
@@ -386,6 +436,31 @@ El plan de pruebas contempla en primer lugar la verificación del funcionamiento
 En una segunda etapa se revisa el correcto funcionamiento de los indicadores luminosos, confirmando que cada color corresponda al estado real del sistema: verde para avanzar, naranja para retroceder, y rojo para errores. De manera complementaria, en el entorno de simulación (HMI/CODESYS) se verifica que los movimientos se mantengan dentro de los límites configurados y que la representación gráfica sea coherente con la lógica implementada, permitiendo detectar anomalías antes de llevar las pruebas al prototipo físico.
 
 # Uso de IA y referencias
+# Conclusiones
+
+La arquitectura actual reproduce en simulación el comportamiento mecánico del prototipo con control manual supervisado por HMI, integrando límites, paro y alarma por órdenes opuestas; además, deja trazado el mapa de I/O para migración a microcontrolador y la documentación base en Wiki. Estos elementos habilitan el siguiente salto: control automático por coordenadas y gemelo digital. 
+
+# Trabajo futuro (plan accionable)
+
+**A. De control manual a control automático por coordenadas**
+
+1. **Homing por eje**: rutina al arranque hasta sensores de referencia (X0,Y0,Z0) y puesta a cero de contadores.
+2. **Modelo de coordenadas**: tabla `(estante_fila, estante_columna) → (X,Y,Z)` en pasos o milímetros; tolerancias por eje.
+3. **Secuenciador** (recomendado SFC IEC 61131-3 o “step-sequencer” en Ladder): estados *IDLE → MOVE_X → MOVE_Y → MOVE_Z → PICK/PLACE → RETURN/IDLE*; timeouts e interlocks.
+4. **Comandos de alto nivel**: `GO_TO(i,j)` desde HMI; bloqueo del mando manual durante ciclos automáticos.
+5. **Gestión de errores**: watchdog por eje, reintentos y retorno seguro a origen.
+
+**B. Portabilidad a OpenPLC y despliegue en microcontrolador (p. ej., ESP32)**
+6) **Refactor del código** evitando elementos no portables; conservar TON/CTU estándar y comparadores.
+7) **Asignación de I/O** en OpenPLC según el mapa propuesto para ESP32; prueba de cada GPIO con patrones de test. 
+8) **Comunicación HMI↔PLC**: Modbus/TCP (o MQTT si se usa HMI web) para enviar `GO_TO`, leer estados y alarmas.
+9) **Ciclo de integración continua**: pruebas en banco con fuente 9–12 V, carga limitada y registro de latencias.
+
+**C. Gemelo digital: sincronización simulación↔prototipo**
+10) **Reloj y marca de tiempo** comunes; tasa de refresco fija para animación.
+11) **Telemetría de posición**: publicar `Movement_X/Y/Z` reales (por contadores/encoders) y superponerlos en la animación.
+12) **Calibración**: curva pasos→distancia por eje; criterio de aceptación **|error_animación-físico| ≤ 1 paso** sostenido.
+13) **Validación**: script de trayectorias (p. ej., barrido de estantes) comparando tiempos y posiciones; reporte de deriva.
 
 ## Promts de IA
 ### 1) Uso para realizar Manual de Usuario
