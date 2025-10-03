@@ -209,8 +209,6 @@ flowchart TD
 
 # Documentación de variables en codesys
 
-# 📋 Documentación de Variables PLC
-
 | **Nombre**      | **Tipo de dato** | **Función (I/O/Interno/Timer/Contador)** | **Descripción** |
 |-----------------|------------------|------------------------------------------|-----------------|
 | **Movement_X**  | INT              | Interno                                  | Posición actual del eje X (0–176). |
