@@ -2,6 +2,8 @@
 ## PARTES:
 1. [PRIMER CORTE](https://github.com/SB-312/Proyecto-Intermedio-IIoT/tree/916e029ec4225949f1034e62b44dfbe654ede8cd/PRIMER%20CORTE)
 2. [SEGUNDO CORTE](https://github.com/SB-312/Proyecto-Intermedio-IIoT/tree/916e029ec4225949f1034e62b44dfbe654ede8cd/SEGUNDO%20CORTE)
+
+```mermaid
 flowchart TB
   %% =======================
   %% ALIMENTACIÓN
@@ -110,3 +112,4 @@ flowchart TB
   %% Al no pulsar: los COM están unidos a NC -> GND.
   %% Al pulsar: los COM conmutan a NO -> VCC.
   %% Recomendación: NO pulsar Adelante y Reversa a la vez en el mismo eje.
+```
