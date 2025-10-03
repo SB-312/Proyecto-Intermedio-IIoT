@@ -31,8 +31,8 @@ subgraph L3["Shelf level 3 — Z (top)"]
     Z_B["Terminal B (Z)"]
   end
   %% FWD takes from REV at same level
-  Z_FWD_NO --- Z_REV_NO
-  Z_FWD_NC --- Z_REV_NC
+  Z_FWD_NO --- Z_FWD_NO
+  Z_FWD_NC --- Z_FWD_NC
   %% COMs to motor
   Z_FWD_COM --> Z_A
   Z_REV_COM --> Z_B
