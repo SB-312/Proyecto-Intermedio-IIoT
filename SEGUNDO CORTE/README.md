@@ -2,52 +2,50 @@
 
 ```mermaid
 flowchart LR
-  %% ========== Lanes (subgraphs) por responsable ==========
-  subgraph A["Alejandra"]
-    A1[Repo Git + Wiki habilitados]
-    A2[Estructura de carpetas estandar]
-    A4[Tablero visible con issues asignados]
-    A9[Consolidar resultados y capturas]
-    A11[Registrar incidencia Z en la Wiki + clip]
-    A12[Plan de pruebas con resultados y evidencias]
-    A13[Guia de usuario 1 pagina]
-    A14[Declaracion de uso de IA y fuentes]
-    A16[Entrega en Teams: links repo + video reproducible + zip]
+  %% ===== Lanes (subgraphs) por responsable =====
+  subgraph A [Alejandra]
+    A1[Repo and Wiki enabled]
+    A2[Standard folders ready]
+    A4[Board visible with assigned issues]
+    A9[Consolidate results and screenshots]
+    A11[Log Z issue in Wiki with clip]
+    A12[Test plan results and evidence]
+    A13[One page operator guide]
+    A14[AI use and sources]
+    A16[Submit in Teams repo link video zip]
   end
 
-  subgraph L["Lemus"]
-    L1[Kanban con roles y contribuciones]
-    L2[HMI basico con animacion (sanity check)]
-    L3[Esquema fisico pushbuttons SPDT X Y Z]
-    L5[HMI demo en CODESYS: start stop pilotos estados]
-    L7[Checklist 9V (borrador con IA + revision)]
-    L11[Diseno en Wiki: diagrama electrico + estandares ISA-101 e IEC 61131-3]
+  subgraph L [Lemus]
+    L1[Kanban with roles and contributions]
+    L2[HMI basic animation sanity check]
+    L3[Physical scheme pushbuttons SPDT X Y Z]
+    L5[HMI demo in CODESYS start stop pilots states]
+    L7[Checklist 9V draft with AI and review]
+    L11[Design in Wiki electrical diagram and standards ISA 101 and IEC 61131 3]
   end
 
-  subgraph C["Christian"]
-    C1[Lista de variables (tags) con atributo y tipo]
-    C2[Ladder IEC 61131-3 con comentarios por red]
-    C3[Control por tiempo y contadores]
-    C10[Implementacion en Wiki: arquitectura CODESYS + mapeo I/O]
+  subgraph C [Christian]
+    C1[Tag list with attribute and type]
+    C2[Ladder IEC 61131 3 with comments]
+    C3[Time control and counters]
+    C10[Implementation in Wiki CODESYS architecture and IO map]
   end
 
-  subgraph T["Todos"]
-    T1[Prueba 9V y registro de evidencia]
-    D1{Comportamiento esperado?}
-    F1[Diagnostico y correccion]
-    Z1[Incidencia: engranaje Z no engrana, motor activa]
-    Z2[Decision: operar Z con baja carga o documentar limitacion]
-    V1[Video <= 10 min: simulacion + prototipo + E-Stop + falla]
+  subgraph T [All team]
+    T1[9V test and record evidence]
+    D1{Expected behavior}
+    F1[Diagnose and correct]
+    Z2[Decision operate Z with low load or document limitation]
+    V1[Video 10 min simulation prototype E Stop fault]
   end
 
-  %% ========== Flujo principal ==========
+  %% ===== Flujo principal =====
   A1 --> A2 --> L1 --> A4
   A4 --> L2 --> L3 --> C1 --> C2 --> C3 --> L5
-  L5 --> L7 --> T1
-  T1 --> D1
-  D1 -- Si --> A9 --> A11 --> Z2
+  L5 --> L7 --> T1 --> D1
+  D1 -- Yes --> A9 --> A11 --> Z2 --> A12 --> A13 --> A14 --> C10 --> L11 --> V1 --> A16
   D1 -- No --> F1 --> T1
-  Z2 --> A12 --> A13 --> A14 --> C10 --> L11 --> V1 --> A16
+
 
 ```
 ---
