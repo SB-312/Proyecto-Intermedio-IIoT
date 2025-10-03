@@ -40,10 +40,6 @@ flowchart TD
   Z4 --> C
   Z5 --> C
 
-  %% ---- Loop or end ----
-  C{Move another level?}
-  C -->|Yes| B
-  C -->|No| D[Power off 9V and secure wiring]
 
   %% ---- Styling for warnings ----
   classDef warn fill:#fff3cd,stroke:#b68b00,color:#333;
