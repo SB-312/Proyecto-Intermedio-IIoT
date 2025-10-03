@@ -15,8 +15,6 @@ flowchart TD
   X1 -->|Both| X5[VCC and VCC at motor X - warning]
   X2 --> X6[Motor X spins direction 1]
   X3 --> X7[Motor X spins direction 2]
-  X4 --> C
-  X5 --> C
 
   %% ---- Y ----
   Y0 --> Y1{What do you press on Y?}
@@ -26,8 +24,6 @@ flowchart TD
   Y1 -->|Both| Y5[VCC and VCC at motor Y - warning]
   Y2 --> Y6[Motor Y spins direction 1]
   Y3 --> Y7[Motor Y spins direction 2]
-  Y4 --> C
-  Y5 --> C
 
   %% ---- Z ----
   Z0 --> Z1{What do you press on Z?}
@@ -37,8 +33,6 @@ flowchart TD
   Z1 -->|Both| Z5[VCC and VCC at motor Z - warning]
   Z2 --> Z6[Motor Z spins direction 1]
   Z3 --> Z7[Motor Z spins direction 2]
-  Z4 --> C
-  Z5 --> C
 
 
   %% ---- Styling for warnings ----
