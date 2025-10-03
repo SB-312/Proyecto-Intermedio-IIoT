@@ -1,5 +1,57 @@
-# Diagrama Eléctrico
+# Diagrama Actividades
 
+```mermaid
+flowchart TD
+  %% Inicio y precondiciones
+  A[Encender fuente 9V] --> B{Seleccionar nivel<br/>(X abajo • Y medio • Z arriba)}
+  B -->|X| X0[Conjunto de pulsadores X<br/>FWD/REV SPDT]
+  B -->|Y| Y0[Conjunto de pulsadores Y<br/>FWD/REV SPDT]
+  B -->|Z| Z0[Conjunto de pulsadores Z<br/>FWD/REV SPDT]
+
+  %% X
+  X0 --> X1{¿Qué pulsas en X?}
+  X1 -->|FWD| X2[VCC → COM_FWD_X<br/>GND → COM_REV_X]
+  X1 -->|REV| X3[GND → COM_FWD_X<br/>VCC → COM_REV_X]
+  X1 -->|Ninguno| X4[GND/GND en motor X<br/>(Quieto)]
+  X1 -->|Ambos| X5[VCC/VCC en motor X<br/>(Advertencia)]
+  X2 --> X6[Motor X gira sentido 1]
+  X3 --> X7[Motor X gira sentido 2]
+  X4 --> C
+  X5 --> C
+
+  %% Y
+  Y0 --> Y1{¿Qué pulsas en Y?}
+  Y1 -->|FWD| Y2[VCC → COM_FWD_Y; GND → COM_REV_Y]
+  Y1 -->|REV| Y3[GND → COM_FWD_Y; VCC → COM_REV_Y]
+  Y1 -->|Ninguno| Y4[GND/GND en motor Y]
+  Y1 -->|Ambos| Y5[VCC/VCC (Advertencia)]
+  Y2 --> Y6[Motor Y gira sentido 1]
+  Y3 --> Y7[Motor Y gira sentido 2]
+  Y4 --> C
+  Y5 --> C
+
+  %% Z
+  Z0 --> Z1{¿Qué pulsas en Z?}
+  Z1 -->|FWD| Z2[VCC → COM_FWD_Z; GND → COM_REV_Z]
+  Z1 -->|REV| Z3[GND → COM_FWD_Z; VCC → COM_REV_Z]
+  Z1 -->|Ninguno| Z4[GND/GND en motor Z]
+  Z1 -->|Ambos| Z5[VCC/VCC (Advertencia)]
+  Z2 --> Z6[Motor Z gira sentido 1]
+  Z3 --> Z7[Motor Z gira sentido 2]
+  Z4 --> C
+  Z5 --> C
+
+  %% Cierre / seguridad
+  C{¿Seguir moviendo otro nivel?}
+  C -->|Sí| B
+  C -->|No| D[Apagar fuente 9V y asegurar conexiones]
+
+  %% Nota de seguridad
+  classDef warn fill:#fff3cd,stroke:#b68b00,color:#333;
+  class X5,Y5,Z5 warn;
+```
+
+# Diagrama Eléctrico
 ```mermaid
 
 flowchart BT
