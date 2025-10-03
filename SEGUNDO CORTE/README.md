@@ -435,7 +435,6 @@ El plan de pruebas contempla en primer lugar la verificación del funcionamiento
 
 En una segunda etapa se revisa el correcto funcionamiento de los indicadores luminosos, confirmando que cada color corresponda al estado real del sistema: verde para avanzar, naranja para retroceder, y rojo para errores. De manera complementaria, en el entorno de simulación (HMI/CODESYS) se verifica que los movimientos se mantengan dentro de los límites configurados y que la representación gráfica sea coherente con la lógica implementada, permitiendo detectar anomalías antes de llevar las pruebas al prototipo físico.
 
-# Uso de IA y referencias
 # Conclusiones
 
 La arquitectura actual reproduce en simulación el comportamiento mecánico del prototipo con control manual supervisado por HMI, integrando límites, paro y alarma por órdenes opuestas; además, deja trazado el mapa de I/O para migración a microcontrolador y la documentación base en Wiki. Estos elementos habilitan el siguiente salto: control automático por coordenadas y gemelo digital. 
@@ -461,6 +460,8 @@ La arquitectura actual reproduce en simulación el comportamiento mecánico del 
 11) **Telemetría de posición**: publicar `Movement_X/Y/Z` reales (por contadores/encoders) y superponerlos en la animación.
 12) **Calibración**: curva pasos→distancia por eje; criterio de aceptación **|error_animación-físico| ≤ 1 paso** sostenido.
 13) **Validación**: script de trayectorias (p. ej., barrido de estantes) comparando tiempos y posiciones; reporte de deriva.
+
+# Uso de IA y referencias
 
 ## Promts de IA
 ### 1) Uso para realizar Manual de Usuario
