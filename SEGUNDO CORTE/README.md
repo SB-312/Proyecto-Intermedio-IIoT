@@ -2,49 +2,52 @@
 
 ```mermaid
 flowchart LR
-  %% ===== Lanes (subgraphs) por responsable =====
-  subgraph A [Alejandra]
-    A1[Repo and Wiki enabled]
-    A2[Standard folders ready]
-    A4[Board visible with assigned issues]
-    A9[Consolidate results and screenshots]
-    A11[Log Z issue in Wiki with clip]
-    A12[Test plan results and evidence]
-    A13[One page operator guide]
-    A14[AI use and sources]
-    A16[Submit in Teams repo link video zip]
-  end
+  %% Role styles
+  classDef Lemus fill:#e6f4ea,stroke:#1a7f37,color:#0b3d2e;
+  classDef Christian fill:#e7f0fa,stroke:#1b4b91,color:#0b2a66;
+  classDef Alejandra fill:#fff1f0,stroke:#b3261e,color:#5f1410;
+  classDef Todos fill:#f5f5f5,stroke:#6e7781,color:#24292f;
+  classDef Critico stroke:#b3261e,stroke-width:2px;
 
-  subgraph L [Lemus]
-    L1[Kanban with roles and contributions]
-    L2[HMI basic animation sanity check]
-    L3[Physical scheme pushbuttons SPDT X Y Z]
-    L5[HMI demo in CODESYS start stop pilots states]
-    L7[Checklist 9V draft with AI and review]
-    L11[Design in Wiki electrical diagram and standards ISA 101 and IEC 61131 3]
-  end
+  %% Gestión
+  G1[Repo Git and Wiki enabled]:::Alejandra --> 
+  G2[Standard folders ready]:::Alejandra -->
+  G3[Kanban with roles and contributions]:::Lemus -->
+  G4[Board visible with issues assigned]:::Alejandra
 
-  subgraph C [Christian]
-    C1[Tag list with attribute and type]
-    C2[Ladder IEC 61131 3 with comments]
-    C3[Time control and counters]
-    C10[Implementation in Wiki CODESYS architecture and IO map]
-  end
+  %% Diseño y validación temprana
+  D1[HMI basic animation for sanity check]:::Lemus --> 
+  D2[Physical scheme of SPDT pushbuttons X Y Z]:::Lemus -->
+  D3[Tag list with attribute and type]:::Christian
 
-  subgraph T [All team]
-    T1[9V test and record evidence]
-    D1{Expected behavior}
-    F1[Diagnose and correct]
-    Z2[Decision operate Z with low load or document limitation]
-    V1[Video 10 min simulation prototype E Stop fault]
-  end
+  %% Implementación PLC y demo HMI
+  P1[Ladder IEC 61131-3 with comments]:::Christian -->
+  P2[Time control and counters]:::Christian -->
+  P3[HMI demo in CODESYS start stop pilots states]:::Lemus
 
-  %% ===== Flujo principal =====
-  A1 --> A2 --> L1 --> A4
-  A4 --> L2 --> L3 --> C1 --> C2 --> C3 --> L5
-  L5 --> L7 --> T1 --> D1
-  D1 -- Yes --> A9 --> A11 --> Z2 --> A12 --> A13 --> A14 --> C10 --> L11 --> V1 --> A16
-  D1 -- No --> F1 --> T1
+  %% Cableado y prueba 9V
+  V1[Checklist 9V draft and review]:::Lemus -->
+  V2[Run 9V test and record evidence]:::Todos -->
+  V3{Expected behavior?}
+  V3 -->|Yes| V4[Consolidate results and screenshots]:::Alejandra
+  V3 -->|No| F1[Diagnose and correct]:::Todos
+
+  %% Incidencia mecánica Z
+  F1 --> Z1[Issue: Z gear does not mesh but motor activates]:::Todos -->
+  Z2[Register issue in Wiki with short clip]:::Alejandra -->
+  Z3[Decision: operate Z with low load or document limitation]:::Todos
+
+  %% Documentación y video
+  W1[Implementation in Wiki: architecture and IO map]:::Christian -->
+  W2[Design in Wiki: electrical diagram and standards ISA-101 and IEC 61131-3]:::Lemus -->
+  W3[Test plan results and evidence]:::Alejandra -->
+  W4[One page operator guide]:::Alejandra -->
+  W5[Declaration of AI use and sources]:::Alejandra -->
+  VID[Video <= 10 min: sim plus prototype plus E-Stop plus fault]:::Todos -->
+  ENT[Submit links in Teams and zip package]:::Alejandra
+
+  %% Mark critical path steps
+  class VID,ENT Critico;
 
 
 ```
