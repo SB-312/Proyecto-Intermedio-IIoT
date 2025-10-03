@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<Single xml:space="preserve" Type="{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}" Method="IArchivable">
+  <Single Name="Name" Type="string">&lt;MachineProjectRoot&gt;</Single>
+  <Dictionary Type="System.Collections.Hashtable" Name="SubKeys" />
+  <Dictionary Type="System.Collections.Hashtable" Name="Values" />
+</Single>
