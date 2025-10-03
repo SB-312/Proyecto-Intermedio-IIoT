@@ -1,3 +1,7 @@
+# Contexto y Requisitos
+Este trabajo tiene como objetivo el continuar con la implementacion del proceso descrito en la primera parte de este proyecto, en este caso seria un brazo robot que transportaria cargas desde la bahia al almacen y viceversa. Para ello en este trabajo se hablara de como se conecto el prototipo de manera que es manejable por medio de botones si esta siendo alimentado por nueve voltios y ademas de una simulacion hecha en codesys con el uso de logica ladder la cual representa de manera fiel el funcionamiento mecanico del prototipo en la vida real.
+En este caso se debe utilizar un PLC simulado dentro de codesys que utilice una logica ladder la cual tiene que hacer uso de contadores y timers para lograr representar el funcionamiento del prototipo el proceso sera llevado a cabo por medio de interruptores que son accionadas por medio de la HMI, el proceso debe tener luces piloto que muestren al operador como van cambiando los estados del proceso y tambien si hay alguna anomalia durante el mismo. Este HMI debe mostrar animaciones de como se desarrollaria el proceso con el prototipo real mientras el operador manipula los interruptores para ponerlo en funcionamiento o detenerlo si asi lo desea.
+
 ## 1) Diagrama de actividades
 
 ```mermaid
