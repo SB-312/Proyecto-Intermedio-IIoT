@@ -235,6 +235,7 @@ flowchart TD
 | **Back_x**      | BOOL             | Entrada                                  | Orden de retroceso en eje X. |
 | **Back_y**      | BOOL             | Entrada                                  | Orden de retroceso en eje Y. |
 | **Back_z**      | BOOL             | Entrada                                  | Orden de retroceso en eje Z. |
+| **Stop**        | BOOL             | Entrada                                  | Botón de paro para detener el proceso. |
 | **Limit_ax**    | BOOL             | Entrada (Sensor)                         | Sensor de límite superior en eje X. |
 | **Limit_bx**    | BOOL             | Entrada (Sensor)                         | Sensor de límite inferior en eje X. |
 | **Limit_ay**    | BOOL             | Entrada (Sensor)                         | Sensor de límite superior en eje Y. |
@@ -266,6 +267,42 @@ flowchart TD
 | **Time_az**     | TIME             | Interno (Tiempo)                         | Tiempo configurado para avance eje Z. |
 | **Time_bz**     | TIME             | Interno (Tiempo)                         | Tiempo configurado para retroceso eje Z. |
 
+# Logica ladder
+
+## Funcion de encendido
+
+<img width="404" height="66" alt="image" src="https://github.com/user-attachments/assets/b8270efd-1ef2-42d8-b7b5-feadf3d7a07d" />
+
+## Funciones de avance
+
+<img width="614" height="109" alt="image" src="https://github.com/user-attachments/assets/b62f2316-fb8c-4e2d-bf00-5fbf40972659" />
+
+## Funciones de retroceso
+
+<img width="606" height="111" alt="image" src="https://github.com/user-attachments/assets/4b5cf187-d86f-4fab-800c-d67594f1925f" />
+
+##  Limites
+### Limites inferiores
+<img width="466" height="114" alt="image" src="https://github.com/user-attachments/assets/2c8d084a-c69f-4129-86bc-1df3718d201d" />
+
+### Limites superiores
+<img width="464" height="114" alt="image" src="https://github.com/user-attachments/assets/fbff50f4-9970-41b3-b24b-5f0291179889" />
+
+## Calculo de posición
+
+<img width="265" height="110" alt="image" src="https://github.com/user-attachments/assets/9cf8ec72-557a-4941-bd3e-f2aba76381d2" />
+
+## Funcion de error
+
+<img width="461" height="155" alt="image" src="https://github.com/user-attachments/assets/f7ab2f34-a4b9-4834-8535-025420beb0ae" />
+
+## Funcion de parada
+
+<img width="399" height="69" alt="image" src="https://github.com/user-attachments/assets/68635033-1bc2-4e4c-bcea-7755cac9523e" />
+
+## Funciones de indicadores visuales
+
+<img width="485" height="231" alt="image" src="https://github.com/user-attachments/assets/ff8d78d9-9dd9-4bd5-b1ee-7fbfacb8a0da" />
 
 # Mapeo de salidas y entradas
 
@@ -280,6 +317,7 @@ flowchart TD
 | Back_y        | %IX0.4        | GPIO 25       | Botón retroceso eje Y |
 | Advance_z     | %IX0.5        | GPIO 33       | Botón avance eje Z |
 | Back_z        | %IX0.6        | GPIO 32       | Botón retroceso eje Z |
+| Stop          | %IX0.7        | GPIO 12       | Botón de paro para detener el proceso |
 
 ## Salidas digitales
 
