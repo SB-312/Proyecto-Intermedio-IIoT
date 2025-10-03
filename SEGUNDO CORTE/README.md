@@ -71,7 +71,7 @@
 | Advance_z     | %IX0.5        | GPIO 33       | Botón avance eje Z |
 | Back_z        | %IX0.6        | GPIO 32       | Botón retroceso eje Z |
 
-## Salidas digitales (ESP32 → OpenPLC)
+## Salidas digitales
 
 | **Variable**  | **Dirección** | **Pin ESP32** | **Descripción** |
 |---------------|---------------|----------------|-----------------|
