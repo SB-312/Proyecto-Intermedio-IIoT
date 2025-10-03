@@ -15,8 +15,8 @@ subgraph L3["Shelf level 3 — Z (top)"]
   direction LR
   subgraph ZREV["REV rail (Z)"]
     direction TB
-    Z_REV_NO["Z_REV NO"]
     Z_REV_COM["Z_REV COM"]
+    Z_REV_NO["Z_REV NO"]
     Z_REV_NC["Z_REV NC"]
   end
   subgraph ZFWD["FWD rail (Z)"]
