@@ -295,6 +295,7 @@ Despues de que la salida del AND sea positva le da flanco al timer quien aparte 
 
 <img width="265" height="110" alt="image" src="https://github.com/user-attachments/assets/9cf8ec72-557a-4941-bd3e-f2aba76381d2" />
 
+En el ejmplo se esta claculando la posicion a lo largo del eje z de la animacion con el modulo resta, en este caso siempre calcula valores entre -1 y 177 ya que el eje mide 176, pra eso utiliza las variables "CountUp_z" y "CountD_z" y las resta en ese orden para darle valor a la variable de control "Movement_Z" la cual controla el movimiento de la animacion en el eje z.
 
 ##  Limites
 ### Limites inferiores
