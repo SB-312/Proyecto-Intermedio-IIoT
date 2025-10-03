@@ -1,3 +1,193 @@
+¡Sí! Te los dejo en **UML estándar** usando **PlantUML** (actividad con decisiones, bucles y *swimlanes*).
+Pega estos bloques tal cual en cualquier visor/plug-in de PlantUML (o exporta a PNG desde tu IDE).
+
+> Si necesitas verlos **nativo en GitHub**, te dejo luego una versión “UML-like” en Mermaid, pero lo correcto para UML es PlantUML.
+
+---
+
+# 1) Actividad UML — Operación manual a 9 V (X–Y–Z, pushbuttons SPDT)
+
+```plantuml
+@startuml
+title Operación manual 9V — Actividad UML (X, Y, Z)
+
+start
+:Encender fuente 9V;
+
+repeat
+:Seleccionar nivel (X / Y / Z);
+
+if (¿Nivel X?) then (Sí)
+  :Panel X;
+  if (Botón en X) then (FWD)
+    :COM_FWD_X = VCC;
+    :COM_REV_X = GND;
+    :Motor X gira sentido 1;
+  elseif (REV)
+    :COM_FWD_X = GND;
+    :COM_REV_X = VCC;
+    :Motor X gira sentido 2;
+  elseif (Ninguno)
+    :COM_FWD_X = GND;
+    :COM_REV_X = GND;
+    :Motor X en reposo;
+  else (Ambos)
+    :COM_FWD_X = VCC;
+    :COM_REV_X = VCC;
+    note right
+      Advertencia: evitar FWD+REV simultáneo.
+      VCC/VCC no genera par y puede ser riesgoso
+      si existe retorno/tierra expuesta.
+    end note
+  endif
+
+elseif (¿Nivel Y?) then (Sí)
+  :Panel Y;
+  if (Botón en Y) then (FWD)
+    :COM_FWD_Y = VCC;
+    :COM_REV_Y = GND;
+    :Motor Y gira sentido 1;
+  elseif (REV)
+    :COM_FWD_Y = GND;
+    :COM_REV_Y = VCC;
+    :Motor Y gira sentido 2;
+  elseif (Ninguno)
+    :COM_FWD_Y = GND;
+    :COM_REV_Y = GND;
+    :Motor Y en reposo;
+  else (Ambos)
+    :COM_FWD_Y = VCC;
+    :COM_REV_Y = VCC;
+  endif
+
+else (¿Nivel Z?)
+  :Panel Z;
+  if (Botón en Z) then (FWD)
+    :COM_FWD_Z = VCC;
+    :COM_REV_Z = GND;
+    :Motor Z gira sentido 1;
+  elseif (REV)
+    :COM_FWD_Z = GND;
+    :COM_REV_Z = VCC;
+    :Motor Z gira sentido 2;
+  elseif (Ninguno)
+    :COM_FWD_Z = GND;
+    :COM_REV_Z = GND;
+    :Motor Z en reposo;
+  else (Ambos)
+    :COM_FWD_Z = VCC;
+    :COM_REV_Z = VCC;
+  endif
+endif
+
+repeat while (¿Mover otro nivel?) is (Sí)
+:Apagar fuente 9V y asegurar conexiones;
+stop
+@enduml
+```
+
+---
+
+# 2) Actividad UML — Workflow del proyecto con responsables (*swimlanes*)
+
+```plantuml
+@startuml
+title Proyecto PI#2 — Actividad UML con swimlanes (responsables)
+
+start
+
+partition "Alejandra" {
+  :Repositorio Git y Wiki habilitados;
+  :Estructura de carpetas estándar (src/hmi/docs/proto/video);
+}
+
+partition "Lemus" {
+  :Kanban con roles y contribuciones;
+}
+
+partition "Alejandra" {
+  :Tablero visible con issues asignados;
+}
+
+partition "Lemus" {
+  :HMI básico con animación para verificación;
+  :Esquema físico pushbuttons SPDT (X, Y, Z);
+}
+
+partition "Christian" {
+  :Lista de variables (tags) con atributo y tipo;
+  :Ladder IEC 61131-3 con comentarios por red;
+  :Control por tiempo y contadores (simulan tiempo pulsado);
+}
+
+partition "Lemus" {
+  :Demostración HMI en CODESYS (start/stop, pilotos, estados);
+}
+
+partition "Lemus" {
+  :Checklist 9V (borrador con IA y revisión humana);
+}
+
+partition "Todos" {
+  :Prueba 9V y grabación de evidencia;
+}
+
+if (¿Comportamiento esperado?) then (Sí)
+  partition "Alejandra" {
+    :Consolidar resultados y capturas;
+  }
+else (No)
+  partition "Todos" {
+    :Diagnóstico y corrección;
+  }
+endif
+
+partition "Todos" {
+  :Incidencia mecánica: engranaje Z no engrana (motor sí activa);
+}
+
+partition "Alejandra" {
+  :Registrar incidencia en Wiki + clip corto;
+}
+
+partition "Todos" {
+  :Decisión: operar Z con baja carga o documentar limitación;
+}
+
+partition "Christian" {
+  :Implementación en Wiki: arquitectura CODESYS y mapeo I/O;
+}
+
+partition "Lemus" {
+  :Diseño en Wiki: diagrama eléctrico + estándares ISA-101 e IEC 61131-3;
+}
+
+partition "Alejandra" {
+  :Plan de pruebas, resultados y evidencias (sim y prototipo);
+  :Guía de usuario 1 página;
+  :Declaración de uso de IA y fuentes;
+}
+
+partition "Todos" {
+  :Video ≤ 10 min (simulación + prototipo + E-Stop + anomalía);
+}
+
+partition "Alejandra" {
+  :Entrega en Teams: links del repo y video reproducible + .zip;
+}
+
+stop
+@enduml
+```
+
+---
+
+## ¿Quieres también la versión “UML-like” en **Mermaid** para render nativo en GitHub?
+
+La preparo con `stateDiagram-v2` (inicial/final, decisiones y bucles) siguiendo la misma semántica.
+
+
+
 ## 1) Diagrama de actividades
 
 ```mermaid
