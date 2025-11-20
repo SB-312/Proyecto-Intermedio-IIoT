@@ -51,7 +51,7 @@ Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código 
 ## 2. Solución Propuesta
 
 ### 2.1 Restricciones de Diseño Identificadas
-Durante la etapa de pruebas identificamos dos limitaciones críticas del módulo High Bay Storage que afectaban su rendimiento dentro de la Fábrica Inteligente del curso:
+Durante la etapa de pruebas identificamos limitaciones críticas del módulo High Bay Storage que afectaban su rendimiento dentro de la Fábrica Inteligente del curso:
 
 - Las fichas originales del kit son pequeñas en comparación a lo que necesitabamos, lo que dificultaba que el brazo de la máquina las tomara de manera estable y sin caídas. Esta restricción provocaba fallas en la transferencia entre módulos, retrasos y pérdidas de ciclo.
 
