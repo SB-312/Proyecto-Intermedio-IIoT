@@ -23,7 +23,16 @@ Durante el desarrollo del proyecto se identificaron varias necesidades que justi
 Por otro lado, la estructura del repositorio permitió documentar la evolución del proyecto y mantener control sobre cada fase. El Tercer Corte consolida toda la solución final, integrando el PLC emulado, la HMI, el sistema embebido para comunicación, el gemelo digital y las pruebas de interacción con otros equipos. En conjunto, el proyecto demuestra una solución integral, escalable y alineada con los requerimientos establecidos para la implementación de un Gemelo Digital funcional y su participación en un modelo de Fábrica Inteligente.
 
 ### 1.4 Estructura de la Documentación
+La documentación se organiza para reflejar el proceso completo del proyecto:
 
+-> En la Sección 1 se presenta el contexto general, la motivación del trabajo, su importancia y cómo está estructurado el documento.
+-> La Sección 2 describe la solución propuesta: restricciones identificadas, arquitectura del sistema y las decisiones de diseño tanto de hardware como de software.
+-> En la Sección 3 se detalla el desarrollo modular completo.
+-> La Sección 4 explica la configuración experimental, los resultados obtenidos y el análisis comparativo entre el gemelo digital y el prototipo físico.
+-> La Sección 5 presenta la autoevaluación del protocolo de pruebas y las mejoras que surgieron a partir de las validaciones.
+-> La Sección 6 incluye conclusiones, retos enfrentados, recomendaciones para trabajo futuro y las referencias consultadas.
+
+Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código fuente documentado, esquemáticos, diseños físicos y material complementario, junto con el video demostrativo que resume el funcionamiento de la solución.
 
 ### 1.5 Roles y Contribuciones
 
