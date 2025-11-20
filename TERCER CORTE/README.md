@@ -22,12 +22,13 @@ Christian Daniel Morales Jimenez, Maria Alejandra Cabrera Arauz, Juan Diego Lemu
 
 ## 1) Roles y Contribuciones
 
-| Categoría             | Criterio                                                                 | Responsable |
-|-----------------------|--------------------------------------------------------------------------|-------------|
-| Gestión de proyecto   | Repositorio Git creado                                                   | Maria Alejandra Cabrera Arauz   |
-| Gestión de proyecto   | Estructura de carpetas estandarizada (src/ hmi/ docs/ proto/ video/)     | Maria Alejandra Cabrera Arauz   |
-| Gestión de proyecto   | Tablero con Roles y contribuciones por integrante                        | Maria Alejandra Cabrera Arauz   |
-| Gestión de proyecto   | Visualización del tablero, roles y contribuciones                        | Maria Alejandra Cabrera Arauz   |
-| Wiki técnica          | Resumen y Objetivos                                                      | Maria Alejandra Cabrera Arauz   |
-| Wiki técnica          | Declaración del uso de IA y fuentes bibliográficas                       | Todos  |
-| Video (≤10 min)       | Demostración y explicación clara (sim + prototipo + E-Stop + anomalía)   | Todos  |
+| Categoría             | Criterio                                                                     | Responsable |
+|-----------------------|------------------------------------------------------------------------------|-------------|
+| Gestión de proyecto   | Repositorio Git creado                                                       | Maria Alejandra Cabrera Arauz   |
+| Gestión de proyecto   | Estructura de carpetas estandarizada (src/ hmi/ docs/ proto/ video/)         | Maria Alejandra Cabrera Arauz   |
+| Gestión de proyecto   | Tablero con Roles y contribuciones por integrante                            | Maria Alejandra Cabrera Arauz   |
+| Gestión de proyecto   | Visualización del tablero, roles y contribuciones                            | Maria Alejandra Cabrera Arauz   |
+|   | Diseño y desarrollo de soluciones complementarias para resolver limitaciones | Maria Alejandra Cabrera Arauz   |
+| Wiki técnica          | Resumen y Objetivos                                                          | Maria Alejandra Cabrera Arauz   |
+| Wiki técnica          | Declaración del uso de IA y fuentes bibliográficas                           | Todos  |
+| Video (≤10 min)       | Demostración y explicación clara (sim + prototipo + E-Stop + anomalía)       | Todos  |
