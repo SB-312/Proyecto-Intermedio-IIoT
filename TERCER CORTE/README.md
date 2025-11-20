@@ -13,6 +13,7 @@ Finalmente, en el Tercer Corte, se integró la solución completa. Esto incluyó
 Como resultado, se obtuvo un sistema capaz de operar el módulo High Bay Storage de forma completamente automatizada, visualizar su estado operativo en tiempo real y participar dentro del modelo de una Fábrica Inteligente, correspondiente al curso de IIoT del semestre 2025-2. En este entorno colaborativo, nuestro módulo cumple el rol de punto inicial del flujo productivo: selecciona el producto y posteriormente lo pone en la basa para entrega al siguiente equipo que se encarga del transporte hacia la máquina de clasificación.
 
 ### 1.2 Motivación
+La industria está migrando hacia modelos de automatización más flexibles, conectados y capaces de operar con información en tiempo real, es por eso que los gemelos digitales y el IoT toman un papel fundamentel, pues permiten anticipar fallas, optimizar recursos y validar decisiones antes de implementar cambios en el entorno físico. Durante los tres cortes trabajamos con la plataforma Fischertechnik ya que facilita la experimentación con procesos industriales reales a pequeña escala. Además, el enfoque del curso, incrementando los resultados por cortes motivó a estructurar la solución desde cero, con entregables funcionales en cada etapa y un producto final completamente integrado.
 
 ### 1.3 Justificación
 
