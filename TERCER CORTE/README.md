@@ -63,7 +63,6 @@ Estas restricciones motivaron el diseño de soluciones físicas y electrónicas 
 
 #### 2.2.1 Arquitectura de Hardware
 Diagrama de bloques del hardware:
-(Diagrama)
 
 Para resolver los desafíos anteriores se incorporaron dos desarrollos propios dentro de la arquitectura de hardware del sistema:
 
@@ -77,7 +76,7 @@ Para eliminar dependencia del botón físico y evitar movimientos innecesarios e
 
 #### 2.2.2 Arquitectura de Software
 Diagrama de bloques del software: 
-(Diagrama)
+
 ---
 
 ## 3. Desarrollo Teórico y Modular
