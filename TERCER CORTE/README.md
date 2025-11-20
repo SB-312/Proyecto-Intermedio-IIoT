@@ -4,6 +4,13 @@ Christian Daniel Morales Jimenez, Maria Alejandra Cabrera Arauz, Juan Diego Lemu
 ## 1. Resumen General, Motivación y Estructura del Documento
 
 ### 1.1 Resumen General
+El presente documento describe el diseño, desarrollo e integración del Gemelo Digital del módulo High Bay Storage de Fischertechnik, realizado como proyecto final del curso Internet Industrial de las Cosas (IIoT). El trabajo se desarrolló de manera progresiva a lo largo de los tres cortes del semestre, consolidando al final una solución integral que combina automatización física, visualización digital, conectividad industrial y modelación de participación dentro de una fábrica inteligente.
+
+Durante el Primer Corte, se analizó el proceso industrial del sistema de almacenamiento automático, identificando la lógica de operación, los eventos críticos, los flujos de trabajo y los requisitos de control necesarios. En el Segundo Corte, se implementó la base del Gemelo Digital: la automatización del módulo mediante actuadores, la integración de sensores, la estructura de comunicación con el PLC emulado y el desarrollo inicial de la interfaz digital que representó el comportamiento del proceso.
+
+Finalmente, en el Tercer Corte, se integró la solución completa. Esto incluyó la incorporación de simulaciones adicionales para resolver limitaciones físicas del kit, el diseño y fabricación de elementos externos requeridos para asegurar la compatibilidad mecánica del proceso, la conexión en tiempo real entre el modelo físico y digital mediante protocolos industriales, y la validación final del sistema.
+
+Como resultado, se obtuvo un sistema capaz de operar el módulo High Bay Storage de forma completamente automatizada, visualizar su estado operativo en tiempo real y participar dentro del modelo de una Fábrica Inteligente, correspondiente al curso de IIoT del semestre 2025-2. En este entorno colaborativo, nuestro módulo cumple el rol de punto inicial del flujo productivo: selecciona el producto y posteriormente lo pone en la basa para entrega al siguiente equipo que se encarga del transporte hacia la máquina de clasificación.
 
 ### 1.2 Motivación
 
