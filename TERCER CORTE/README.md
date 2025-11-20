@@ -18,8 +18,12 @@ La industria está migrando hacia modelos de automatización más flexibles, con
 La motivación principal fue lograr una solución completa que incorporara no solo la automatización, sino también elementos de IIoT. Es importante resaltar que varios comportamientos del módulo no pueden simularse o resolverse únicamente con las fichas estándar por lo que se diseño soportes, simulaciones y adaptaciones externas, motivando un enfoque ingenieril más creativo y completo. Además, el enfoque del curso, incrementando los resultados por cortes motivó a estructurar la solución desde cero, con entregables funcionales en cada etapa y un producto final completamente integrado.
 
 ### 1.3 Justificación
+Durante el desarrollo del proyecto se identificaron varias necesidades que justificaron el enfoque adoptado. Primero, integrar un modelo físico con un modelo digital permitió comprender y aplicar de manera práctica los principios de IIoT, incluyendo comunicación industrial, monitoreo distribuido y conectividad. Segundo, la naturaleza modular del High Bay Storage exigió resolver limitaciones técnicas no contempladas en los kits originales, tales como "productos" compatibles con el sistema, la simulación del comportamiento de sensores externos y la adaptación física del entorno para lograr una detección confiable. Estas necesidades impulsaron un proceso de diseño ingenieril real, en el que fue necesario proponer, validar y ajustar soluciones tanto en hardware como en software.
+
+Por otro lado, la estructura del repositorio permitió documentar la evolución del proyecto y mantener control sobre cada fase. El Tercer Corte consolida toda la solución final, integrando el PLC emulado, la HMI, el sistema embebido para comunicación, el gemelo digital y las pruebas de interacción con otros equipos. En conjunto, el proyecto demuestra una solución integral, escalable y alineada con los requerimientos establecidos para la implementación de un Gemelo Digital funcional y su participación en un modelo de Fábrica Inteligente.
 
 ### 1.4 Estructura de la Documentación
+
 
 ### 1.5 Roles y Contribuciones
 
