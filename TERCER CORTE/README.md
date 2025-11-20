@@ -90,8 +90,25 @@ Diagrama de bloques del software:
 - Diagrama de componentes:
 
 ### 3.3 Desarrollo por Módulos de Software
+Para integrar los 6 sensores de la pared se implementó un módulo de software que lee el estado de cada sensor (ocupado/vacío), actualiza en tiempo real la visualización del almacén en la HMI, evita operaciones inválidas cuando un espacio está vacío y permite simular movimientos antes de ejecutarlos físicamente. Este módulo se probó inicialmente usando valores simulados, lo que permitió verificar la lógica antes de soldar o montar hardware.
 
 ### 3.4 Esquemáticos de Hardware Diseñados
+A continuación compartimos las diferentes evidencias de la contrucción:
+
+- Prototipos de canastos de icopor:
+  ![Prototipos de canastos de icopor](./EVIDENCIAS/nombre_de_la_imagen.jpg)
+
+- El sistema de sensores montado detrás del almacén:
+  ![El sistema de sensores montado detrás del almacén](./EVIDENCIAS/nombre_de_la_imagen.jpg)
+
+- La estructura de cartón paja y madera que sostiene los sensores:
+  ![La estructura de cartón paja y madera que sostiene los sensores](./EVIDENCIAS/nombre_de_la_imagen.jpg)
+
+- Sensores posicionados en la maqueta:
+  ![Sensores posicionados en la maqueta](./EVIDENCIAS/nombre_de_la_imagen.jpg)
+
+- Cabledo en la maqueta de los sensores:
+  ![Cabledo en la maqueta de los sensores](./EVIDENCIAS/nombre_de_la_imagen.jpg)
 
 ### 3.5 Estándares de Ingeniería Aplicados
 Normativas y buenas prácticas utilizadas:
