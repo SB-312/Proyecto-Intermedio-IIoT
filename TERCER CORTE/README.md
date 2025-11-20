@@ -63,10 +63,21 @@ Estas restricciones motivaron el diseño de soluciones físicas y electrónicas 
 
 #### 2.2.1 Arquitectura de Hardware
 Diagrama de bloques del hardware:
+(Diagrama)
+
+Para resolver los desafíos anteriores se incorporaron dos desarrollos propios dentro de la arquitectura de hardware del sistema:
+
+A) Canastos de transporte en icopor:
+
+Se diseñaron pequeños contenedores en icopor que envuelven temporalmente la ficha. De esta forma, aumentamos el volumen y la estabilidad de la ficha durante su transporte, garantizamos que la ficha llegue alineada a la zona donde la siguiente máquina la toma, evitamos atascos y movimientos bruscos durante el desplazamiento vertical y además, el diseño garantiza que la segunda máquina solo tome la ficha, dejando el canasto atrás sin alterar su proceso.
+
+B) Sistema de monitoreo de inventario con 6 sensores de proximidad:
+
+Para eliminar dependencia del botón físico y evitar movimientos innecesarios en posiciones vacías, se diseñó un sistema externo montado detrás del almacén en cartón paja reforzado con soportes de madera para garantizar rigidez, se instalaron 6 sensores de proximidad, uno por cada posición del almacén y se aseguró cada sensor (que posee líneas GND, VCC y OUT) con soldadura. Este sistema actúa como una “pared inteligente” detrás del almacén que informa constantemente al PLC si cada posición está ocupada o vacía, optimizando el tiempo y evitando ciclos innecesarios.
 
 #### 2.2.2 Arquitectura de Software
 Diagrama de bloques del software: 
-
+(Diagrama)
 ---
 
 ## 3. Desarrollo Teórico y Modular
