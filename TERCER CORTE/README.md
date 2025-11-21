@@ -140,6 +140,9 @@ A continuación compartimos las diferentes evidencias de la contrucción:
 - Cabledo en la maqueta de los sensores:
   ![Cabledo en la maqueta de los sensores](./EVIDENCIAS/Cables.jpg)
 
+- PLC Cableada y en funcionamiento:
+  ![Cabledo en la maqueta de los sensores](./EVIDENCIAS/Cables.jpg)
+
 ### 3.5 Estándares de Ingeniería Aplicados
 Normativas y buenas prácticas utilizadas:
 
