@@ -117,16 +117,17 @@ Para eliminar dependencia del botón físico y evitar movimientos innecesarios e
 - Diagrama electrico:
 ```mermaid
 flowchart TB
+
   %% Fuentes
   subgraph PSU["Fuentes"]
-    V_ESP["VCC_ESP = 3.3V"]
-    V_RELAY["VCC_RELAY = 5V (regulado)"]
-    V_MOTOR["VCC_MOTOR = 9V"]
-    GND["GND (0V)"]
+    V_ESP["VCC_ESP 3.3V"]
+    V_RELAY["VCC_RELAY 5V"]
+    V_MOTOR["VCC_MOTOR 9V"]
+    GND["GND 0V"]
   end
 
-  %% ESP32 (control)
-  subgraph ESP["ESP32 (3.3V)"]
+  %% ESP32
+  subgraph ESP["ESP32 Control"]
     direction TB
     GPIO_XF["GPIO X_FWD"]
     GPIO_XR["GPIO X_REV"]
@@ -136,61 +137,70 @@ flowchart TB
     GPIO_ZR["GPIO Z_REV"]
   end
 
-  %% Drivers de bobina (NPN o ULN)
-  subgraph DRV["Drivers de bobina (NPN o ULN)"]
+  %% Drivers
+  subgraph DRV["Drivers (NPN / ULN2803)"]
     direction TB
-    DRV_XF["Driver X_FWD (Rb ≈1kΩ)"]
-    DRV_XR["Driver X_REV (Rb ≈1kΩ)"]
-    DRV_YF["Driver Y_FWD (Rb ≈1kΩ)"]
-    DRV_YR["Driver Y_REV (Rb ≈1kΩ)"]
-    DRV_ZF["Driver Z_FWD (Rb ≈1kΩ)"]
-    DRV_ZR["Driver Z_REV (Rb ≈1kΩ)"]
+    DRV_XF["Driver X_FWD"]
+    DRV_XR["Driver X_REV"]
+    DRV_YF["Driver Y_FWD"]
+    DRV_YR["Driver Y_REV"]
+    DRV_ZF["Driver Z_FWD"]
+    DRV_ZR["Driver Z_REV"]
   end
 
-  %% Bobinas de relé
-  subgraph COILS["Bobinas de relé (alimentadas 5V)"]
+  %% Bobinas
+  subgraph COILS["Bobinas de Relé"]
     direction TB
-    COIL_X["Coil RELAY X"]
-    COIL_Y["Coil RELAY Y"]
-    COIL_Z["Coil RELAY Z"]
+    COIL_X["Bobina X"]
+    COIL_Y["Bobina Y"]
+    COIL_Z["Bobina Z"]
   end
 
-  %% Contactos de relé (conmutan motores)
-  subgraph CONTACTS["Contactos relé (COM / NO / NC)"]
-    direction TB
-    CT_XF["Contact RELAY X FWD"]
-    CT_XR["Contact RELAY X REV"]
-    CT_YF["Contact RELAY Y FWD"]
-    CT_YR["Contact RELAY Y REV"]
-    CT_ZF["Contact RELAY Z FWD"]
-    CT_ZR["Contact RELAY Z REV"]
+  %% Diodos Flyback
+  DIODE_X["Diodo Flyback X"]
+  DIODE_Y["Diodo Flyback Y"]
+  DIODE_Z["Diodo Flyback Z"]
+
+  %% Contactos
+  subgraph CONTACTS["Contactos (COM/NO/NC)"]
+    CT_XF["Contacto X_FWD"]
+    CT_XR["Contacto X_REV"]
+    CT_YF["Contacto Y_FWD"]
+    CT_YR["Contacto Y_REV"]
+    CT_ZF["Contacto Z_FWD"]
+    CT_ZR["Contacto Z_REV"]
   end
 
-  %% Motores y snubbers
-  subgraph MOTORS["Motores DC y supresión"]
-    X_MOT["Motor X (A/B)"]
-    Y_MOT["Motor Y (A/B)"]
-    Z_MOT["Motor Z (A/B)"]
-    SNUB_X["SNUB_X (RC)"]
-    SNUB_Y["SNUB_Y (RC)"]
-    SNUB_Z["SNUB_Z (RC)"]
+  %% Motores
+  subgraph MOTORS["Motores DC"]
+    X_MOT["Motor X"]
+    Y_MOT["Motor Y"]
+    Z_MOT["Motor Z"]
   end
+
+  %% Snubbers
+  SNUB_X["Snubber X"]
+  SNUB_Y["Snubber Y"]
+  SNUB_Z["Snubber Z"]
 
   %% Sensores
-  subgraph SENS["Sensores de presencia"]
-    S_X["Sensor Nivel X - Vsup / OUT"]
-    S_Y["Sensor Nivel Y - Vsup / OUT"]
-    S_Z["Sensor Nivel Z - Vsup / OUT"]
+  subgraph SENS["Sensores"]
+    S_X["Sensor Nivel X"]
+    S_Y["Sensor Nivel Y"]
+    S_Z["Sensor Nivel Z"]
   end
 
-  %% Conexiones de alimentación y masa
+
+  %% Conexiones de alimentación
   V_ESP --> ESP
   V_RELAY --> COIL_X
   V_RELAY --> COIL_Y
   V_RELAY --> COIL_Z
+
   V_MOTOR --> X_MOT
   V_MOTOR --> Y_MOT
   V_MOTOR --> Z_MOT
+
   GND --> ESP
   GND --> COIL_X
   GND --> COIL_Y
@@ -202,20 +212,22 @@ flowchart TB
   GND --> S_Y
   GND --> S_Z
 
-  %% Control: ESP -> drivers -> coils
+  %% Control → Drivers → Coils
   GPIO_XF --> DRV_XF --> COIL_X
   GPIO_XR --> DRV_XR --> COIL_X
+
   GPIO_YF --> DRV_YF --> COIL_Y
   GPIO_YR --> DRV_YR --> COIL_Y
+
   GPIO_ZF --> DRV_ZF --> COIL_Z
   GPIO_ZR --> DRV_ZR --> COIL_Z
 
-  %% Diodos flyback (representados como notas conectadas a bobinas)
-  COIL_X ---|diodo flyback (1N400x)| GND
-  COIL_Y ---|diodo flyback (1N400x)| GND
-  COIL_Z ---|diodo flyback (1N400x)| GND
+  %% Diodos Flyback
+  COIL_X --> DIODE_X --> GND
+  COIL_Y --> DIODE_Y --> GND
+  COIL_Z --> DIODE_Z --> GND
 
-  %% Contactos de relés conectan motores
+  %% Contactos → Motores
   CT_XF --> X_MOT
   CT_XR --> X_MOT
   CT_YF --> Y_MOT
@@ -223,21 +235,15 @@ flowchart TB
   CT_ZF --> Z_MOT
   CT_ZR --> Z_MOT
 
-  %% Snubbers en motores
-  X_MOT --- SNUB_X --- GND
-  Y_MOT --- SNUB_Y --- GND
-  Z_MOT --- SNUB_Z --- GND
+  %% Snubbers motores
+  X_MOT --> SNUB_X --> GND
+  Y_MOT --> SNUB_Y --> GND
+  Z_MOT --> SNUB_Z --> GND
 
-  %% Sensores a ESP (salidas condicionadas a 3.3V)
-  S_X -->|OUT (a nivel 3.3V o vía level-shifter)| ESP
-  S_Y -->|OUT (a nivel 3.3V o vía level-shifter)| ESP
-  S_Z -->|OUT (a nivel 3.3V or vía level-shifter)| ESP
-
-  %% Agrupaciones visuales
-  classDef power fill:#1a7f37,stroke:#0b3f1e,color:#fff;
-  classDef control fill:#1f6feb,stroke:#0b3f8a,color:#fff;
-  class V_ESP,V_RELAY,V_MOTOR power;
-  class ESP control;
+  %% Sensores hacia ESP
+  S_X --> ESP
+  S_Y --> ESP
+  S_Z --> ESP
 ```
 
 ### 3.3 Desarrollo por Módulos de Software
