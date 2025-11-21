@@ -126,7 +126,7 @@ Para integrar los 6 sensores de la pared se implementó un módulo de software q
 A continuación compartimos las diferentes evidencias de la contrucción:
 
 - Prototipos de canastos de icopor:
-  ![Prototipos de canastos de icopor](./EVIDENCIAS/nombre_de_la_imagen.jpg)
+  ![Prototipos de canastos de icopor](./EVIDENCIAS/Canasta.jpg)
 
 - El sistema de sensores montado detrás del almacén:
   ![El sistema de sensores montado detrás del almacén](./EVIDENCIAS/Maqueta_con_Maquina.jpg)
