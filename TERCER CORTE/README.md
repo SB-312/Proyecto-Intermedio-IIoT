@@ -129,7 +129,7 @@ A continuación compartimos las diferentes evidencias de la contrucción:
   ![Prototipos de canastos de icopor](./EVIDENCIAS/nombre_de_la_imagen.jpg)
 
 - El sistema de sensores montado detrás del almacén:
-  ![El sistema de sensores montado detrás del almacén](./EVIDENCIAS/nombre_de_la_imagen.jpg)
+  ![El sistema de sensores montado detrás del almacén](./EVIDENCIAS/Maqueta_con_Maquina.jpg)
 
 - La estructura de cartón paja y madera que sostiene los sensores:
   ![La estructura de cartón paja y madera que sostiene los sensores](./EVIDENCIAS/nombre_de_la_imagen.jpg)
