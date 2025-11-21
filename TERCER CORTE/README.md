@@ -40,12 +40,12 @@ Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código 
 |------------------------------|--------------------------------------------------------------------------------------------------------|-------------|
 | **Gestión de proyecto**      |                                                                                                        | |
 | Gestión de proyecto          | Repositorio Git creado                                                                                 | Maria Alejandra Cabrera Arauz |
-| Gestión de proyecto          | Estructura de carpetas estandarizada (src/, hmi/, docs/, proto/, video/, evidencias/)                  | Maria Alejandra Cabrera Arauz |
+| Gestión de proyecto          | Estructura de carpetas estandarizada                                                                   | Maria Alejandra Cabrera Arauz |
 | Gestión de proyecto          | Tablero con roles y contribuciones por integrante                                                      | Maria Alejandra Cabrera Arauz |
 | Gestión de proyecto          | Actualización continua de issues y commits                                                             | Todos |
 | **Diseño Ingenieril**        |                                                                                                        | |
 | Diseño Ingenieril            | Identificación completa de restricciones técnicas, económicas y operativas                             |             |
-| Diseño Ingenieril            | Diseño y desarrollo de soluciones complementarias para resolver limitaciones externas del módulo       | Todos |
+| Diseño Ingenieril            | Diseño y desarrollo de soluciones para resolver limitaciones externas del módulo                       | Todos |
 | Diseño Ingenieril            | Diseño del sistema de detección con 6 sensores de proximidad, soportes y cableado                      | Maria Alejandra Cabrera Arauz |
 | Diseño Ingenieril            | Modelado teórico del flujo de almacenamiento y transferencia entre módulos                             |             |
 | Diseño Ingenieril            | Diagramas de bloques de arquitectura (hardware y software)                                             |             |
