@@ -1,0 +1,303 @@
+﻿// ModbusTwinMap.cs (Unity <-> Modbus) � compact map 0..32 + center IR X/Y
+using System;
+using System.Net;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using FluentModbus;
+using UnityEngine;
+
+[DefaultExecutionOrder(-90)]
+public class ModbusTwinMap : MonoBehaviour
+{
+    [Header("Connection")]
+    public string host = "127.0.0.1";
+    public int port = 502;
+    [Range(1, 247)] public byte unitId = 1;
+    [Range(1, 100)] public int pollRateHz = 20;
+
+    // ---------------------------------------------------------
+    //  COILS: 0..32  (match this in CODESYS "Bobinas")
+    // ---------------------------------------------------------
+    [Header("Command coils (PLC <-> Unity)")]
+    public ushort coilXp = 0;
+    public ushort coilXn = 1;
+    public ushort coilYp = 2;
+    public ushort coilYn = 3;
+    public ushort coilZp = 4;
+    public ushort coilZn = 5;
+
+    public ushort coilHome = 6;
+    public ushort coilGrip = 7;
+    public ushort coilPlace = 8;
+    public ushort coilGotoIo = 9;
+
+    // GotoSlot es holding register, no coil:
+    public ushort hregGotoSlot = 10;
+
+    [Header("Command source")]
+    [Tooltip("OFF: PLC -> Unity. ON: Unity (teclado/UI) -> PLC (coils 0..9 siguen cmdXp/cmdYn, etc).")]
+    public bool sendCommandsToPLC = false;
+
+    [Header("Sensor coils")]
+    [Tooltip("TRUE: PLC manda sensores. FALSE: Unity manda sensores al PLC.")]
+    public bool plcDrivesSensors = true;
+
+    // IR slots contiguos 15..20
+    public ushort coilIrSlot1 = 15;  // irSlot1..irSlot6 = 15..20
+    public ushort coilIrIo = 21;     // sensor IO
+    public ushort coilIrGrip = 22;   // pieza en gripper
+    public ushort coilIrCenterX = 23;  // nuevo: centro en X
+    public ushort coilIrCenterY = 24;  // nuevo: centro en Y
+
+    [Header("End-switch coils  Unity -> PLC")]
+    public ushort coilSwXHome = 10;
+    public ushort coilSwXEnd = 11;
+    public ushort coilSwYHome = 12;
+    public ushort coilSwYEnd = 13;
+    public ushort coilSwZHome = 14;
+
+    [Header("Fault coils  Unity -> PLC")]
+    public ushort coilFaultX = 25;
+    public ushort coilFaultY = 26;
+    public ushort coilFaultZ = 27;
+
+    [Header("Error coils (PLC -> Unity)")]
+    public ushort coilErrDisconnected = 28;
+    public ushort coilErrEndHome = 29;
+    public ushort coilErrFallen = 30;
+    public ushort coilErrUnknown = 31;
+
+    [Header("Position holding registers  Unity -> PLC")]
+    public ushort hregPosXmm = 0;
+    public ushort hregPosYmm = 1;
+    public ushort hregPosZmm = 2;
+    public ushort hregRotXdeg = 3;
+    public ushort hregRotZdeg = 4;
+
+    // Heartbeat / �estoy vivo�
+    public ushort coilModbusConnected = 32;
+
+    [Header("Debug")]
+    public bool logMotorEdges = false;
+
+    private ModbusTcpClient mb;
+    private CancellationTokenSource cts;
+
+    private bool pXp, pXn, pYp, pYn, pZp, pZn;
+    bool prevErrDisc, prevErrEndHome, prevErrFallen, prevErrUnk;
+
+    void OnEnable()
+    {
+        cts = new CancellationTokenSource();
+        _ = Task.Run(PollLoop, cts.Token);
+    }
+
+    void OnDisable()
+    {
+        try { cts?.Cancel(); } catch { }
+        try { mb?.Dispose(); } catch { }
+        mb = null;
+        tagRegistry.I?.SetBool("modbusConnected", false);
+    }
+
+    void Connect()
+    {
+        mb = new ModbusTcpClient();
+        var ip = IPAddress.Parse(host);
+        var ep = new IPEndPoint(ip, port);
+        mb.Connect(ep);
+        tagRegistry.I?.SetBool("modbusConnected", true);
+        Debug.Log($"[ModbusTwinMap] Connected {host}:{port} unit {unitId}");
+    }
+
+    async Task PollLoop()
+    {
+        var ct = cts.Token;
+        int delayMs = Mathf.Max(20, 1000 / pollRateHz);
+
+        while (!ct.IsCancellationRequested)
+        {
+            try
+            {
+                if (mb == null)
+                    Connect();
+
+                // ----------- COMMANDS  (coils 0..9 + hregGotoSlot) ----------
+                if (!sendCommandsToPLC)
+                {
+                    ushort[] cmdAddrs = {
+                        coilXp, coilXn, coilYp, coilYn, coilZp, coilZn,
+                        coilHome, coilGrip, coilPlace, coilGotoIo
+                    };
+
+                    ushort start = ushort.MaxValue, end = 0;
+                    for (int i = 0; i < cmdAddrs.Length; i++)
+                    {
+                        if (cmdAddrs[i] < start) start = cmdAddrs[i];
+                        if (cmdAddrs[i] > end) end = cmdAddrs[i];
+                    }
+                    ushort count = (ushort)(end - start + 1);
+
+                    byte[] coilsPacked = mb.ReadCoils(unitId, start, count).ToArray();
+
+                    bool GetCoil(ushort addr)
+                    {
+                        int bitIndex = addr - start;
+                        int byteIndex = bitIndex / 8;
+                        int bitInByte = bitIndex % 8;
+                        return (coilsPacked[byteIndex] & (1 << bitInByte)) != 0;
+                    }
+
+                    bool vxp = GetCoil(coilXp);
+                    bool vxn = GetCoil(coilXn);
+                    bool vyp = GetCoil(coilYp);
+                    bool vyn = GetCoil(coilYn);
+                    bool vzp = GetCoil(coilZp);
+                    bool vzn = GetCoil(coilZn);
+
+                    tagRegistry.I?.SetBool("cmdXp", vxp);
+                    tagRegistry.I?.SetBool("cmdXn", vxn);
+                    tagRegistry.I?.SetBool("cmdYp", vyp);
+                    tagRegistry.I?.SetBool("cmdYn", vyn);
+                    tagRegistry.I?.SetBool("cmdZp", vzp);
+                    tagRegistry.I?.SetBool("cmdZn", vzn);
+
+                    tagRegistry.I?.SetBool("cmdHome", GetCoil(coilHome));
+                    if (GetCoil(coilGrip)) tagRegistry.I?.SetBool("cmdGrip", true);
+                    if (GetCoil(coilPlace)) tagRegistry.I?.SetBool("cmdPlace", true);
+                    tagRegistry.I?.SetBool("cmdGotoIo", GetCoil(coilGotoIo));
+
+                    if (logMotorEdges)
+                    {
+                        if (vxp != pXp) { Debug.Log($"[PLC] Motor X {(vxp ? "fwd" : "fwd off")}"); pXp = vxp; }
+                        if (vxn != pXn) { Debug.Log($"[PLC] Motor X {(vxn ? "rev" : "rev off")}"); pXn = vxn; }
+                        if (vyp != pYp) { Debug.Log($"[PLC] Motor Y {(vyp ? "up" : "up off")}"); pYp = vyp; }
+                        if (vyn != pYn) { Debug.Log($"[PLC] Motor Y {(vyn ? "down" : "down off")}"); pYn = vyn; }
+                        if (vzp != pZp) { Debug.Log($"[PLC] Motor Z {(vzp ? "fwd" : "fwd off")}"); pZp = vzp; }
+                        if (vzn != pZn) { Debug.Log($"[PLC] Motor Z {(vzn ? "rev" : "rev off")}"); pZn = vzn; }
+                    }
+
+                    ushort gotoSlot = mb.ReadHoldingRegisters<ushort>(unitId, hregGotoSlot, 1).ToArray()[0];
+                    tagRegistry.I?.SetInt("cmdGotoSlot", gotoSlot);
+                }
+                else
+                {
+                    // Continuous state: coils follow Unity cmd* tags
+                    bool[] tagVals = {
+                        tagRegistry.I.GetBool("cmdXp", false),
+                        tagRegistry.I.GetBool("cmdXn", false),
+                        tagRegistry.I.GetBool("cmdYp", false),
+                        tagRegistry.I.GetBool("cmdYn", false),
+                        tagRegistry.I.GetBool("cmdZp", false),
+                        tagRegistry.I.GetBool("cmdZn", false),
+                        tagRegistry.I.GetBool("cmdHome", false),
+                        tagRegistry.I.GetBool("cmdGrip", false),
+                        tagRegistry.I.GetBool("cmdPlace", false),
+                        tagRegistry.I.GetBool("cmdGotoIo", false)
+                    };
+                    ushort[] coilAddrs = {
+                        coilXp, coilXn, coilYp, coilYn, coilZp, coilZn,
+                        coilHome, coilGrip, coilPlace, coilGotoIo
+                    };
+
+                    for (int i = 0; i < tagVals.Length; i++)
+                    {
+                        bool v = tagVals[i];
+                        mb.WriteSingleCoil(unitId, coilAddrs[i], v);
+                    }
+
+                    int go = tagRegistry.I.GetInt("cmdGotoSlot", -1);
+                    if (go >= 0)
+                    {
+                        mb.WriteSingleRegister(unitId, hregGotoSlot, (ushort)go);
+                        tagRegistry.I.SetInt("cmdGotoSlot", -1);
+                    }
+                }
+
+                // ----------------- SENSORES IR (15..24) -----------------
+                if (plcDrivesSensors)
+                {
+                    ushort start = coilIrSlot1;                         // 15
+                    ushort count = (ushort)(coilIrCenterY - start + 1); // 24-15+1 = 10
+                    if (count < 8) count = 8;
+
+                    byte[] packed = mb.ReadCoils(unitId, start, count).ToArray();
+
+                    bool Get(ushort addr)
+                    {
+                        int bitIndex = addr - start;
+                        int byteIndex = bitIndex / 8;
+                        int bitInByte = bitIndex % 8;
+                        return (packed[byteIndex] & (1 << bitInByte)) != 0;
+                    }
+
+                    for (int i = 0; i < 6; i++)
+                        tagRegistry.I?.SetBool($"irSlot{i + 1}", Get((ushort)(coilIrSlot1 + i)));
+
+                    tagRegistry.I?.SetBool("irIo", Get(coilIrIo));
+                    tagRegistry.I?.SetBool("irGrip", Get(coilIrGrip));
+                    tagRegistry.I?.SetBool("irCenterX", Get(coilIrCenterX));
+                    tagRegistry.I?.SetBool("irCenterY", Get(coilIrCenterY));
+                }
+                else
+                {
+                    for (int i = 0; i < 6; i++)
+                        mb.WriteSingleCoil(unitId, (ushort)(coilIrSlot1 + i),
+                                           tagRegistry.I.GetBool($"irSlot{i + 1}", false));
+
+                    mb.WriteSingleCoil(unitId, coilIrIo, tagRegistry.I.GetBool("irIo", false));
+                    mb.WriteSingleCoil(unitId, coilIrGrip, tagRegistry.I.GetBool("irGrip", false));
+                    mb.WriteSingleCoil(unitId, coilIrCenterX, tagRegistry.I.GetBool("irCenterX", false));
+                    mb.WriteSingleCoil(unitId, coilIrCenterY, tagRegistry.I.GetBool("irCenterY", false));
+                }
+
+                // ----------------- SWITCHES / FAULTS / POS -----------------
+                mb.WriteSingleCoil(unitId, coilSwXHome, tagRegistry.I.GetBool("swXHome", false));
+                mb.WriteSingleCoil(unitId, coilSwXEnd, tagRegistry.I.GetBool("swXEnd", false));
+                mb.WriteSingleCoil(unitId, coilSwYHome, tagRegistry.I.GetBool("swYHome", false));
+                mb.WriteSingleCoil(unitId, coilSwYEnd, tagRegistry.I.GetBool("swYEnd", false));
+                mb.WriteSingleCoil(unitId, coilSwZHome, tagRegistry.I.GetBool("swZHome", false));
+
+                mb.WriteSingleCoil(unitId, coilFaultX, tagRegistry.I.GetBool("faultX", false));
+                mb.WriteSingleCoil(unitId, coilFaultY, tagRegistry.I.GetBool("faultY", false));
+                mb.WriteSingleCoil(unitId, coilFaultZ, tagRegistry.I.GetBool("faultZ", false));
+
+                mb.WriteSingleRegister(unitId, hregPosXmm, (ushort)tagRegistry.I.GetInt("posXmm", 0));
+                mb.WriteSingleRegister(unitId, hregPosYmm, (ushort)tagRegistry.I.GetInt("posYmm", 0));
+                mb.WriteSingleRegister(unitId, hregPosZmm, (ushort)tagRegistry.I.GetInt("posZmm", 0));
+                mb.WriteSingleRegister(unitId, hregRotXdeg, (ushort)tagRegistry.I.GetInt("rotXdeg", 0));
+                mb.WriteSingleRegister(unitId, hregRotZdeg, (ushort)tagRegistry.I.GetInt("rotZdeg", 0));
+
+                mb.WriteSingleCoil(unitId, coilModbusConnected, true);
+
+                // ----------------- ERRORES PLC -> UNITY -----------------
+                bool eDisc = mb.ReadCoils(unitId, coilErrDisconnected, 1).ToArray()[0] != 0;
+                bool eEnd = mb.ReadCoils(unitId, coilErrEndHome, 1).ToArray()[0] != 0;
+                bool eFallen = mb.ReadCoils(unitId, coilErrFallen, 1).ToArray()[0] != 0;
+                bool eUnk = mb.ReadCoils(unitId, coilErrUnknown, 1).ToArray()[0] != 0;
+
+                if (eDisc && !prevErrDisc) Debug.LogError("[PLC] Error: Disconnected");
+                if (eEnd && !prevErrEndHome) Debug.LogError("[PLC] Error: End/Home contradiction or timeout");
+                if (eFallen && !prevErrFallen) Debug.LogError("[PLC] Error: Fallen Piece");
+                if (eUnk && !prevErrUnk) Debug.LogError("[PLC] Error: Unknown");
+
+                prevErrDisc = eDisc;
+                prevErrEndHome = eEnd;
+                prevErrFallen = eFallen;
+                prevErrUnk = eUnk;
+
+                await Task.Delay(delayMs, ct);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[ModbusTwinMap] {ex.Message} � reconnecting...");
+                tagRegistry.I?.SetBool("modbusConnected", false);
+                try { mb?.Dispose(); } catch { }
+                mb = null;
+                await Task.Delay(1000, ct);
+            }
+        }
+    }
+}
