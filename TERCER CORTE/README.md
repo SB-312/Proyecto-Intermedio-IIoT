@@ -117,41 +117,54 @@ Para eliminar dependencia del botón físico y evitar movimientos innecesarios e
 - Diagrama de actividades:
 ```mermaid
 flowchart TD
-  %% Activity diagram style using flowchart
+  %% Diagrama de actividad - High Bay Storage (DT + ESP32)
+
   start([Inicio])
-  detect["Sensor detecta producto en posición"]
-  decision_present{"¿Producto presente?"}
-  updateDT["Actualizar estado en DT / HMI"]
-  queue["Colocar en cola de transporte"]
-  check_next{"¿Siguiente módulo listo?"}
-  triggerESP["ESP32: activar relé (release) según nivel)"]
-  moveElev["Mover elevador a nivel objetivo"]
-  confirmPos["Confirmar posición vía sensores"]
-  deliver["Entregar ficha a zona de transferencia"]
-  notifyNext["Notificar a siguiente módulo (interoperabilidad)"]
-  cleanup["Registrar evento y log en nube / Ubidots"]
+  detect[Sensor detecta producto en posición]
+  decision_present{¿Producto presente?}
+  updateDT[Actualizar estado en DT / HMI]
+  queue[Colocar en cola de transporte]
+  check_next{¿Siguiente módulo listo?}
+  triggerESP[ESP32: activar release según nivel]
+  moveElev[Mover elevador a nivel objetivo]
+  confirmPos[Confirmar posición vía sensores]
+  deliver[Entregar ficha a zona de transferencia]
+  notifyNext[Notificar siguiente módulo]
+  cleanup[Registrar evento y log en nube]
+  cloudLog[Ubidots - Base de datos]
   end([Fin])
   error([Error / Alarma])
 
-  start --> detect --> decision_present
-  decision_present -- Sí --> updateDT --> queue --> check_next
+  HMIcontrol[Operador via HMI: Iniciar / Parar / E-Stop]
+  cloudCMD[Comando desde dashboard en nube]
+
+  %% Flujo principal
+  start --> detect
+  detect --> decision_present
+
+  decision_present -- Sí --> updateDT
   decision_present -- No --> end
 
-  check_next -- No --> updateDT --> end
-  check_next -- Sí --> triggerESP --> moveElev --> confirmPos
-  confirmPos -- OK --> deliver --> notifyNext --> cleanup --> end
+  updateDT --> queue
+  queue --> check_next
+
+  check_next -- No --> end
+  check_next -- Sí --> triggerESP
+
+  triggerESP --> moveElev
+  moveElev --> confirmPos
+
+  confirmPos -- OK --> deliver
   confirmPos -- Falla --> error
 
-  %% Parallel path: HMI intervention
-  HMIcontrol[/"Operador via HMI: Iniciar/Parar / E-Stop"/]
-  HMIcontrol --> triggerESP
-  
-  %% Cloud commands
-  cloudCMD[/"Comando desde dashboard en nube"/]
-  cloudCMD --> triggerESP
+  deliver --> notifyNext
+  notifyNext --> cleanup
+  cleanup --> cloudLog
+  cleanup --> end
 
-  %% Logs
-  cleanup --> |"subir métricas"| cloudLog["Ubidots / Base de datos"]
+  %% Rutas de intervención
+  HMIcontrol --> triggerESP
+  cloudCMD --> triggerESP
 ```
 
 - Diagrama electrico:
