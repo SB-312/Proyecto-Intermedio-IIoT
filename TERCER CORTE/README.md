@@ -119,48 +119,48 @@ Para eliminar dependencia del botón físico y evitar movimientos innecesarios e
 flowchart TD
   %% Diagrama de actividad - High Bay Storage (DT + ESP32)
 
-  start([Inicio])
-  detect[Sensor detecta producto en posición]
-  decision_present{¿Producto presente?}
-  updateDT[Actualizar estado en DT / HMI]
-  queue[Colocar en cola de transporte]
-  check_next{¿Siguiente módulo listo?}
-  triggerESP[ESP32: activar release según nivel]
-  moveElev[Mover elevador a nivel objetivo]
-  confirmPos[Confirmar posición vía sensores]
-  deliver[Entregar ficha a zona de transferencia]
-  notifyNext[Notificar siguiente módulo]
-  cleanup[Registrar evento y log en nube]
-  cloudLog[Ubidots - Base de datos]
-  end([Fin])
-  error([Error / Alarma])
+  start((Inicio))
+  detect["Sensor detecta producto en posición"]
+  decision_present{Producto presente?}
+  updateDT["Actualizar estado en DT / HMI"]
+  queue["Colocar en cola de transporte"]
+  check_next{Siguiente módulo listo?}
+  triggerESP["ESP32: activar release según nivel"]
+  moveElev["Mover elevador a nivel objetivo"]
+  confirmPos["Confirmar posición vía sensores"]
+  deliver["Entregar ficha a zona de transferencia"]
+  notifyNext["Notificar siguiente módulo"]
+  cleanup["Registrar evento y log en nube"]
+  cloudLog["Ubidots - Base de datos"]
+  finish((Fin))
+  error(("Error / Alarma"))
 
-  HMIcontrol[Operador via HMI: Iniciar / Parar / E-Stop]
-  cloudCMD[Comando desde dashboard en nube]
+  HMIcontrol["Operador vía HMI: Iniciar / Parar / E-Stop"]
+  cloudCMD["Comando desde dashboard en nube"]
 
   %% Flujo principal
   start --> detect
   detect --> decision_present
 
-  decision_present -- Sí --> updateDT
-  decision_present -- No --> end
+  decision_present -- "Sí" --> updateDT
+  decision_present -- "No" --> finish
 
   updateDT --> queue
   queue --> check_next
 
-  check_next -- No --> end
-  check_next -- Sí --> triggerESP
+  check_next -- "No" --> finish
+  check_next -- "Sí" --> triggerESP
 
   triggerESP --> moveElev
   moveElev --> confirmPos
 
-  confirmPos -- OK --> deliver
-  confirmPos -- Falla --> error
+  confirmPos -- "OK" --> deliver
+  confirmPos -- "Falla" --> error
 
   deliver --> notifyNext
   notifyNext --> cleanup
   cleanup --> cloudLog
-  cleanup --> end
+  cleanup --> finish
 
   %% Rutas de intervención
   HMIcontrol --> triggerESP
