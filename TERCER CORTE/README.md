@@ -81,10 +81,12 @@ Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código 
 ## 2. Solución Propuesta
 
 ### 2.1 Restricciones de Diseño Identificadas
-Durante la etapa de pruebas identificamos limitaciones críticas del módulo High Bay Storage que afectaban su rendimiento dentro de la Fábrica Inteligente del curso:
+Durante la etapa de pruebas identificamos limitaciones críticas del módulo High Bay Storage ya construido que afectaban su rendimiento dentro de la Fábrica Inteligente del curso:
 
+- El motor que hace el movimiento vertical no funcionaba apropiadamente con el resto del sistema, no subia ni bajaba de una manera optima.
+- Cuando estabamos acoplando los diferentes sensores, nos dimos cuenta que nos faltaban pines de conexión en PLC.
+- No todo el sistema maneja la misma cantidad de voltaje, lo cual dificutó la correcta distribucción del mismo.
 - Las fichas originales del kit son pequeñas en comparación a lo que necesitabamos, lo que dificultaba que el brazo de la máquina las tomara de manera estable y sin caídas. Esta restricción provocaba fallas en la transferencia entre módulos, retrasos y pérdidas de ciclo.
-
 - El módulo dependía de una operación casi totalmente manual: un botón físico iniciaba el ciclo, lo cual introducía riesgo de errores humanos, activaciones a destiempo y operaciones en posiciones vacías.
 
 Estas restricciones motivaron el diseño de soluciones físicas y electrónicas complementarias para garantizar estabilidad y continuidad del proceso.
