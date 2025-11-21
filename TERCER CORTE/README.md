@@ -97,11 +97,23 @@ Estas restricciones motivaron el diseño de soluciones físicas y electrónicas 
 
 Para resolver los desafíos anteriores se incorporaron dos desarrollos propios dentro de la arquitectura de hardware del sistema:
 
-A) Canastos de transporte en icopor:
+A) Motor vertical:
+
+Se volvio a implementar el motor vertical que estaba en los planos, ya que este se habia cambiado por falta de fichas. Al cambiar esto, se mejora el funcionamiento de la maquina, pero debimos contar con las fichas adecuadas por lo que toco adquirirlas externamente.
+
+B) Pines en la PLC:
+
+Para poder contar con todos los pines necesarios en nuestro proyecto, implementamos además del ESP32 base que ya teniamos otro similar, todo esto con el fin de contar con todos los pines necesarios para el optimo funcionamiento de nuestro proyecto.
+
+C) Distribución de Voltajes:
+
+En cuanto a la distribución de voltajes, lo que hicimos fue apoyarnos y aprovechar que pusimos dos PLC para dividir y distribuir de forma apropiada los voltajes, uno funciona con 3.3V y el otro con 15V.
+
+D) Canastos de transporte en icopor:
 
 Se diseñaron pequeños contenedores en icopor que envuelven temporalmente la ficha. De esta forma, aumentamos el volumen y la estabilidad de la ficha durante su transporte, garantizamos que la ficha llegue alineada a la zona donde la siguiente máquina la toma, evitamos atascos y movimientos bruscos durante el desplazamiento vertical y además, el diseño garantiza que la segunda máquina solo tome la ficha, dejando el canasto atrás sin alterar su proceso.
 
-B) Sistema de monitoreo de inventario con 6 sensores de proximidad:
+E) Sistema de monitoreo de inventario con 6 sensores de proximidad:
 
 Para eliminar dependencia del botón físico y evitar movimientos innecesarios en posiciones vacías, se diseñó un sistema externo montado detrás del almacén en cartón paja reforzado con soportes de madera para garantizar rigidez, se instalaron 6 sensores de proximidad, uno por cada posición del almacén y se aseguró cada sensor (que posee líneas GND, VCC y OUT) con soldadura. Este sistema actúa como una “pared inteligente” detrás del almacén que informa constantemente al PLC si cada posición está ocupada o vacía, optimizando el tiempo y evitando ciclos innecesarios.
 
