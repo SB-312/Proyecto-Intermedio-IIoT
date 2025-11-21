@@ -114,6 +114,9 @@ Para eliminar dependencia del botón físico y evitar movimientos innecesarios e
 ### 3.1 Criterios de Diseño Establecidos
 
 ### 3.2 UML de la Solución Completa
+- Diagrama de actividades:
+
+
 - Diagrama electrico:
 ```mermaid
 flowchart TB
@@ -245,6 +248,8 @@ flowchart TB
   S_Y --> ESP
   S_Z --> ESP
 ```
+- Diagrama de utilidad:
+
 
 ### 3.3 Desarrollo por Módulos de Software
 Para integrar los 6 sensores de la pared se implementó un módulo de software que lee el estado de cada sensor (ocupado/vacío), actualiza en tiempo real la visualización del almacén en la HMI, evita operaciones inválidas cuando un espacio está vacío y permite simular movimientos antes de ejecutarlos físicamente. Este módulo se probó inicialmente usando valores simulados, lo que permitió verificar la lógica antes de soldar o montar hardware.
