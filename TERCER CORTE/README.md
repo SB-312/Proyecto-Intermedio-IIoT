@@ -192,3 +192,11 @@ El proyecto deja varias oportunidades claras para continuar mejorando la soluci�
 
 ### 6.4 Referencias y uso de IA
 
+Para la construcción del sistema físico y la integración del Digital Twin se consultaron las siguientes fuentes principales:
+
+- Documentación oficial Fischertechnik para el módulo High Bay Storage.
+- Material académico del curso Internet Industrial de las Cosas – Universidad de La Sabana.
+- Hojas técnicas de sensores de proximidad y componentes electrónicos utilizados.
+
+**IA:**
+En cuanto al uso de herramientas de inteligencia artificial, se empleó IA únicamente para redacción, organización de ideas y mejora de la documentación, sin que estas herramientas generaran código, decisiones de diseño ni componentes esenciales del sistema. Todo el trabajo físico, soldaduras, diseño de canastos y diseño del sistema de sensores fue realizado manualmente por el equipo.
