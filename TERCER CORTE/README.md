@@ -364,6 +364,7 @@ A continuación compartimos las diferentes evidencias de la contrucción:
 
 - PLC Cableada y en funcionamiento:
   ![PLC Cableada y en funcionamiento](./EVIDENCIAS/PLC.jpg)
+  ![PLC Cableada y en funcionamiento](./EVIDENCIAS/Relay.jpg)
 
 - UNITY Gemelo Digital:
   ![UNITY Gemelo Digital](./EVIDENCIAS/Unity.jpg)
