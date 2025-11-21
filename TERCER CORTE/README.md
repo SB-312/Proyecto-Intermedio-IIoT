@@ -38,7 +38,7 @@ Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código 
 
 | Categoría                     | Criterio                                                                                              | Responsable |
 |------------------------------|--------------------------------------------------------------------------------------------------------|-------------|
-| **Gestión de proyecto**      |                                                                                                        | |
+| **Gestión de proyecto** |
 | Gestión de proyecto          | Repositorio Git creado                                                                                 | Maria Alejandra Cabrera Arauz |
 | Gestión de proyecto          | Estructura de carpetas estandarizada                                                                   | Maria Alejandra Cabrera Arauz |
 | Gestión de proyecto          | Tablero con roles y contribuciones por integrante                                                      | Maria Alejandra Cabrera Arauz |
