@@ -125,6 +125,9 @@ Para integrar los 6 sensores de la pared se implementó un módulo de software q
 ### 3.4 Esquemáticos de Hardware Diseñados
 A continuación compartimos las diferentes evidencias de la contrucción:
 
+- Cambio de motor vertical:
+  ![Cambio de motor vertical](./EVIDENCIAS/Motor.jpg)
+
 - Prototipos de canastos de icopor:
   ![Prototipos de canastos de icopor](./EVIDENCIAS/Canasta.jpg)
 
