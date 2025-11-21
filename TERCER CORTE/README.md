@@ -118,8 +118,24 @@ Normativas y buenas prácticas utilizadas:
 ## 4. Configuración Experimental, Resultados y Análisis
 
 ### 4.1 Configuración Experimental 
+Durante la validación del sistema se realizaron las siguientes pruebas:
+
+1. Pruebas del canasto de transporte de fichas:
+
+- Encaje del canasto en las pinzas de la maquina.
+- Desplazamiento vertical sin atascos.
+- Estabilidad al entregar la ficha a la segunda máquina.
+- Separación correcta entre canasto y ficha.
+
+2. Pruebas de sensores de almacen:
+
+- Se calibró la distancia óptima de detección para cada sensor.
+- Se verificó la lectura correcta del PLC para el estado de cada posición.
+- Se midió el tiempo de respuesta del sistema ante cambios en el inventario.
+- Se verificó que la máquina no ejecutara ciclos innecesarios.
 
 ### 4.2 Resultados
+En la parte de diseño y desarrollo de soluciones complementarias para resolver limitaciones, obtuvimos ciclos exitosos en transporte usando canastos, ya que no se presentaron caídas ni desalineaciones. Además, se eliminaron los movimientos a posiciones vacías gracias al sistema de sensores. La simulación utilizada previamente coincidió con el comportamiento real, lo que permitió reducir tiempo de pruebas físicas. Y por ultimo, las fichas se entregaron correctamente a la siguiente máquina sin afectar su proceso original.
 
 ### 4.3 Análisis
 
@@ -132,10 +148,17 @@ Normativas y buenas prácticas utilizadas:
 ## 6. Conclusiones, Retos, Trabajo Futuro y Referencias
 
 ### 6.1 Conclusiones
+A lo largo del proyecto se comprobó que, aunque la plataforma Fischertechnik ofrece una base funcional, su adaptación a un entorno colaborativo de tres máquinas requiere creatividad, pruebas continuas y ajustes físicos. La incorporación de los canastos de icopor permitió que la transferencia entre máquinas fuera más estable, y el sistema de sensores de proximidad permitió evitar operaciones innecesarias al detectar en tiempo real si un espacio estaba vacío u ocupado. La combinación del modelo digital con la implementación física mejoró la precisión del proceso y redujo errores humanos, demostrando el valor del IoT industrial cuando se integra con decisiones de diseño bien fundamentadas.
 
 ### 6.2 Retos Presentados
+A lo largo del proyecto surgieron varios retos que exigieron ajustes constantes y experimentación:
+
+En el diseño del sistema de transporte inicialmente se probó con piezas de madera como remplazo a las fichas originales en forma de "T", pero su peso y tamaño no eran compatibles con la interacción entre máquinas. Por esto se pasó al icopor, que funcionó mejor por su ligereza. Sin embargo, este cambio implicó múltiples cortes, pruebas y rediseños. Ahora, sobre el sistema de sensores de proximidad, encontramos que instalar seis sensores detrás del almacén es un desafío importante. La soldadura de los pines fue compleja debido a la cercanía entre ellos, lo que obligó a separarlos cuidadosamente y organizar el cableado de forma más limpia para evitar falsos contactos. También fue difícil asegurar que los soportes de madera mantuvieran la alineación exacta de los sensores, ya que cualquier desviación afectaba la detección. Además, organizar el paso de los cables para que no interfirieran con el movimiento del módulo requirió planificación y ajustes físicos constantes.
 
 ### 6.3 Trabajo Futuro
+El proyecto deja varias oportunidades claras para continuar mejorando la solución:
+
+1. Diseño de nuevos canastos más sostenibles, puesto que el icopor cumplió su función, pero no es un material adecuado para proyectos a largo plazo ni ambientalmente responsable. Una opción futura sería diseñar contenedores en PLA o PETG impresos en 3D, con medidas exactas y mayor durabilidad.
 
 ### 6.4 Referencias y uso de IA
 
