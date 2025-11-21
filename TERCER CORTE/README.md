@@ -94,7 +94,6 @@ Estas restricciones motivaron el diseño de soluciones físicas y electrónicas 
 ### 2.2 Arquitectura Propuesta
 
 #### 2.2.1 Arquitectura de Hardware
-Diagrama de bloques del hardware:
 
 Para resolver los desafíos anteriores se incorporaron dos desarrollos propios dentro de la arquitectura de hardware del sistema:
 
@@ -107,7 +106,6 @@ B) Sistema de monitoreo de inventario con 6 sensores de proximidad:
 Para eliminar dependencia del botón físico y evitar movimientos innecesarios en posiciones vacías, se diseñó un sistema externo montado detrás del almacén en cartón paja reforzado con soportes de madera para garantizar rigidez, se instalaron 6 sensores de proximidad, uno por cada posición del almacén y se aseguró cada sensor (que posee líneas GND, VCC y OUT) con soldadura. Este sistema actúa como una “pared inteligente” detrás del almacén que informa constantemente al PLC si cada posición está ocupada o vacía, optimizando el tiempo y evitando ciclos innecesarios.
 
 #### 2.2.2 Arquitectura de Software
-Diagrama de bloques del software: 
 
 ---
 
@@ -118,107 +116,129 @@ Diagrama de bloques del software:
 ### 3.2 UML de la Solución Completa
 - Diagrama electrico:
 ```mermaid
-flowchart BT
+flowchart TB
   %% Fuentes
   subgraph PSU["Fuentes"]
-    V_ESP["VCC_ESP (3.3V)"]
-    V_RELAY["VCC_RELAY (p.ej. 5V via regulador)"]
-    V_MOTOR["VCC_MOTOR (9V)"]
+    V_ESP["VCC_ESP = 3.3V"]
+    V_RELAY["VCC_RELAY = 5V (regulado)"]
+    V_MOTOR["VCC_MOTOR = 9V"]
     GND["GND (0V)"]
   end
 
-  %% ESP32
+  %% ESP32 (control)
   subgraph ESP["ESP32 (3.3V)"]
     direction TB
-    ESP_GPIO1["GPIO X_FWD"]
-    ESP_GPIO2["GPIO X_REV"]
-    ESP_GPIO3["GPIO Y_FWD"]
-    ESP_GPIO4["GPIO Y_REV"]
-    ESP_GPIO5["GPIO Z_FWD"]
-    ESP_GPIO6["GPIO Z_REV"]
+    GPIO_XF["GPIO X_FWD"]
+    GPIO_XR["GPIO X_REV"]
+    GPIO_YF["GPIO Y_FWD"]
+    GPIO_YR["GPIO Y_REV"]
+    GPIO_ZF["GPIO Z_FWD"]
+    GPIO_ZR["GPIO Z_REV"]
   end
 
-  %% Drivers de relé (transistor NPN o driver IC)
-  subgraph DRV["Drivers de Bobina"]
+  %% Drivers de bobina (NPN o ULN)
+  subgraph DRV["Drivers de bobina (NPN o ULN)"]
     direction TB
-    DRV_XF["Q_XF (NPN) + Rb_X + Dfly_X"]
-    DRV_XR["Q_XR (NPN) + Rb_XR + Dfly_XR"]
-    DRV_YF["Q_YF (NPN) + Rb_YF + Dfly_YF"]
-    DRV_YR["Q_YR (NPN) + Rb_YR + Dfly_YR"]
-    DRV_ZF["Q_ZF (NPN) + Rb_ZF + Dfly_ZF"]
-    DRV_ZR["Q_ZR (NPN) + Rb_ZR + Dfly_ZR"]
+    DRV_XF["Driver X_FWD (Rb ≈1kΩ)"]
+    DRV_XR["Driver X_REV (Rb ≈1kΩ)"]
+    DRV_YF["Driver Y_FWD (Rb ≈1kΩ)"]
+    DRV_YR["Driver Y_REV (Rb ≈1kΩ)"]
+    DRV_ZF["Driver Z_FWD (Rb ≈1kΩ)"]
+    DRV_ZR["Driver Z_REV (Rb ≈1kΩ)"]
   end
 
-  %% Relés (bobina y contactos separados)
-  subgraph RELAYS["Relés (bobina + contactos COM/NO/NC)"]
+  %% Bobinas de relé
+  subgraph COILS["Bobinas de relé (alimentadas 5V)"]
     direction TB
-    X_REL_COIL["Coil RELAY X (pin A/B)"]
-    X_REL_CONTACT["CONTACT RELAY X (COM/NO/NC)"]
-    Y_REL_COIL["Coil RELAY Y"]
-    Y_REL_CONTACT["CONTACT RELAY Y"]
-    Z_REL_COIL["Coil RELAY Z"]
-    Z_REL_CONTACT["CONTACT RELAY Z"]
+    COIL_X["Coil RELAY X"]
+    COIL_Y["Coil RELAY Y"]
+    COIL_Z["Coil RELAY Z"]
+  end
+
+  %% Contactos de relé (conmutan motores)
+  subgraph CONTACTS["Contactos relé (COM / NO / NC)"]
+    direction TB
+    CT_XF["Contact RELAY X FWD"]
+    CT_XR["Contact RELAY X REV"]
+    CT_YF["Contact RELAY Y FWD"]
+    CT_YR["Contact RELAY Y REV"]
+    CT_ZF["Contact RELAY Z FWD"]
+    CT_ZR["Contact RELAY Z REV"]
   end
 
   %% Motores y snubbers
-  subgraph MOTORS["Motores DC"]
-    X_MOTOR["Motor X (A/B)"]
-    Y_MOTOR["Motor Y (A/B)"]
-    Z_MOTOR["Motor Z (A/B)"]
-    RC_X["RC_SNUB_X (snubber)"]
-    RC_Y["RC_SNUB_Y"]
-    RC_Z["RC_SNUB_Z"]
+  subgraph MOTORS["Motores DC y supresión"]
+    X_MOT["Motor X (A/B)"]
+    Y_MOT["Motor Y (A/B)"]
+    Z_MOT["Motor Z (A/B)"]
+    SNUB_X["SNUB_X (RC)"]
+    SNUB_Y["SNUB_Y (RC)"]
+    SNUB_Z["SNUB_Z (RC)"]
   end
 
   %% Sensores
   subgraph SENS["Sensores de presencia"]
-    direction TB
-    S_X["Sensor X (V_sensor, salida)"]
-    S_Y["Sensor Y"]
-    S_Z["Sensor Z"]
+    S_X["Sensor Nivel X - Vsup / OUT"]
+    S_Y["Sensor Nivel Y - Vsup / OUT"]
+    S_Z["Sensor Nivel Z - Vsup / OUT"]
   end
 
-  %% Conexiones de potencia y control (mínimas)
-  V_ESP -->|alimentación ESP| ESP
-  V_RELAY -->|alimentación bobinas| X_REL_COIL & Y_REL_COIL & Z_REL_COIL
-  V_MOTOR -->|alimentación motores| X_MOTOR & Y_MOTOR & Z_MOTOR
-  GND --> ESP & X_REL_COIL & Y_REL_COIL & Z_REL_COIL & X_MOTOR & Y_MOTOR & Z_MOTOR & S_X & S_Y & S_Z
+  %% Conexiones de alimentación y masa
+  V_ESP --> ESP
+  V_RELAY --> COIL_X
+  V_RELAY --> COIL_Y
+  V_RELAY --> COIL_Z
+  V_MOTOR --> X_MOT
+  V_MOTOR --> Y_MOT
+  V_MOTOR --> Z_MOT
+  GND --> ESP
+  GND --> COIL_X
+  GND --> COIL_Y
+  GND --> COIL_Z
+  GND --> X_MOT
+  GND --> Y_MOT
+  GND --> Z_MOT
+  GND --> S_X
+  GND --> S_Y
+  GND --> S_Z
 
-  %% ESP -> drivers -> coils
-  ESP_GPIO1 -->|base Rb_X| DRV_XF -->|collector->coil| X_REL_COIL
-  ESP_GPIO2 -->|base Rb_XR| DRV_XR --> X_REL_COIL
-  ESP_GPIO3 -->|base Rb_YF| DRV_YF --> Y_REL_COIL
-  ESP_GPIO4 -->|base Rb_YR| DRV_YR --> Y_REL_COIL
-  ESP_GPIO5 -->|base Rb_ZF| DRV_ZF --> Z_REL_COIL
-  ESP_GPIO6 -->|base Rb_ZR| DRV_ZR --> Z_REL_COIL
+  %% Control: ESP -> drivers -> coils
+  GPIO_XF --> DRV_XF --> COIL_X
+  GPIO_XR --> DRV_XR --> COIL_X
+  GPIO_YF --> DRV_YF --> COIL_Y
+  GPIO_YR --> DRV_YR --> COIL_Y
+  GPIO_ZF --> DRV_ZF --> COIL_Z
+  GPIO_ZR --> DRV_ZR --> COIL_Z
 
-  %% Diodos flyback en cada bobina (Dfly)
-  X_REL_COIL -. Dfly_X .-> GND
-  Y_REL_COIL -. Dfly_Y .-> GND
-  Z_REL_COIL -. Dfly_Z .-> GND
+  %% Diodos flyback (representados como notas conectadas a bobinas)
+  COIL_X ---|diodo flyback (1N400x)| GND
+  COIL_Y ---|diodo flyback (1N400x)| GND
+  COIL_Z ---|diodo flyback (1N400x)| GND
 
-  %% Relés conmuta motores (contactos)
-  X_REL_CONTACT --> X_MOTOR
-  Y_REL_CONTACT --> Y_MOTOR
-  Z_REL_CONTACT --> Z_MOTOR
+  %% Contactos de relés conectan motores
+  CT_XF --> X_MOT
+  CT_XR --> X_MOT
+  CT_YF --> Y_MOT
+  CT_YR --> Y_MOT
+  CT_ZF --> Z_MOT
+  CT_ZR --> Z_MOT
 
   %% Snubbers en motores
-  X_MOTOR -. RC_X .-> GND
-  Y_MOTOR -. RC_Y .-> GND
-  Z_MOTOR -. RC_Z .-> GND
+  X_MOT --- SNUB_X --- GND
+  Y_MOT --- SNUB_Y --- GND
+  Z_MOT --- SNUB_Z --- GND
 
-  %% Sensores a ESP (con nivelamiento)
-  S_X -->|salida (open-collector / push-pull)| ESP
-  S_Y --> ESP
-  S_Z --> ESP
+  %% Sensores a ESP (salidas condicionadas a 3.3V)
+  S_X -->|OUT (a nivel 3.3V o vía level-shifter)| ESP
+  S_Y -->|OUT (a nivel 3.3V o vía level-shifter)| ESP
+  S_Z -->|OUT (a nivel 3.3V or vía level-shifter)| ESP
 
+  %% Agrupaciones visuales
   classDef power fill:#1a7f37,stroke:#0b3f1e,color:#fff;
+  classDef control fill:#1f6feb,stroke:#0b3f8a,color:#fff;
   class V_ESP,V_RELAY,V_MOTOR power;
-  class GND power;
+  class ESP control;
 ```
-- Diagrama de clases:
-- Diagrama de secuencia por módulos:
-- Diagrama de componentes:
 
 ### 3.3 Desarrollo por Módulos de Software
 Para integrar los 6 sensores de la pared se implementó un módulo de software que lee el estado de cada sensor (ocupado/vacío), actualiza en tiempo real la visualización del almacén en la HMI, evita operaciones inválidas cuando un espacio está vacío y permite simular movimientos antes de ejecutarlos físicamente. Este módulo se probó inicialmente usando valores simulados, lo que permitió verificar la lógica antes de soldar o montar hardware.
