@@ -141,10 +141,10 @@ A continuación compartimos las diferentes evidencias de la contrucción:
   ![Cabledo en la maqueta de los sensores](./EVIDENCIAS/Cables.jpg)
 
 - PLC Cableada y en funcionamiento:
-  ![Cabledo en la maqueta de los sensores](./EVIDENCIAS/PLC.jpg)
+  ![PLC Cableada y en funcionamiento](./EVIDENCIAS/PLC.jpg)
 
 - UNITY Gemelo Digital:
-  ![Cabledo en la maqueta de los sensores](./EVIDENCIAS/Unity.jpg)
+  ![UNITY Gemelo Digital](./EVIDENCIAS/Unity.jpg)
 
 ### 3.5 Estándares de Ingeniería Aplicados
 Normativas y buenas prácticas utilizadas:
