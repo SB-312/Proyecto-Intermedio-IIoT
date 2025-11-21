@@ -115,7 +115,44 @@ Para eliminar dependencia del botón físico y evitar movimientos innecesarios e
 
 ### 3.2 UML de la Solución Completa
 - Diagrama de actividades:
+```mermaid
+flowchart TD
+  %% Activity diagram style using flowchart
+  start([Inicio])
+  detect["Sensor detecta producto en posición"]
+  decision_present{"¿Producto presente?"}
+  updateDT["Actualizar estado en DT / HMI"]
+  queue["Colocar en cola de transporte"]
+  check_next{"¿Siguiente módulo listo?"}
+  triggerESP["ESP32: activar relé (release) según nivel)"]
+  moveElev["Mover elevador a nivel objetivo"]
+  confirmPos["Confirmar posición vía sensores"]
+  deliver["Entregar ficha a zona de transferencia"]
+  notifyNext["Notificar a siguiente módulo (interoperabilidad)"]
+  cleanup["Registrar evento y log en nube / Ubidots"]
+  end([Fin])
+  error([Error / Alarma])
 
+  start --> detect --> decision_present
+  decision_present -- Sí --> updateDT --> queue --> check_next
+  decision_present -- No --> end
+
+  check_next -- No --> updateDT --> end
+  check_next -- Sí --> triggerESP --> moveElev --> confirmPos
+  confirmPos -- OK --> deliver --> notifyNext --> cleanup --> end
+  confirmPos -- Falla --> error
+
+  %% Parallel path: HMI intervention
+  HMIcontrol[/"Operador via HMI: Iniciar/Parar / E-Stop"/]
+  HMIcontrol --> triggerESP
+  
+  %% Cloud commands
+  cloudCMD[/"Comando desde dashboard en nube"/]
+  cloudCMD --> triggerESP
+
+  %% Logs
+  cleanup --> |"subir métricas"| cloudLog["Ubidots / Base de datos"]
+```
 
 - Diagrama electrico:
 ```mermaid
@@ -248,7 +285,29 @@ flowchart TB
   S_Y --> ESP
   S_Z --> ESP
 ```
-- Diagrama de utilidad:
+
+- Diagrama de usabilidad:
+```mermaid
+flowchart LR
+  U[Usuario / Operador]
+  login["Login HMI / autenticación"]
+  dashboard["Dashboard HMI: vista general (estado almacén, sensores)"]
+  viewItem["Ver detalle de posición / sensor"]
+  ackAlert["Acknowledge alert / ver historial"]
+  controlPanel["Panel de control: Start / Stop / E-Stop / Manual Move"]
+  sendCmd["Enviar comando -> ESP32 / PLC emulado"]
+  confirm["Confirmación visual / sonora (feedback)"]
+  cloudDash["Dashboard nube (Ubidots): histórico y notificaciones"]
+  exportLog["Exportar logs / generar reporte"]
+
+  U --> login --> dashboard
+  dashboard --> viewItem
+  dashboard --> ackAlert
+  dashboard --> controlPanel
+  controlPanel --> sendCmd --> confirm
+  dashboard --> cloudDash --> exportLog
+  ackAlert --> dashboard
+```
 
 
 ### 3.3 Desarrollo por Módulos de Software
