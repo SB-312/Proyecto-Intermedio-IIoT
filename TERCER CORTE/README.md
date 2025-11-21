@@ -42,19 +42,19 @@ Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código 
 | Gestión de proyecto          | Estructura de carpetas estandarizada                                                                   | Maria Alejandra Cabrera Arauz |
 | Gestión de proyecto          | Tablero con roles y contribuciones por integrante                                                      | Maria Alejandra Cabrera Arauz |
 | Gestión de proyecto          | Actualización continua de issues y commits                                                             | Todos |
-| Diseño Ingenieril            | Identificación completa de restricciones técnicas, económicas y operativas                             |             |
+| Diseño Ingenieril            | Identificación completa de restricciones técnicas, económicas y operativas                             | Juan Diego Lemus|
 | Diseño Ingenieril            | Diseño y desarrollo de soluciones para resolver limitaciones externas del módulo                       | Todos |
 | Diseño Ingenieril            | Diseño del sistema de detección con 6 sensores de proximidad, soportes y cableado                      | Maria Alejandra Cabrera Arauz |
-| Diseño Ingenieril            | Modelado teórico del flujo de almacenamiento y transferencia entre módulos                             |             |
-| Diseño Ingenieril            | Diagramas de bloques de arquitectura (hardware y software)                                             |             |
-| Diseño Ingenieril            | Diagramas UML de todos los módulos de software                                                         |             |
-| Diseño Ingenieril            | Esquemáticos de interconexión del hardware                                                             |             |
-| Diseño Ingenieril            | Aplicación de estándares de diseño de ingeniería                                                       |             |
-| Prototipo y Validación       | Integración correcta PLC–sensores–actuadores–ESP32                                                     |             |
-| Prototipo y Validación       | Validación del funcionamiento del DT según requisitos mínimos                                          |             |
-| Prototipo y Validación       | Pruebas del sistema de detección con sensores (ocupación real vs simulación)                           |             |
+| Diseño Ingenieril            | Modelado teórico del flujo de almacenamiento y transferencia entre módulos                             | Juan Diego Lemus |
+| Diseño Ingenieril            | Diagramas de bloques de arquitectura (hardware y software)                                             | Juan Diego Lemus |
+| Diseño Ingenieril            | Diagramas UML de todos los módulos de software                                                         | Juan Diego Lemus |
+| Diseño Ingenieril            | Esquemáticos de interconexión del hardware                                                             | Juan Diego Lemus |
+| Diseño Ingenieril            | Aplicación de estándares de diseño de ingeniería                                                       | Juan Diego Lemus |
+| Prototipo y Validación       | Integración PLC–sensores–actuadores–ESP32                                                              | Juan Diego Lemus |
+| Prototipo y Validación       | Validación del funcionamiento del DT según requisitos mínimos                                          | Juan Diego Lemus |
+| Prototipo y Validación       | Pruebas del sistema de detección con sensores (ocupación real vs simulación)                           | Maria Alejandra Cabrera Arauz |
 | Prototipo y Validación       | Validación del transporte de fichas con canastos de icopor                                             | Maria Alejandra Cabrera Arauz |
-| Prototipo y Validación       | Interoperabilidad con otros módulos de la Fábrica Inteligente                                          |             |
+| Prototipo y Validación       | Interoperabilidad con otros módulos de la Fábrica Inteligente                                          | Christian            |
 | Prototipo y Validación       | Evaluación del desempeño: errores, fallos, mejoras                                                     |             |
 | Wiki técnica                 | Resumen General, Motivación, Justificación y Estructura del Documento                                  | Maria Alejandra Cabrera Arauz |
 | Wiki técnica                 | Documentación de restricciones de diseño y criterios de diseño                                         |             |
