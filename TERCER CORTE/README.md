@@ -116,7 +116,106 @@ Diagrama de bloques del software:
 ### 3.1 Criterios de Diseño Establecidos
 
 ### 3.2 UML de la Solución Completa
-- Diagrama de casos de uso:
+- Diagrama electrico:
+```mermaid
+flowchart BT
+  %% Fuentes
+  subgraph PSU["Fuentes"]
+    V_ESP["VCC_ESP (3.3V)"]
+    V_RELAY["VCC_RELAY (p.ej. 5V via regulador)"]
+    V_MOTOR["VCC_MOTOR (9V)"]
+    GND["GND (0V)"]
+  end
+
+  %% ESP32
+  subgraph ESP["ESP32 (3.3V)"]
+    direction TB
+    ESP_GPIO1["GPIO X_FWD"]
+    ESP_GPIO2["GPIO X_REV"]
+    ESP_GPIO3["GPIO Y_FWD"]
+    ESP_GPIO4["GPIO Y_REV"]
+    ESP_GPIO5["GPIO Z_FWD"]
+    ESP_GPIO6["GPIO Z_REV"]
+  end
+
+  %% Drivers de relé (transistor NPN o driver IC)
+  subgraph DRV["Drivers de Bobina"]
+    direction TB
+    DRV_XF["Q_XF (NPN) + Rb_X + Dfly_X"]
+    DRV_XR["Q_XR (NPN) + Rb_XR + Dfly_XR"]
+    DRV_YF["Q_YF (NPN) + Rb_YF + Dfly_YF"]
+    DRV_YR["Q_YR (NPN) + Rb_YR + Dfly_YR"]
+    DRV_ZF["Q_ZF (NPN) + Rb_ZF + Dfly_ZF"]
+    DRV_ZR["Q_ZR (NPN) + Rb_ZR + Dfly_ZR"]
+  end
+
+  %% Relés (bobina y contactos separados)
+  subgraph RELAYS["Relés (bobina + contactos COM/NO/NC)"]
+    direction TB
+    X_REL_COIL["Coil RELAY X (pin A/B)"]
+    X_REL_CONTACT["CONTACT RELAY X (COM/NO/NC)"]
+    Y_REL_COIL["Coil RELAY Y"]
+    Y_REL_CONTACT["CONTACT RELAY Y"]
+    Z_REL_COIL["Coil RELAY Z"]
+    Z_REL_CONTACT["CONTACT RELAY Z"]
+  end
+
+  %% Motores y snubbers
+  subgraph MOTORS["Motores DC"]
+    X_MOTOR["Motor X (A/B)"]
+    Y_MOTOR["Motor Y (A/B)"]
+    Z_MOTOR["Motor Z (A/B)"]
+    RC_X["RC_SNUB_X (snubber)"]
+    RC_Y["RC_SNUB_Y"]
+    RC_Z["RC_SNUB_Z"]
+  end
+
+  %% Sensores
+  subgraph SENS["Sensores de presencia"]
+    direction TB
+    S_X["Sensor X (V_sensor, salida)"]
+    S_Y["Sensor Y"]
+    S_Z["Sensor Z"]
+  end
+
+  %% Conexiones de potencia y control (mínimas)
+  V_ESP -->|alimentación ESP| ESP
+  V_RELAY -->|alimentación bobinas| X_REL_COIL & Y_REL_COIL & Z_REL_COIL
+  V_MOTOR -->|alimentación motores| X_MOTOR & Y_MOTOR & Z_MOTOR
+  GND --> ESP & X_REL_COIL & Y_REL_COIL & Z_REL_COIL & X_MOTOR & Y_MOTOR & Z_MOTOR & S_X & S_Y & S_Z
+
+  %% ESP -> drivers -> coils
+  ESP_GPIO1 -->|base Rb_X| DRV_XF -->|collector->coil| X_REL_COIL
+  ESP_GPIO2 -->|base Rb_XR| DRV_XR --> X_REL_COIL
+  ESP_GPIO3 -->|base Rb_YF| DRV_YF --> Y_REL_COIL
+  ESP_GPIO4 -->|base Rb_YR| DRV_YR --> Y_REL_COIL
+  ESP_GPIO5 -->|base Rb_ZF| DRV_ZF --> Z_REL_COIL
+  ESP_GPIO6 -->|base Rb_ZR| DRV_ZR --> Z_REL_COIL
+
+  %% Diodos flyback en cada bobina (Dfly)
+  X_REL_COIL -. Dfly_X .-> GND
+  Y_REL_COIL -. Dfly_Y .-> GND
+  Z_REL_COIL -. Dfly_Z .-> GND
+
+  %% Relés conmuta motores (contactos)
+  X_REL_CONTACT --> X_MOTOR
+  Y_REL_CONTACT --> Y_MOTOR
+  Z_REL_CONTACT --> Z_MOTOR
+
+  %% Snubbers en motores
+  X_MOTOR -. RC_X .-> GND
+  Y_MOTOR -. RC_Y .-> GND
+  Z_MOTOR -. RC_Z .-> GND
+
+  %% Sensores a ESP (con nivelamiento)
+  S_X -->|salida (open-collector / push-pull)| ESP
+  S_Y --> ESP
+  S_Z --> ESP
+
+  classDef power fill:#1a7f37,stroke:#0b3f1e,color:#fff;
+  class V_ESP,V_RELAY,V_MOTOR power;
+  class GND power;
+```
 - Diagrama de clases:
 - Diagrama de secuencia por módulos:
 - Diagrama de componentes:
