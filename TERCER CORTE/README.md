@@ -275,6 +275,9 @@ A continuación compartimos las diferentes evidencias de la contrucción:
 - Cabledo en la maqueta de los sensores:
   ![Cabledo en la maqueta de los sensores](./EVIDENCIAS/Cables.jpg)
 
+- Hardware completo:
+  ![Hardware completo](./EVIDENCIAS/Hardware.jpg)
+
 - PLC Cableada y en funcionamiento:
   ![PLC Cableada y en funcionamiento](./EVIDENCIAS/PLC.jpg)
 
