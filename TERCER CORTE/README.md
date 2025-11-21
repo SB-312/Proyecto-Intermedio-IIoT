@@ -38,13 +38,13 @@ Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código 
 
 | Categoría                     | Criterio                                                                                              | Responsable |
 |------------------------------|--------------------------------------------------------------------------------------------------------|-------------|
-| Gestión de proyecto          | Repositorio Git creado                                                                                 | Maria Alejandra Cabrera Arauz |
-| Gestión de proyecto          | Estructura de carpetas estandarizada                                                                   | Maria Alejandra Cabrera Arauz |
-| Gestión de proyecto          | Tablero con roles y contribuciones por integrante                                                      | Maria Alejandra Cabrera Arauz |
+| Gestión de proyecto          | Repositorio Git creado                                                                                 | Maria Alejandra Cabrera |
+| Gestión de proyecto          | Estructura de carpetas estandarizada                                                                   | Maria Alejandra Cabrera |
+| Gestión de proyecto          | Tablero con roles y contribuciones por integrante                                                      | Maria Alejandra Cabrera |
 | Gestión de proyecto          | Actualización continua de issues y commits                                                             | Todos |
 | Diseño Ingenieril            | Identificación completa de restricciones técnicas, económicas y operativas                             | Juan Diego Lemus|
 | Diseño Ingenieril            | Diseño y desarrollo de soluciones para resolver limitaciones externas del módulo                       | Todos |
-| Diseño Ingenieril            | Diseño del sistema de detección con 6 sensores de proximidad, soportes y cableado                      | Maria Alejandra Cabrera Arauz |
+| Diseño Ingenieril            | Diseño del sistema de detección con 6 sensores de proximidad, soportes y cableado                      | Maria Alejandra Cabrera |
 | Diseño Ingenieril            | Modelado teórico del flujo de almacenamiento y transferencia entre módulos                             | Juan Diego Lemus |
 | Diseño Ingenieril            | Diagramas de bloques de arquitectura (hardware y software)                                             | Juan Diego Lemus |
 | Diseño Ingenieril            | Diagramas UML de todos los módulos de software                                                         | Juan Diego Lemus |
@@ -52,16 +52,16 @@ Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código 
 | Diseño Ingenieril            | Aplicación de estándares de diseño de ingeniería                                                       | Juan Diego Lemus |
 | Prototipo y Validación       | Integración PLC–sensores–actuadores–ESP32                                                              | Juan Diego Lemus |
 | Prototipo y Validación       | Validación del funcionamiento del DT según requisitos mínimos                                          | Juan Diego Lemus |
-| Prototipo y Validación       | Pruebas del sistema de detección con sensores (ocupación real vs simulación)                           | Maria Alejandra Cabrera Arauz |
-| Prototipo y Validación       | Validación del transporte de fichas con canastos de icopor                                             | Maria Alejandra Cabrera Arauz |
-| Prototipo y Validación       | Interoperabilidad con otros módulos de la Fábrica Inteligente                                          | Christian            |
-| Prototipo y Validación       | Evaluación del desempeño: errores, fallos, mejoras                                                     |             |
-| Wiki técnica                 | Resumen General, Motivación, Justificación y Estructura del Documento                                  | Maria Alejandra Cabrera Arauz |
-| Wiki técnica                 | Documentación de restricciones de diseño y criterios de diseño                                         |             |
-| Wiki técnica                 | Documentación del módulo de simulación del almacén                                                     |             |
-| Wiki técnica                 | Documentación del diseño físico complementario (canasto + sensores + soportes)                         | Maria Alejandra Cabrera Arauz |
-| Wiki técnica                 | Resultados experimentales y análisis técnico                                                           |             |
-| Wiki técnica                 | Autoevaluación del protocolo de pruebas                                                                |             |
+| Prototipo y Validación       | Pruebas del sistema de detección con sensores (ocupación real vs simulación)                           | Maria Alejandra Cabrera |
+| Prototipo y Validación       | Validación del transporte de fichas con canastos de icopor                                             | Maria Alejandra Cabrera |
+| Prototipo y Validación       | Interoperabilidad con otros módulos de la Fábrica Inteligente                                          | Christian Daniel Morales |
+| Prototipo y Validación       | Evaluación del desempeño: errores, fallos, mejoras                                                     | Christian Daniel Morales |
+| Wiki técnica                 | Resumen General, Motivación, Justificación y Estructura del Documento                                  | Maria Alejandra Cabrera |
+| Wiki técnica                 | Documentación de restricciones de diseño y criterios de diseño                                         | Christian Daniel Morales |
+| Wiki técnica                 | Documentación del módulo de simulación del almacén                                                     | Christian Daniel Morales |
+| Wiki técnica                 | Documentación del diseño físico complementario (canasto + sensores + soportes)                         | Maria Alejandra Cabrera |
+| Wiki técnica                 | Resultados experimentales y análisis técnico                                                           | Christian Daniel Morales |
+| Wiki técnica                 | Autoevaluación del protocolo de pruebas                                                                | Christian Daniel Morales |
 | Wiki técnica                 | Declaración del uso de IA y fuentes bibliográficas (IEEE)                                              | Todos |
 | Comunicación                 | Presentación clara y concisa durante el pitch                                                          | Todos |
 | Comunicación                 | Uso adecuado de lenguaje ingenieril                                                                    | Todos |
