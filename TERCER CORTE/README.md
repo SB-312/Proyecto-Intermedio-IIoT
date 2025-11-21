@@ -36,15 +36,52 @@ Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código 
 
 ### 1.5 Roles y Contribuciones
 
-| Categoría             | Criterio                                                                     | Responsable |
-|-----------------------|------------------------------------------------------------------------------|-------------|
-| Gestión de proyecto   | Repositorio Git creado                                                       | Maria Alejandra Cabrera Arauz   |
-| Gestión de proyecto   | Estructura de carpetas estandarizada (src/ hmi/ docs/ proto/ video/)         | Maria Alejandra Cabrera Arauz   |
-| Gestión de proyecto   | Tablero con Roles y contribuciones por integrante                            | Maria Alejandra Cabrera Arauz   |
-| Diseño ingenieril     | Diseño y desarrollo de soluciones complementarias para resolver limitaciones | Maria Alejandra Cabrera Arauz   |
-| Wiki técnica          | Resumen General, Motivación y Estructura del Documento                       | Maria Alejandra Cabrera Arauz   |
-| Wiki técnica          | Declaración del uso de IA y fuentes bibliográficas                           | Todos  |
-| Video (≤10 min)       | Demostración y explicación clara (sim + prototipo + E-Stop + anomalía)       | Todos  |
+| Categoría                     | Criterio                                                                                              | Responsable |
+|------------------------------|--------------------------------------------------------------------------------------------------------|-------------|
+| **Gestión de proyecto**      |                                                                                                        | |
+| Gestión de proyecto          | Repositorio Git creado                                                                                 | Maria Alejandra Cabrera Arauz |
+| Gestión de proyecto          | Estructura de carpetas estandarizada (src/, hmi/, docs/, proto/, video/, evidencias/)                  | Maria Alejandra Cabrera Arauz |
+| Gestión de proyecto          | Tablero con roles y contribuciones por integrante                                                      | Maria Alejandra Cabrera Arauz |
+| Gestión de proyecto          | Actualización continua de issues y commits                                                             | Todos |
+| **Diseño Ingenieril**        |                                                                                                        | |
+| Diseño Ingenieril            | Identificación completa de restricciones técnicas, económicas y operativas                             |             |
+| Diseño Ingenieril            | Diseño y desarrollo de soluciones complementarias para resolver limitaciones externas del módulo       | Todos |
+| Diseño Ingenieril            | Diseño del sistema de detección con 6 sensores de proximidad, soportes y cableado                      | Maria Alejandra Cabrera Arauz |
+| Diseño Ingenieril            | Modelado teórico del flujo de almacenamiento y transferencia entre módulos                             |             |
+| Diseño Ingenieril            | Diagramas de bloques de arquitectura (hardware y software)                                             |             |
+| Diseño Ingenieril            | Diagramas UML de todos los módulos de software                                                         |             |
+| Diseño Ingenieril            | Esquemáticos de interconexión del hardware                                                             |             |
+| Diseño Ingenieril            | Aplicación de estándares de diseño de ingeniería                                                       |             |
+| **Prototipo y Validación**   |                                                                                                        | |
+| Prototipo y Validación       | Integración correcta PLC–sensores–actuadores–ESP32                                                     |             |
+| Prototipo y Validación       | Validación del funcionamiento del DT según requisitos mínimos                                          |             |
+| Prototipo y Validación       | Pruebas del sistema de detección con sensores (ocupación real vs simulación)                           |             |
+| Prototipo y Validación       | Validación del transporte de fichas con canastos de icopor                                             | Maria Alejandra Cabrera Arauz |
+| Prototipo y Validación       | Interoperabilidad con otros módulos de la Fábrica Inteligente                                          |             |
+| Prototipo y Validación       | Evaluación del desempeño: errores, fallos, mejoras                                                     |             |
+| **Wiki técnica**             |                                                                                                        |             |
+| Wiki técnica                 | Resumen General, Motivación, Justificación y Estructura del Documento                                  | Maria Alejandra Cabrera Arauz |
+| Wiki técnica                 | Documentación de restricciones de diseño y criterios de diseño                                         |             |
+| Wiki técnica                 | Documentación del módulo de simulación del almacén                                                     |             |
+| Wiki técnica                 | Documentación del diseño físico complementario (canasto + sensores + soportes)                         | Maria Alejandra Cabrera Arauz |
+| Wiki técnica                 | Resultados experimentales y análisis técnico                                                           |             |
+| Wiki técnica                 | Autoevaluación del protocolo de pruebas                                                                |             |
+| Wiki técnica                 | Declaración del uso de IA y fuentes bibliográficas (IEEE)                                              | Todos |
+| **Comunicación**             |                                                                                                        | |
+| Comunicación                 | Presentación clara y concisa durante el pitch                                                          | Todos |
+| Comunicación                 | Uso adecuado de lenguaje ingenieril                                                                    | Todos |
+| Comunicación                 | Explicación del flujo del proceso y dinámica del DT                                                    | Todos |
+| Comunicación                 | Respuesta clara a preguntas del jurado                                                                 | Todos |
+| Comunicación                 | Apoyo visual: tablas, esquemas y figuras estéticas                                                     | Todos |
+| **Video (≤10 min)**          |                                                                                                        | |
+| Video                        | Demostración del DT (simulación + prototipo + E-Stop + anomalía)                                       | Todos |
+| Video                        | Explicación de la integración con Fábrica Inteligente                                                  | Todos |
+| Video                        | Participación de todos los miembros del equipo                                                         | Todos |
+| **Autoaprendizaje**          |                                                                                                        | |
+| Autoaprendizaje              | Aprendizaje autónomo sobre sensores, soldadura, prototipado y simulación                               | Todos |
+| Autoaprendizaje              | Apropiación de nuevos conceptos de IIoT y comunicación industrial                                      | Todos |
+| Autoaprendizaje              | Aplicación del aprendizaje adquirido para solucionar problemas reales del proyecto                     | Todos |
+
 
 ---
 
