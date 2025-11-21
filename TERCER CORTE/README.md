@@ -132,13 +132,13 @@ A continuación compartimos las diferentes evidencias de la contrucción:
   ![El sistema de sensores montado detrás del almacén](./EVIDENCIAS/Maqueta_con_Maquina.jpg)
 
 - La estructura de cartón paja y madera que sostiene los sensores:
-  ![La estructura de cartón paja y madera que sostiene los sensores](./EVIDENCIAS/nombre_de_la_imagen.jpg)
+  ![La estructura de cartón paja y madera que sostiene los sensores](./EVIDENCIAS/Maqueta.jpg)
 
 - Sensores posicionados en la maqueta:
-  ![Sensores posicionados en la maqueta](./EVIDENCIAS/nombre_de_la_imagen.jpg)
+  ![Sensores posicionados en la maqueta](./EVIDENCIAS/Sensores.jpg)
 
 - Cabledo en la maqueta de los sensores:
-  ![Cabledo en la maqueta de los sensores](./EVIDENCIAS/nombre_de_la_imagen.jpg)
+  ![Cabledo en la maqueta de los sensores](./EVIDENCIAS/Cables.jpg)
 
 ### 3.5 Estándares de Ingeniería Aplicados
 Normativas y buenas prácticas utilizadas:
