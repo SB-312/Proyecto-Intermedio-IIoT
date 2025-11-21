@@ -83,7 +83,7 @@ Finalmente, los Anexos distribuidos en diferentes carpetas contienen el código 
 ### 2.1 Restricciones de Diseño Identificadas
 Durante la etapa de pruebas identificamos limitaciones críticas del módulo High Bay Storage ya construido que afectaban su rendimiento dentro de la Fábrica Inteligente del curso:
 
-- El motor que hace el movimiento vertical no funcionaba apropiadamente con el resto del sistema, no subia ni bajaba de una manera optima.
+- El motor que hace el movimiento eje y no funcionaba apropiadamente con el resto del sistema, no subia ni bajaba de una manera optima.
 - Cuando estabamos acoplando los diferentes sensores, nos dimos cuenta que nos faltaban pines de conexión en PLC.
 - No todo el sistema maneja la misma cantidad de voltaje, lo cual dificutó la correcta distribucción del mismo.
 - Las fichas originales del kit son pequeñas en comparación a lo que necesitabamos, lo que dificultaba que el brazo de la máquina las tomara de manera estable y sin caídas. Esta restricción provocaba fallas en la transferencia entre módulos, retrasos y pérdidas de ciclo.
@@ -97,9 +97,9 @@ Estas restricciones motivaron el diseño de soluciones físicas y electrónicas 
 
 Para resolver los desafíos anteriores se incorporaron dos desarrollos propios dentro de la arquitectura de hardware del sistema:
 
-A) Motor vertical:
+A) Motor eje y:
 
-Se volvio a implementar el motor vertical que estaba en los planos, ya que este se habia cambiado por falta de fichas. Al cambiar esto, se mejora el funcionamiento de la maquina, pero debimos contar con las fichas adecuadas por lo que toco adquirirlas externamente.
+Se volvio a implementar el motor eje y que estaba en los planos, ya que este se habia cambiado por falta de fichas. Al cambiar esto, se mejora el funcionamiento de la maquina, pero debimos contar con las fichas adecuadas por lo que toco adquirirlas externamente.
 
 B) Pines en la PLC:
 
@@ -111,7 +111,7 @@ En cuanto a la distribución de voltajes, lo que hicimos fue apoyarnos y aprovec
 
 D) Canastos de transporte en icopor:
 
-Se diseñaron pequeños contenedores en icopor que envuelven temporalmente la ficha. De esta forma, aumentamos el volumen y la estabilidad de la ficha durante su transporte, garantizamos que la ficha llegue alineada a la zona donde la siguiente máquina la toma, evitamos atascos y movimientos bruscos durante el desplazamiento vertical y además, el diseño garantiza que la segunda máquina solo tome la ficha, dejando el canasto atrás sin alterar su proceso.
+Se diseñaron pequeños contenedores en icopor que envuelven temporalmente la ficha. De esta forma, aumentamos el volumen y la estabilidad de la ficha durante su transporte, garantizamos que la ficha llegue alineada a la zona donde la siguiente máquina la toma, evitamos atascos y movimientos bruscos durante el desplazamiento eje y y además, el diseño garantiza que la segunda máquina solo tome la ficha, dejando el canasto atrás sin alterar su proceso.
 
 E) Sistema de monitoreo de inventario con 6 sensores de proximidad:
 
@@ -341,8 +341,8 @@ Para integrar los 6 sensores de la pared se implementó un módulo de software q
 ### 3.4 Esquemáticos de Hardware Diseñados
 A continuación compartimos las diferentes evidencias de la contrucción:
 
-- Cambio de motor vertical:
-  ![Cambio de motor vertical](./EVIDENCIAS/Motor.jpg)
+- Cambio de motor eje y:
+  ![Cambio de motor eje y](./EVIDENCIAS/Motor.jpg)
 
 - Prototipos de canastos de icopor:
   ![Prototipos de canastos de icopor](./EVIDENCIAS/Canasta.jpg)
@@ -395,7 +395,7 @@ Durante la validación del sistema se realizaron las siguientes pruebas:
 1. Pruebas del canasto de transporte de fichas:
 
 - Encaje del canasto en las pinzas de la maquina.
-- Desplazamiento vertical sin atascos.
+- Desplazamiento eje y sin atascos.
 - Estabilidad al entregar la ficha a la segunda máquina.
 - Separación correcta entre canasto y ficha.
 
